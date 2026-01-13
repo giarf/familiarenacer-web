@@ -1,0 +1,159 @@
+---
+// src/components/RenacerLanding.astro
+
+const pilares = [
+  {
+    titulo: "Sustentabilidad y Tierra",
+    descripcion: "Desde nuestro invernadero 'Germinando Sueños' hasta el Jardín Ecológico. Cultivamos mizuna, mantenemos aves y enseñamos a la comunidad a reconectar con la naturaleza.",
+    icono: "🌱",
+    color: "bg-green-100 text-green-700"
+  },
+  {
+    titulo: "Solidaridad Activa",
+    descripcion: "Apoyo directo a familias con nuestro Comedor Solidario, entrega de canastas y el Ropero Infantil 'Kid Boutique'. Vestir y alimentar es también dar dignidad.",
+    icono: "🤝",
+    color: "bg-orange-100 text-orange-700"
+  },
+  {
+    titulo: "Inclusión y TEA",
+    descripcion: "Construyendo 'Mi Lugar Seguro'. Trabajamos en salas de autismo, perfiles sensoriales y políticas de discapacidad para un Quillota más inclusivo.",
+    icono: "🧩",
+    color: "bg-blue-100 text-blue-700"
+  }
+];
+
+const proyectos = [
+  {
+    nombre: "Germinando Sueños",
+    bajada: "Reactivación de Invernadero",
+    detalle: "Un espacio educativo y productivo donde la comunidad aprende sobre cultivos, control orgánico de plagas y alimentación saludable.",
+    estado: "En curso"
+  },
+  {
+    nombre: "Mi Rincón Seguro",
+    bajada: "Salas de Contención TEA",
+    detalle: "Proyecto en alianza con SECPLAN para habilitar espacios adaptados sensorialmente para niños y niñas del espectro autista.",
+    estado: "En planificación"
+  },
+  {
+    nombre: "Ropero Solidario",
+    bajada: "Campaña de Invierno y Escolar",
+    detalle: "Recolección, lavado y reparación de prendas para darles una segunda vida y apoyar a familias monoparentales.",
+    estado: "Activo"
+  }
+];
+---
+
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="text-2xl font-bold text-green-700 tracking-tight">
+      Renacer<span class="text-slate-400">.</span>
+    </div>
+    <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+      <a href="#nosotros" class="hover:text-green-600 transition">Nosotros</a>
+      <a href="#pilares" class="hover:text-green-600 transition">Qué Hacemos</a>
+      <a href="#proyectos" class="hover:text-green-600 transition">Proyectos</a>
+      <a href="#contacto" class="hover:text-green-600 transition">Contacto</a>
+    </div>
+    <button class="bg-green-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition shadow-lg shadow-green-600/20">
+      Ser Voluntario
+    </button>
+  </div>
+</nav>
+
+<header class="relative bg-gradient-to-br from-green-50 to-emerald-100 pt-20 pb-32 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 relative z-10 text-center">
+    <span class="inline-block py-1 px-3 rounded-full bg-white border border-green-200 text-green-700 text-xs font-bold tracking-wider mb-6">
+      📍 QUILLOTA, CHILE
+    </span>
+    <h1 class="text-5xl md:text-7xl font-bold text-slate-800 mb-6 leading-tight">
+      Sembrando esperanza, <br/>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-500">cosechando comunidad.</span>
+    </h1>
+    <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+      En Renacer trabajamos la tierra y el corazón. Desde la huerta comunitaria hasta el apoyo a la neurodivergencia, creamos redes de apoyo real.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href="#contacto" class="px-8 py-4 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-800 transition">
+        Contáctanos
+      </a>
+      <a href="#proyectos" class="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-semibold hover:bg-slate-50 transition">
+        Ver Proyectos
+      </a>
+    </div>
+  </div>
+</header>
+
+<section id="pilares" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-800 mb-4">Nuestras áreas de acción</h2>
+      <p class="text-slate-500 max-w-2xl mx-auto">
+        No somos solo una oficina. Somos un espacio activo donde se cocina, se cultiva, se repara y se acoge.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {pilares.map((pilar) => (
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition duration-300 group">
+          <div class={`w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 ${pilar.color} group-hover:scale-110 transition duration-300`}>
+            {pilar.icono}
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 mb-3">{pilar.titulo}</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">{pilar.descripcion}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="proyectos" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 relative z-10">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Proyectos en Movimiento</h2>
+        <p class="text-slate-400">Iniciativas vivas que transforman nuestro entorno.</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {proyectos.map((proy) => (
+        <article class="bg-slate-800 rounded-xl p-6 hover:bg-slate-750 border border-slate-700 transition group">
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-xs font-bold px-2 py-1 rounded bg-slate-700 text-green-400 uppercase tracking-wide">
+              {proy.estado}
+            </span>
+          </div>
+          <h3 class="text-xl font-bold mb-1 group-hover:text-green-400 transition">{proy.nombre}</h3>
+          <p class="text-sm text-slate-400 font-medium mb-4">{proy.bajada}</p>
+          <p class="text-sm text-slate-300 leading-relaxed border-t border-slate-700 pt-4">
+            {proy.detalle}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<footer id="contacto" class="bg-white border-t border-slate-100 pt-16 pb-8">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div class="col-span-1 md:col-span-2">
+        <span class="text-2xl font-bold text-slate-800 block mb-4">Renacer.</span>
+        <p class="text-slate-500 leading-relaxed max-w-sm">
+          Organización comunitaria dedicada al desarrollo social, ecológico e inclusivo en la comuna de Quillota.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-bold text-slate-800 mb-4">Contacto</h4>
+        <ul class="space-y-2 text-sm text-slate-600">
+          <li>📍 Sector Altos de Serrano, Quillota</li>
+          <li>✉️ contacto@renacer-quillota.cl</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-100 pt-8 text-center text-sm text-slate-400">
+      <p>&copy; 2026 Centro Renacer.</p>
+    </div>
+  </div>
+</footer>
