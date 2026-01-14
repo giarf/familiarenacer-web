@@ -1,6 +1,4 @@
 ---
-// src/components/RenacerLanding.astro
-
 const pilares = [
   {
     titulo: "Sustentabilidad y Tierra",
@@ -95,11 +93,11 @@ const proyectos = [
 
     <div class="grid md:grid-cols-3 gap-8">
       {pilares.map((pilar) => (
-        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl transition duration-300 group">
-          <div class={`w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 ${pilar.color} group-hover:scale-110 transition duration-300`}>
+        <div class="p-8 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 group hover:-translate-y-2">
+          <div class={`w-14 h-14 rounded-xl flex items-center justify-center text-3xl mb-6 ${pilar.color} group-hover:scale-125 transition-all duration-300 shadow-lg`}>
             {pilar.icono}
           </div>
-          <h3 class="text-xl font-bold text-slate-800 mb-3">{pilar.titulo}</h3>
+          <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-green-600 transition-colors">{pilar.titulo}</h3>
           <p class="text-slate-600 leading-relaxed text-sm">{pilar.descripcion}</p>
         </div>
       ))}
@@ -118,14 +116,14 @@ const proyectos = [
 
     <div class="grid md:grid-cols-3 gap-6">
       {proyectos.map((proy) => (
-        <article class="bg-slate-800 rounded-xl p-6 hover:bg-slate-750 border border-slate-700 transition group">
+        <article class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 hover:from-slate-700 hover:to-slate-800 border border-slate-700 transition-all duration-300 group hover:shadow-2xl hover:shadow-green-600/20 hover:-translate-y-1">
           <div class="flex justify-between items-start mb-4">
-            <span class="text-xs font-bold px-2 py-1 rounded bg-slate-700 text-green-400 uppercase tracking-wide">
+            <span class="text-xs font-bold px-3 py-1.5 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white uppercase tracking-wide shadow-lg shadow-green-600/30">
               {proy.estado}
             </span>
           </div>
-          <h3 class="text-xl font-bold mb-1 group-hover:text-green-400 transition">{proy.nombre}</h3>
-          <p class="text-sm text-slate-400 font-medium mb-4">{proy.bajada}</p>
+          <h3 class="text-xl font-bold mb-2 group-hover:text-green-400 transition-colors duration-300">{proy.nombre}</h3>
+          <p class="text-sm text-emerald-300 font-medium mb-4">{proy.bajada}</p>
           <p class="text-sm text-slate-300 leading-relaxed border-t border-slate-700 pt-4">
             {proy.detalle}
           </p>
@@ -135,25 +133,38 @@ const proyectos = [
   </div>
 </section>
 
-<footer id="contacto" class="bg-white border-t border-slate-100 pt-16 pb-8">
+<footer id="contacto" class="bg-gradient-to-b from-white to-slate-50 border-t border-slate-100 pt-16 pb-8">
   <div class="max-w-6xl mx-auto px-4">
     <div class="grid md:grid-cols-4 gap-12 mb-12">
       <div class="col-span-1 md:col-span-2">
-        <span class="text-2xl font-bold text-slate-800 block mb-4">Renacer.</span>
-        <p class="text-slate-500 leading-relaxed max-w-sm">
-          Organización comunitaria dedicada al desarrollo social, ecológico e inclusivo en la comuna de Quillota.
+        <span class="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent block mb-4">Renacer.</span>
+        <p class="text-slate-600 leading-relaxed max-w-sm">
+          Organización comunitaria dedicada al desarrollo social, ecológico e inclusivo en la comuna de Quillota. Trabajamos codo a codo con BanAmor y el Municipio.
         </p>
       </div>
       <div>
         <h4 class="font-bold text-slate-800 mb-4">Contacto</h4>
+        <ul class="space-y-3 text-sm text-slate-600">
+          <li class="hover:text-green-600 transition">📍 Sector Altos de Serrano, Quillota</li>
+          <li class="hover:text-green-600 transition">✉️ contacto@renacer-quillota.cl</li>
+          <li class="hover:text-green-600 transition">📞 +56 9 1234 5678</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-slate-800 mb-4">Horarios</h4>
         <ul class="space-y-2 text-sm text-slate-600">
-          <li>📍 Sector Altos de Serrano, Quillota</li>
-          <li>✉️ contacto@renacer-quillota.cl</li>
+          <li>Lunes a Viernes</li>
+          <li class="font-semibold text-slate-700">09:00 - 18:00 hrs</li>
+          <li class="text-green-600 font-medium">📅 Jornadas de Voluntariado: Lunes</li>
         </ul>
       </div>
     </div>
-    <div class="border-t border-slate-100 pt-8 text-center text-sm text-slate-400">
-      <p>&copy; 2026 Centro Renacer.</p>
+    <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+      <p>&copy; 2026 Centro Renacer. Todos los derechos reservados.</p>
+      <div class="flex space-x-6 mt-4 md:mt-0">
+        <a href="#" class="hover:text-green-600 font-medium transition">Instagram</a>
+        <a href="#" class="hover:text-green-600 font-medium transition">Facebook</a>
+      </div>
     </div>
   </div>
 </footer>

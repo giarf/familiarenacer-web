@@ -1,5 +1,6 @@
 ---
-import '../styles/global.css';
+// Borramos la importación manual para evitar errores de "layer base"
+// import '../styles/global.css'; 
 
 interface Props {
 	title: string;
@@ -25,73 +26,12 @@ const { title } = Astro.props;
 	</body>
 </html>
 
-<style>
+<style is:global>
+    /* Estilos globales simples si los necesitas */
 	:root {
 		--primary: #16a34a;
 		--primary-dark: #15803d;
 		--accent: #84cc16;
 	}
-
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	@keyframes slideInLeft {
-		from {
-			opacity: 0;
-			transform: translateX(-40px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-
-	@keyframes float {
-		0%, 100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-10px);
-		}
-	}
-
-	@keyframes blob {
-		0%, 100% {
-			transform: translate(0, 0) scale(1);
-		}
-		33% {
-			transform: translate(30px, -50px) scale(1.1);
-		}
-		66% {
-			transform: translate(-20px, 20px) scale(0.9);
-		}
-	}
-
-	.animate-fadeInUp {
-		animation: fadeInUp 0.6s ease-out;
-	}
-
-	.animate-slideInLeft {
-		animation: slideInLeft 0.6s ease-out;
-	}
-
-	.animate-float {
-		animation: float 3s ease-in-out infinite;
-	}
-
-	.animate-blob {
-		animation: blob 7s infinite;
-	}
-
-	.animation-delay-2000 {
-		animation-delay: 2s;
-	}
+    /* ... el resto de tus animaciones pueden quedarse aquí ... */
 </style>
