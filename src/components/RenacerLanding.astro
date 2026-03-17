@@ -56,7 +56,10 @@ const proyectos = [
       <a href="#contacto">Contacto</a>
     </div>
 
-    <a class="nav-cta" href="#contacto">Ser Voluntario</a>
+    <div class="nav-actions">
+      <a class="nav-secondary" href="/colaboradormensual/">Colaborar mensualmente</a>
+      <a class="nav-cta" href="#contacto">Ser Voluntario</a>
+    </div>
   </nav>
 
   <section class="hero" id="nosotros">
@@ -203,7 +206,14 @@ const proyectos = [
     color: var(--brand-dark);
   }
 
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
   .nav-cta,
+  .nav-secondary,
   .primary-action,
   .secondary-action {
     display: inline-flex;
@@ -225,7 +235,15 @@ const proyectos = [
     box-shadow: 0 16px 28px rgba(8, 52, 183, 0.22);
   }
 
+  .nav-secondary {
+    padding: 1rem 1.35rem;
+    border: 1px solid rgba(8, 52, 183, 0.14);
+    background: rgba(8, 52, 183, 0.06);
+    color: var(--brand-dark);
+  }
+
   .nav-cta:hover,
+  .nav-secondary:hover,
   .primary-action:hover,
   .secondary-action:hover {
     transform: translateY(-2px);
@@ -524,7 +542,14 @@ const proyectos = [
       font-size: 1.7rem;
     }
 
-    .nav-cta {
+    .nav-actions {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .nav-cta,
+    .nav-secondary {
+      width: 100%;
       padding: 0.95rem 1.2rem;
       font-size: 0.95rem;
     }
