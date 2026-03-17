@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import logoRenacer from '../assets/logoRenacer.ico';
 
 interface Props {
   title: string;
@@ -19,7 +20,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href={logoRenacer} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
