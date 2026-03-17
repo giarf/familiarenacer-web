@@ -1,37 +1,37 @@
 ---
-// Borramos la importación manual para evitar errores de "layer base"
-// import '../styles/global.css'; 
+import '../styles/global.css';
 
 interface Props {
-	title: string;
+  title: string;
+  description?: string;
+  noindex?: boolean;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = 'Centro Renacer en Quillota. Comunidad, proyectos y voluntariado para transformar realidades.',
+  noindex = false,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-	</head>
-	<body class="bg-gradient-to-br from-slate-50 via-white to-emerald-50 font-sans">
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-
-<style is:global>
-    /* Estilos globales simples si los necesitas */
-	:root {
-		--primary: #16a34a;
-		--primary-dark: #15803d;
-		--accent: #84cc16;
-	}
-    /* ... el resto de tus animaciones pueden quedarse aquí ... */
-</style>

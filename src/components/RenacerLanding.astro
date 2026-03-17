@@ -1,170 +1,573 @@
 ---
 const pilares = [
   {
-    titulo: "Sustentabilidad y Tierra",
-    descripcion: "Desde nuestro invernadero 'Germinando Sueños' hasta el Jardín Ecológico. Cultivamos mizuna, mantenemos aves y enseñamos a la comunidad a reconectar con la naturaleza.",
-    icono: "🌱",
-    color: "bg-green-100 text-green-700"
+    icono: '🌱',
+    titulo: 'Sustentabilidad y Tierra',
+    descripcion:
+      "Desde nuestro invernadero 'Germinando Sueños' hasta el Jardín Ecológico. Cultivamos mizuna, mantenemos aves y enseñamos a la comunidad a reconectar con la naturaleza.",
   },
   {
-    titulo: "Solidaridad Activa",
-    descripcion: "Apoyo directo a familias con nuestro Comedor Solidario, entrega de canastas y el Ropero Infantil 'Kid Boutique'. Vestir y alimentar es también dar dignidad.",
-    icono: "🤝",
-    color: "bg-orange-100 text-orange-700"
+    icono: '🤝',
+    titulo: 'Solidaridad Activa',
+    descripcion:
+      "Apoyo directo a familias con nuestro Comedor Solidario, entrega de canastas y el Ropero Infantil 'Kid Boutique'. Vestir y alimentar es también dar dignidad.",
   },
   {
-    titulo: "Inclusión y TEA",
-    descripcion: "Construyendo 'Mi Lugar Seguro'. Trabajamos en salas de autismo, perfiles sensoriales y políticas de discapacidad para un Quillota más inclusivo.",
-    icono: "🧩",
-    color: "bg-blue-100 text-blue-700"
-  }
+    icono: '🧩',
+    titulo: 'Inclusión y TEA',
+    descripcion:
+      "Construyendo 'Mi Lugar Seguro'. Trabajamos en salas de autismo, perfiles sensoriales y políticas de discapacidad para un Quillota más inclusivo.",
+  },
 ];
 
 const proyectos = [
   {
-    nombre: "Germinando Sueños",
-    bajada: "Reactivación de Invernadero",
-    detalle: "Un espacio educativo y productivo donde la comunidad aprende sobre cultivos, control orgánico de plagas y alimentación saludable.",
-    estado: "En curso"
+    estado: 'En curso',
+    nombre: 'Germinando Sueños',
+    bajada: 'Reactivación de Invernadero',
+    detalle:
+      'Un espacio educativo y productivo donde la comunidad aprende sobre cultivos, control orgánico de plagas y alimentación saludable.',
   },
   {
-    nombre: "Mi Rincón Seguro",
-    bajada: "Salas de Contención TEA",
-    detalle: "Proyecto en alianza con SECPLAN para habilitar espacios adaptados sensorialmente para niños y niñas del espectro autista.",
-    estado: "En planificación"
+    estado: 'En planificación',
+    nombre: 'Mi Rincón Seguro',
+    bajada: 'Salas de Contención TEA',
+    detalle:
+      'Proyecto en alianza con SECPLAN para habilitar espacios adaptados sensorialmente para niños y niñas del espectro autista.',
   },
   {
-    nombre: "Ropero Solidario",
-    bajada: "Campaña de Invierno y Escolar",
-    detalle: "Recolección, lavado y reparación de prendas para darles una segunda vida y apoyar a familias monoparentales.",
-    estado: "Activo"
-  }
+    estado: 'Activo',
+    nombre: 'Ropero Solidario',
+    bajada: 'Campaña de Invierno y Escolar',
+    detalle:
+      'Recolección, lavado y reparación de prendas para darles una segunda vida y apoyar a familias monoparentales.',
+  },
 ];
 ---
 
-<nav class="bg-white shadow-sm sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-    <div class="text-2xl font-bold text-green-700 tracking-tight">
-      Renacer<span class="text-slate-400">.</span>
-    </div>
-    <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-      <a href="#nosotros" class="hover:text-green-600 transition">Nosotros</a>
-      <a href="#pilares" class="hover:text-green-600 transition">Qué Hacemos</a>
-      <a href="#proyectos" class="hover:text-green-600 transition">Proyectos</a>
-      <a href="#contacto" class="hover:text-green-600 transition">Contacto</a>
-    </div>
-    <button class="bg-green-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition shadow-lg shadow-green-600/20">
-      Ser Voluntario
-    </button>
-  </div>
-</nav>
+<main class="landing-shell">
+  <nav class="topbar">
+    <a href="/" class="brand">Renacer<span>.</span></a>
 
-<header class="relative bg-gradient-to-br from-green-50 to-emerald-100 pt-20 pb-32 overflow-hidden">
-  <div class="max-w-6xl mx-auto px-4 relative z-10 text-center">
-    <span class="inline-block py-1 px-3 rounded-full bg-white border border-green-200 text-green-700 text-xs font-bold tracking-wider mb-6">
-      📍 QUILLOTA, CHILE
-    </span>
-    <h1 class="text-5xl md:text-7xl font-bold text-slate-800 mb-6 leading-tight">
-      Sembrando esperanza, <br/>
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-500">cosechando comunidad.</span>
-    </h1>
-    <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-      En Renacer trabajamos la tierra y el corazón. Desde la huerta comunitaria hasta el apoyo a la neurodivergencia, creamos redes de apoyo real.
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
-      <a href="#contacto" class="px-8 py-4 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-800 transition">
-        Contáctanos
-      </a>
-      <a href="#proyectos" class="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-semibold hover:bg-slate-50 transition">
-        Ver Proyectos
-      </a>
+    <div class="nav-links">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#pilares">Qué Hacemos</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
     </div>
-  </div>
-</header>
 
-<section id="pilares" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl font-bold text-slate-800 mb-4">Nuestras áreas de acción</h2>
-      <p class="text-slate-500 max-w-2xl mx-auto">
-        No somos solo una oficina. Somos un espacio activo donde se cocina, se cultiva, se repara y se acoge.
+    <a class="nav-cta" href="#contacto">Ser Voluntario</a>
+  </nav>
+
+  <section class="hero" id="nosotros">
+    <div class="hero-backdrop"></div>
+    <div class="hero-content">
+      <p class="hero-badge">📍 QUILLOTA, CHILE</p>
+      <h1>
+        Sembrando esperanza,
+        <span>cosechando comunidad.</span>
+      </h1>
+      <p class="hero-copy">
+        En Renacer trabajamos la tierra y el corazón. Desde la huerta comunitaria hasta el apoyo a
+        la neurodivergencia, creamos redes de apoyo real.
+      </p>
+
+      <div class="hero-actions">
+        <a class="primary-action" href="#contacto">Contáctanos</a>
+        <a class="secondary-action" href="#proyectos">Ver Proyectos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pilares">
+    <div class="section-heading">
+      <h2>Nuestras áreas de acción</h2>
+      <p>
+        No somos solo una oficina. Somos un espacio activo donde se cocina, se cultiva, se repara y
+        se acoge.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="cards-grid">
       {pilares.map((pilar) => (
-        <div class="p-8 rounded-2xl bg-gradient-to-br from-white to-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 group hover:-translate-y-2">
-          <div class={`w-14 h-14 rounded-xl flex items-center justify-center text-3xl mb-6 ${pilar.color} group-hover:scale-125 transition-all duration-300 shadow-lg`}>
-            {pilar.icono}
-          </div>
-          <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-green-600 transition-colors">{pilar.titulo}</h3>
-          <p class="text-slate-600 leading-relaxed text-sm">{pilar.descripcion}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<section id="proyectos" class="py-20 bg-slate-900 text-white relative overflow-hidden">
-  <div class="max-w-6xl mx-auto px-4 relative z-10">
-    <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-      <div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Proyectos en Movimiento</h2>
-        <p class="text-slate-400">Iniciativas vivas que transforman nuestro entorno.</p>
-      </div>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      {proyectos.map((proy) => (
-        <article class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 hover:from-slate-700 hover:to-slate-800 border border-slate-700 transition-all duration-300 group hover:shadow-2xl hover:shadow-green-600/20 hover:-translate-y-1">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-xs font-bold px-3 py-1.5 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white uppercase tracking-wide shadow-lg shadow-green-600/30">
-              {proy.estado}
-            </span>
-          </div>
-          <h3 class="text-xl font-bold mb-2 group-hover:text-green-400 transition-colors duration-300">{proy.nombre}</h3>
-          <p class="text-sm text-emerald-300 font-medium mb-4">{proy.bajada}</p>
-          <p class="text-sm text-slate-300 leading-relaxed border-t border-slate-700 pt-4">
-            {proy.detalle}
-          </p>
+        <article class="info-card">
+          <div class="icon-chip" aria-hidden="true">{pilar.icono}</div>
+          <h3>{pilar.titulo}</h3>
+          <p>{pilar.descripcion}</p>
         </article>
       ))}
     </div>
-  </div>
-</section>
+  </section>
 
-<footer id="contacto" class="bg-gradient-to-b from-white to-slate-50 border-t border-slate-100 pt-16 pb-8">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="grid md:grid-cols-4 gap-12 mb-12">
-      <div class="col-span-1 md:col-span-2">
-        <span class="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent block mb-4">Renacer.</span>
-        <p class="text-slate-600 leading-relaxed max-w-sm">
-          Organización comunitaria dedicada al desarrollo social, ecológico e inclusivo en la comuna de Quillota. Trabajamos codo a codo con BanAmor y el Municipio.
-        </p>
-      </div>
-      <div>
-        <h4 class="font-bold text-slate-800 mb-4">Contacto</h4>
-        <ul class="space-y-3 text-sm text-slate-600">
-          <li class="hover:text-green-600 transition">📍 Alfaro 1000, Quillota</li>
-          <li class="hover:text-green-600 transition">✉️ contacto@familiarenacer.cl</li>
-          <li class="hover:text-green-600 transition">📞 +56 9 7623 3481 </li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-bold text-slate-800 mb-4">Horarios</h4>
-        <ul class="space-y-2 text-sm text-slate-600">
-          <li>Lunes a Viernes</li>
-          <li class="font-semibold text-slate-700">09:00 - 18:00 hrs</li>
-          <li class="text-green-600 font-medium">📅 Jornadas de Voluntariado: Lunes</li>
-        </ul>
-      </div>
+  <section class="section projects-section" id="proyectos">
+    <div class="section-heading section-heading-dark">
+      <h2>Proyectos en Movimiento</h2>
+      <p>Iniciativas vivas que transforman nuestro entorno.</p>
     </div>
-    <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
-      <p>&copy; 2026 Centro Renacer. Todos los derechos reservados.</p>
-      <div class="flex space-x-6 mt-4 md:mt-0">
-        <a href="https://www.instagram.com/familia.renacer/" class="hover:text-green-600 font-medium transition">Instagram</a>
-        <a href="https://www.facebook.com/p/Centro-de-Acogida-para-la-Familia-Renacer-100070071410421/" class="hover:text-green-600 font-medium transition">Facebook</a>
-      </div>
+
+    <div class="project-grid">
+      {proyectos.map((proyecto) => (
+        <article class="project-card">
+          <span class="status-pill">{proyecto.estado}</span>
+          <h3>{proyecto.nombre}</h3>
+          <p class="project-subtitle">{proyecto.bajada}</p>
+          <p>{proyecto.detalle}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <footer class="footer" id="contacto">
+    <div class="footer-brand-block">
+      <a href="/" class="brand footer-brand">Renacer<span>.</span></a>
+      <p>
+        Organización comunitaria dedicada al desarrollo social, ecológico e inclusivo en la comuna de
+        Quillota. Trabajamos codo a codo con BanAmor y el Municipio.
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contacto</h4>
+      <p>📍 Alfaro 1000, Quillota</p>
+      <a href="mailto:contacto@familiarenacer.cl">✉️ contacto@familiarenacer.cl</a>
+      <a href="tel:+56976233481">📞 +56 9 7623 3481</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Horarios</h4>
+      <p>Lunes a Viernes</p>
+      <p class="footer-strong">09:00 - 18:00 hrs</p>
+      <p class="footer-highlight">📅 Jornadas de Voluntariado: Lunes</p>
+    </div>
+  </footer>
+
+  <div class="subfooter">
+    <p>© 2026 Centro Renacer. Todos los derechos reservados.</p>
+    <div class="subfooter-links">
+      <a href="https://www.instagram.com/familia.renacer/" rel="noopener noreferrer" target="_blank">Instagram</a>
+      <a
+        href="https://www.facebook.com/p/Centro-de-Acogida-para-la-Familia-Renacer-100070071410421/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Facebook
+      </a>
+      <a href="/colaboradormensual/">Colaborador mensual</a>
     </div>
   </div>
-</footer>
+</main>
+
+<style>
+  .landing-shell {
+    width: min(100%, 1440px);
+    margin: 0 auto;
+    padding-bottom: 2.5rem;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.25rem 2rem;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(29, 39, 56, 0.08);
+    backdrop-filter: blur(18px);
+  }
+
+  .brand {
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--brand-dark);
+    letter-spacing: -0.05em;
+  }
+
+  .brand span {
+    color: #7f95ad;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    color: #52637a;
+    font-weight: 700;
+  }
+
+  .nav-links a:hover,
+  .subfooter-links a:hover {
+    color: var(--brand-dark);
+  }
+
+  .nav-cta,
+  .primary-action,
+  .secondary-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.35rem;
+    font-weight: 800;
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .nav-cta {
+    padding: 1rem 1.8rem;
+    background: linear-gradient(180deg, #1b49d6 0%, #0834b7 100%);
+    color: white;
+    box-shadow: 0 16px 28px rgba(8, 52, 183, 0.22);
+  }
+
+  .nav-cta:hover,
+  .primary-action:hover,
+  .secondary-action:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 1.5rem 8rem;
+  }
+
+  .hero-backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 14% 24%, rgba(8, 52, 183, 0.12), transparent 26%),
+      radial-gradient(circle at 86% 20%, rgba(73, 121, 255, 0.14), transparent 22%),
+      linear-gradient(180deg, #f5f8ff 0%, #eef4ff 100%);
+    border-bottom-left-radius: 1.75rem;
+    border-bottom-right-radius: 1.75rem;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1120px);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.78rem 1.45rem;
+    border-radius: 999px;
+    border: 1px solid rgba(8, 52, 183, 0.18);
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--brand-dark);
+    font-size: 0.84rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    letter-spacing: -0.05em;
+  }
+
+  .hero h1 {
+    margin: 2rem auto 0;
+    max-width: 11ch;
+    font-size: clamp(3.6rem, 10vw, 6.9rem);
+    line-height: 0.96;
+    color: #18233b;
+  }
+
+  .hero h1 span {
+    display: block;
+    color: var(--brand);
+  }
+
+  .hero-copy {
+    max-width: 24ch;
+    margin: 2rem auto 0;
+    color: #53637d;
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    line-height: 1.55;
+  }
+
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.4rem;
+    margin-top: 2.5rem;
+  }
+
+  .primary-action,
+  .secondary-action {
+    min-width: 15rem;
+    padding: 1.3rem 1.65rem;
+    font-size: 1.1rem;
+  }
+
+  .primary-action {
+    background: #121c35;
+    color: white;
+    box-shadow: 0 18px 30px rgba(18, 28, 53, 0.16);
+  }
+
+  .secondary-action {
+    background: white;
+    border: 1px solid rgba(29, 39, 56, 0.1);
+    color: #34435d;
+  }
+
+  .section,
+  .footer,
+  .subfooter {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section {
+    padding-top: 6rem;
+  }
+
+  .section-heading {
+    max-width: 48rem;
+    margin: 0 auto 2.6rem;
+    text-align: center;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    color: #1b2740;
+  }
+
+  .section-heading p {
+    margin: 1rem 0 0;
+    color: #5a6a83;
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+
+  .cards-grid,
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+
+  .info-card {
+    padding: 1.9rem;
+    border-radius: 1.7rem;
+    border: 1px solid rgba(29, 39, 56, 0.08);
+    background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+    box-shadow: 0 18px 48px rgba(34, 54, 73, 0.08);
+  }
+
+  .icon-chip {
+    display: inline-grid;
+    place-items: center;
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 1rem;
+    background: #edf2ff;
+    font-size: 1.65rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .info-card h3,
+  .project-card h3 {
+    font-size: 1.5rem;
+    color: #19253f;
+  }
+
+  .info-card p,
+  .project-card p,
+  .footer p,
+  .footer a,
+  .subfooter p,
+  .subfooter a {
+    margin: 0.95rem 0 0;
+    color: #5b6a82;
+    line-height: 1.75;
+  }
+
+  .projects-section {
+    padding-top: 6.5rem;
+  }
+
+  .section-heading-dark h2 {
+    color: #1b2740;
+  }
+
+  .project-card {
+    padding: 1.8rem;
+    border-radius: 1.7rem;
+    background: linear-gradient(180deg, #101b33 0%, #15223c 100%);
+    box-shadow: 0 20px 45px rgba(17, 27, 51, 0.18);
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #1f50de 0%, #0834b7 100%);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .project-card h3 {
+    margin-top: 1.2rem;
+    color: white;
+  }
+
+  .project-subtitle {
+    color: #9db4ff;
+    font-weight: 700;
+  }
+
+  .project-card p:last-child {
+    color: #c7d1df;
+    border-top: 1px solid rgba(199, 209, 223, 0.16);
+    padding-top: 1rem;
+  }
+
+  .footer {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2rem;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    border-top: 1px solid rgba(29, 39, 56, 0.08);
+    margin-top: 5rem;
+  }
+
+  .footer-brand {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-column h4 {
+    font-size: 1rem;
+    color: #1c2842;
+  }
+
+  .footer-column a {
+    display: block;
+  }
+
+  .footer-strong {
+    font-weight: 800;
+    color: #33445d;
+  }
+
+  .footer-highlight {
+    color: var(--brand);
+    font-weight: 700;
+  }
+
+  .subfooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(29, 39, 56, 0.08);
+  }
+
+  .subfooter-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 980px) {
+    .nav-links,
+    .cards-grid,
+    .project-grid,
+    .footer,
+    .subfooter {
+      grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .subfooter {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .topbar {
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-size: 1.7rem;
+    }
+
+    .nav-cta {
+      padding: 0.95rem 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 5rem 1rem 5.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 16vw, 4.6rem);
+    }
+
+    .hero-copy {
+      max-width: 100%;
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .primary-action,
+    .secondary-action {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .section,
+    .footer,
+    .subfooter {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .section {
+      padding-top: 4.5rem;
+    }
+
+    .subfooter-links {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+</style>

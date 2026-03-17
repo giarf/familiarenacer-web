@@ -1,0 +1,225 @@
+---
+const donationLinks = [
+  {
+    name: 'Semilla Solidaria',
+    amount: '$5.000',
+    description: 'Inicia la ayuda y permite sembrar nuevas oportunidades.',
+    emoji: '🌱',
+    href: 'https://app.reveniu.com/checkout-custom-link/95bH9li3iYcdJKxuugTd1NV2s7n5sglH',
+  },
+  {
+    name: 'Brote de Esperanza',
+    amount: '$10.000',
+    description: 'Ayuda a que nuevos proyectos comiencen a crecer.',
+    emoji: '🌿',
+    href: 'https://app.reveniu.com/checkout-custom-link/jwtYOw0vQOk5QyWXg8Zps9t6HMBfksmY',
+  },
+  {
+    name: 'Árbol de Apoyo',
+    amount: '$20.000',
+    description: 'Fortalece el acompañamiento a niños y familias.',
+    emoji: '🌳',
+    href: 'https://app.reveniu.com/checkout-custom-link/dZEYJhCPUUQwOU8zqfYtsIIkGLpPPFsD',
+  },
+  {
+    name: 'Sol Solidario',
+    amount: '$30.000',
+    description: 'Entrega la energía que permite que todo siga creciendo.',
+    emoji: '🌞',
+    href: 'https://app.reveniu.com/checkout-custom-link/ayAQljPMkfiwbl8FOEl9SIBXU1u8wRhK',
+  },
+  {
+    name: 'Raíz Fundadora',
+    amount: '$40.000',
+    description: 'Sostiene y da estabilidad al proyecto.',
+    emoji: '✨',
+    href: 'https://app.reveniu.com/checkout-custom-link/kX0o2VEFugphajKBGUDhQEUew9YqYDtt',
+  },
+  {
+    name: 'Guardián de Renacer',
+    amount: '$50.000 o más',
+    description: 'Protege y cuida el futuro del centro y de quienes lo necesitan.',
+    emoji: '🛡️',
+    href: 'https://app.reveniu.com/checkout-custom-link/feN8IRS5PRiC2gC0XKqhwyBTus342V0d',
+  },
+];
+---
+
+<main class="linktree-page">
+  <section class="linktree-card">
+    <a href="/" class="back-link">← Volver a Renacer</a>
+    <div class="brand-badge">Renacer</div>
+    <h1>Colaborador mensual</h1>
+    <p class="intro">
+      Elige una forma de aportar mes a mes y ayúdanos a sostener el trabajo con niños, familias y
+      comunidad.
+    </p>
+
+    <div class="links-list">
+      {donationLinks.map((item) => (
+        <a
+          class="donation-link"
+          href={item.href}
+          target="_blank"
+          rel="nofollow sponsored noopener noreferrer"
+        >
+          <span class="link-emoji" aria-hidden="true">{item.emoji}</span>
+          <span class="link-copy">
+            <strong>
+              {item.name} <span>{item.amount}</span>
+            </strong>
+            <small>{item.description}</small>
+          </span>
+          <span class="link-arrow" aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+
+    <p class="footnote">Los enlaces de apoyo abren una plataforma externa y segura para completar tu aporte.</p>
+  </section>
+</main>
+
+<style>
+  .linktree-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 1.25rem;
+    background:
+      radial-gradient(circle at top, rgba(29, 107, 87, 0.12), transparent 28%),
+      linear-gradient(180deg, #f8f4ec 0%, #f2ede3 100%);
+  }
+
+  .linktree-card {
+    width: min(100%, 32rem);
+    padding: 1.5rem;
+    border: 1px solid rgba(31, 39, 37, 0.1);
+    border-radius: 1.75rem;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 18px 45px rgba(35, 44, 41, 0.09);
+  }
+
+  .back-link {
+    display: inline-flex;
+    margin-bottom: 1rem;
+    color: #47625b;
+    font-weight: 700;
+  }
+
+  .brand-badge {
+    width: fit-content;
+    margin: 0 auto 0.9rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(8, 52, 183, 0.08);
+    color: #0834b7;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    line-height: 1;
+  }
+
+  .intro,
+  .footnote {
+    margin: 0.85rem auto 0;
+    max-width: 32ch;
+    text-align: center;
+    color: #5f6966;
+    line-height: 1.6;
+  }
+
+  .links-list {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1.6rem;
+  }
+
+  .donation-link {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1rem 1rem 1rem 0.95rem;
+    border: 1px solid rgba(31, 39, 37, 0.1);
+    border-radius: 1.2rem;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(35, 44, 41, 0.05);
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .donation-link:hover {
+    transform: translateY(-2px);
+    border-color: rgba(8, 52, 183, 0.22);
+    box-shadow: 0 14px 30px rgba(8, 52, 183, 0.1);
+  }
+
+  .link-emoji {
+    display: inline-grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    background: rgba(8, 52, 183, 0.08);
+    font-size: 1.25rem;
+  }
+
+  .link-copy {
+    display: grid;
+    gap: 0.22rem;
+  }
+
+  .link-copy strong {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .link-copy strong span,
+  .link-arrow {
+    color: #0834b7;
+  }
+
+  .link-copy small {
+    color: #5f6966;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .link-arrow {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .footnote {
+    font-size: 0.9rem;
+    margin-top: 1.2rem;
+  }
+
+  @media (max-width: 520px) {
+    .linktree-page {
+      padding: 0.85rem;
+    }
+
+    .linktree-card {
+      padding: 1.15rem;
+      border-radius: 1.35rem;
+    }
+
+    .donation-link {
+      padding: 0.9rem;
+      gap: 0.75rem;
+    }
+  }
+</style>
