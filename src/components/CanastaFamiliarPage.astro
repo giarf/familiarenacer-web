@@ -1,0 +1,299 @@
+---
+import { Image } from 'astro:assets';
+import canastaImagenPrincipal from '../assets/canasta-familiar/imagen-principal.jpg';
+import canastaEntrega from '../assets/canasta-familiar/entrega-canasta.jpeg';
+
+const canastaStats = [
+  { valor: '2005', etiqueta: 'año desde el que se desarrolla este programa' },
+  { valor: 'Semanal', etiqueta: 'frecuencia actual de entregas a familias' },
+  { valor: 'Hogar', etiqueta: 'mercadería, frutas, verduras, higiene y aseo' },
+  { valor: 'Flexible', etiqueta: 'entrega a domicilio o con opción de retiro' },
+];
+---
+
+<main class="canasta-page">
+  <section class="canasta-hero">
+    <div class="hero-copy">
+      <a href="/" class="back-link">← Volver a Renacer</a>
+      <p class="section-kicker">Canasta Familiar</p>
+      <h1>Apoyo directo para sostener la mesa y el hogar de muchas familias.</h1>
+      <p class="hero-lead">
+        El Programa Canasta Familiar de Renacer entrega apoyo directo a familias que enfrentan
+        dificultades económicas, a través de alimentos y productos esenciales para el hogar.
+      </p>
+    </div>
+
+    <div class="hero-visual">
+      <Image
+        src={canastaImagenPrincipal}
+        alt="Canasta Familiar de Renacer preparada para apoyo comunitario."
+        widths={[720, 1080]}
+        sizes="(max-width: 960px) 100vw, 46vw"
+      />
+    </div>
+  </section>
+
+  <section class="canasta-content">
+    <div class="content-copy">
+      <p>
+        Las canastas incluyen mercadería, frutas, verduras, artículos de higiene personal y productos
+        de aseo. En algunos casos también se incorporan elementos específicos, como pañales, según
+        las necesidades de cada familia.
+      </p>
+      <p>
+        Las entregas se realizan tanto a domicilio como con opción de retiro, adaptándose a cada
+        situación. Este programa se desarrolla desde el año 2005, acompañando principalmente a
+        familias vinculadas a niños, niñas y jóvenes que participan en los espacios y talleres de
+        Renacer.
+      </p>
+      <p>
+        En el contexto actual, donde el costo de la vida ha aumentado de forma sostenida, muchas
+        familias enfrentan dificultades para cubrir necesidades básicas. A través de este programa,
+        buscamos ser un apoyo concreto que alivie, en parte, esa carga diaria.
+      </p>
+      <p>
+        Este trabajo es posible gracias a la colaboración de personas, aportes solidarios y el apoyo
+        del Ministerio Cristiano Renacer en Cristo. Más allá de la entrega de alimentos, buscamos
+        acompañar con respeto y cercanía la realidad que muchas familias viven hoy.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      {canastaStats.map((stat) => (
+        <article class="stat-card">
+          <strong>{stat.valor}</strong>
+          <span>{stat.etiqueta}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="gallery-copy">
+      <p class="section-kicker">Apoyo concreto</p>
+      <h2>Una red de ayuda que responde a necesidades básicas con cercanía y continuidad.</h2>
+      <p>
+        Si deseas conocer más o ser parte de esta iniciativa, puedes hacerlo a través de nuestros
+        canales. Toda colaboración permite que este apoyo continúe llegando a quienes lo necesitan.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <Image
+          src={canastaEntrega}
+          alt="Entrega de apoyo del programa Canasta Familiar de Renacer."
+          widths={[520, 800]}
+          sizes="(max-width: 960px) 100vw, 30vw"
+        />
+      </div>
+      <div class="gallery-note">
+        <h3>Cómo apoyar</h3>
+        <p>
+          Puedes colaborar de distintas maneras: aportando económicamente, difundiendo la iniciativa
+          o coordinando apoyo directo para familias que hoy necesitan un alivio real en sus gastos
+          básicos.
+        </p>
+        <div class="note-actions">
+          <a class="primary-link" href="/colaboradormensual/">Colaborar mensualmente</a>
+          <a class="secondary-link" href="mailto:contacto@familiarenacer.cl">Contactar a Renacer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+  .canasta-page {
+    width: min(100%, 1240px);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .canasta-hero,
+  .canasta-content,
+  .gallery-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .canasta-hero {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+  }
+
+  .back-link {
+    display: inline-flex;
+    margin-bottom: 1rem;
+    color: #52637a;
+    font-weight: 700;
+  }
+
+  .section-kicker {
+    margin: 0 0 0.9rem;
+    color: var(--brand);
+    font-size: 0.86rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    letter-spacing: -0.05em;
+    color: #1b2740;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    line-height: 0.98;
+  }
+
+  .hero-lead,
+  .content-copy p,
+  .gallery-copy p,
+  .gallery-note p {
+    color: #5b6a82;
+    line-height: 1.8;
+  }
+
+  .hero-lead {
+    margin-top: 1.2rem;
+    font-size: 1.08rem;
+  }
+
+  .hero-visual,
+  .gallery-card,
+  .gallery-note,
+  .stat-card {
+    overflow: hidden;
+    border-radius: 1.6rem;
+    border: 1px solid rgba(29, 39, 56, 0.08);
+    background: white;
+    box-shadow: 0 18px 48px rgba(34, 54, 73, 0.08);
+  }
+
+  .hero-visual :global(img),
+  .gallery-card :global(img) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .hero-visual {
+    min-height: 32rem;
+  }
+
+  .canasta-content {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: start;
+    margin-top: 2rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1.25rem;
+  }
+
+  .stat-card strong {
+    display: block;
+    color: var(--brand-dark);
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+  }
+
+  .stat-card span {
+    display: block;
+    margin-top: 0.35rem;
+    color: #5b6a82;
+    line-height: 1.5;
+  }
+
+  .gallery-section {
+    margin-top: 4rem;
+  }
+
+  .gallery-copy {
+    max-width: 48rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .gallery-copy h2 {
+    font-size: clamp(2rem, 4vw, 3.4rem);
+  }
+
+  .gallery-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: stretch;
+  }
+
+  .gallery-card {
+    min-height: 26rem;
+  }
+
+  .gallery-note {
+    padding: 1.8rem;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+  }
+
+  .gallery-note h3 {
+    font-size: 1.6rem;
+  }
+
+  .note-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+  }
+
+  .primary-link,
+  .secondary-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    font-weight: 800;
+  }
+
+  .primary-link {
+    background: linear-gradient(180deg, #1b49d6 0%, #0834b7 100%);
+    color: white;
+  }
+
+  .secondary-link {
+    background: rgba(8, 52, 183, 0.06);
+    color: var(--brand-dark);
+    border: 1px solid rgba(8, 52, 183, 0.14);
+  }
+
+  @media (max-width: 960px) {
+    .canasta-hero,
+    .canasta-content,
+    .gallery-grid,
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-visual,
+    .gallery-card {
+      min-height: 0;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .canasta-page {
+      padding: 1.25rem 1rem 3rem;
+    }
+  }
+</style>

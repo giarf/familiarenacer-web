@@ -30,6 +30,14 @@ const proyectos = [
     href: '/comedor-solidario/',
   },
   {
+    estado: 'Activo',
+    nombre: 'Canasta Familiar',
+    bajada: 'Apoyo alimentario y productos esenciales',
+    detalle:
+      'Entregamos mercadería, frutas, verduras, higiene y aseo para aliviar la carga diaria de las familias.',
+    href: '/canasta-familiar/',
+  },
+  {
     estado: 'En curso',
     nombre: 'Germinando Sueños',
     bajada: 'Reactivación de Invernadero',
@@ -90,7 +98,7 @@ const proyectos = [
     </div>
   </section>
 
-  <section class="section" id="pilares">
+  <section class="section reveal" id="pilares">
     <div class="section-heading">
       <h2>Nuestras áreas de acción</h2>
       <p>
@@ -101,7 +109,7 @@ const proyectos = [
 
     <div class="cards-grid">
       {pilares.map((pilar) => (
-        <article class="info-card">
+        <article class="info-card reveal-item">
           <div class="icon-chip" aria-hidden="true">{pilar.icono}</div>
           <h3>{pilar.titulo}</h3>
           <p>{pilar.descripcion}</p>
@@ -110,8 +118,8 @@ const proyectos = [
     </div>
   </section>
 
-  <section class="section projects-section" id="proyectos">
-    <div class="section-heading section-heading-dark">
+  <section class="section projects-section reveal" id="proyectos">
+    <div class="section-heading section-heading-dark reveal-item">
       <h2>Proyectos en Movimiento</h2>
       <p>Iniciativas vivas que transforman nuestro entorno.</p>
     </div>
@@ -119,7 +127,7 @@ const proyectos = [
     <div class="project-grid">
       {proyectos.map((proyecto) =>
         proyecto.href ? (
-          <a class="project-card project-card-link" href={proyecto.href}>
+          <a class="project-card project-card-link reveal-item" href={proyecto.href}>
             <span class="status-pill">{proyecto.estado}</span>
             <h3>{proyecto.nombre}</h3>
             <p class="project-subtitle">{proyecto.bajada}</p>
@@ -127,7 +135,7 @@ const proyectos = [
             <span class="project-link-copy">Ver proyecto</span>
           </a>
         ) : (
-          <article class="project-card">
+          <article class="project-card reveal-item">
             <span class="status-pill">{proyecto.estado}</span>
             <h3>{proyecto.nombre}</h3>
             <p class="project-subtitle">{proyecto.bajada}</p>
@@ -138,8 +146,8 @@ const proyectos = [
     </div>
   </section>
 
-  <footer class="footer" id="contacto">
-    <div class="footer-brand-block">
+  <footer class="footer reveal" id="contacto">
+    <div class="footer-brand-block reveal-item">
       <a href="/" class="brand footer-brand">Renacer<span>.</span></a>
       <p>
         Organización comunitaria dedicada al desarrollo social, ecológico e inclusivo en la comuna de
@@ -147,14 +155,14 @@ const proyectos = [
       </p>
     </div>
 
-    <div class="footer-column">
+    <div class="footer-column reveal-item">
       <h4>Contacto</h4>
       <p>📍 Alfaro 1000, Quillota</p>
       <a href="mailto:contacto@familiarenacer.cl">✉️ contacto@familiarenacer.cl</a>
       <a href="tel:+56976233481">📞 +56 9 7623 3481</a>
     </div>
 
-    <div class="footer-column">
+    <div class="footer-column reveal-item">
       <h4>Horarios</h4>
       <p>Lunes a Viernes</p>
       <p class="footer-strong">09:00 - 18:00 hrs</p>
@@ -179,6 +187,44 @@ const proyectos = [
 </main>
 
 <style>
+  .reveal-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 820ms ease,
+      transform 820ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cards-grid .reveal-item:nth-child(2),
+  .project-grid .reveal-item:nth-child(2),
+  .footer .reveal-item:nth-child(2) {
+    transition-delay: 90ms;
+  }
+
+  .cards-grid .reveal-item:nth-child(3),
+  .project-grid .reveal-item:nth-child(3),
+  .footer .reveal-item:nth-child(3) {
+    transition-delay: 160ms;
+  }
+
+  .project-grid .reveal-item:nth-child(4) {
+    transition-delay: 230ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-item {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
   .landing-shell {
     width: min(100%, 1440px);
     margin: 0 auto;
@@ -270,7 +316,10 @@ const proyectos = [
   .hero {
     position: relative;
     overflow: hidden;
-    padding: 7rem 1.5rem 8rem;
+    display: flex;
+    align-items: center;
+    min-height: min(42rem, calc(100svh - 5.6rem));
+    padding: clamp(2.5rem, 4.5svh, 4rem) 1.5rem;
   }
 
   .hero-backdrop {
@@ -316,9 +365,9 @@ const proyectos = [
   }
 
   .hero h1 {
-    margin: 2rem auto 0;
+    margin: 1.25rem auto 0;
     max-width: 11ch;
-    font-size: clamp(3.6rem, 10vw, 6.9rem);
+    font-size: clamp(2.7rem, 7.6vw, 5.4rem);
     line-height: 0.96;
     color: #18233b;
   }
@@ -330,24 +379,24 @@ const proyectos = [
 
   .hero-copy {
     max-width: 24ch;
-    margin: 2rem auto 0;
+    margin: 1rem auto 0;
     color: #53637d;
-    font-size: clamp(1.2rem, 2vw, 1.7rem);
-    line-height: 1.55;
+    font-size: clamp(0.98rem, 1.45vw, 1.28rem);
+    line-height: 1.45;
   }
 
   .hero-actions {
     display: flex;
     justify-content: center;
     gap: 1.4rem;
-    margin-top: 2.5rem;
+    margin-top: 1.45rem;
   }
 
   .primary-action,
   .secondary-action {
-    min-width: 15rem;
-    padding: 1.3rem 1.65rem;
-    font-size: 1.1rem;
+    min-width: 12.4rem;
+    padding: 1rem 1.3rem;
+    font-size: 0.98rem;
   }
 
   .primary-action {
@@ -396,7 +445,7 @@ const proyectos = [
   .cards-grid,
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.4rem;
   }
 
@@ -596,16 +645,17 @@ const proyectos = [
     }
 
     .hero {
-      padding: 5rem 1rem 5.5rem;
+      min-height: auto;
+      padding: 2.75rem 1rem 3.25rem;
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 16vw, 4.6rem);
+      font-size: clamp(2.4rem, 12vw, 3.7rem);
     }
 
     .hero-copy {
       max-width: 100%;
-      font-size: 1.08rem;
+      font-size: 0.96rem;
     }
 
     .hero-actions {
@@ -641,3 +691,44 @@ const proyectos = [
     }
   }
 </style>
+
+<script>
+  const initReveal = () => {
+    const revealItems = Array.from(document.querySelectorAll('.reveal-item'));
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -6% 0px',
+      }
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
+  };
+
+  const startReveal = () => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(initReveal);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startReveal, { once: true });
+  } else {
+    startReveal();
+  }
+</script>
