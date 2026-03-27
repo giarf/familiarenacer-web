@@ -1,0 +1,301 @@
+---
+import { Image } from 'astro:assets';
+import comedorImagenPrincipal from '../assets/comedor-solidario/imagen1.jpg';
+import comedorImagenAccion from '../assets/comedor-solidario/comedor-accion.jpeg';
+
+const comedorStats = [
+  { valor: '+10', etiqueta: 'sectores de la comuna alcanzados' },
+  { valor: '60', etiqueta: 'almuerzos preparados y distribuidos actualmente' },
+  { valor: '3', etiqueta: 'jornadas de entrega cada semana' },
+  { valor: '2017', etiqueta: 'año en que comenzó este trabajo territorial' },
+];
+---
+
+<main class="comedor-page">
+  <section class="comedor-hero">
+    <div class="hero-copy">
+      <a href="/" class="back-link">← Volver a Renacer</a>
+      <p class="section-kicker">Comedor Solidario</p>
+      <h1>Almuerzos calientes, cercanía y apoyo concreto en Quillota.</h1>
+      <p class="hero-lead">
+        El Programa Comedor Solidario de Renacer entrega almuerzos calientes durante la semana a
+        personas y familias que atraviesan situaciones complejas, como cesantía, dificultades de
+        movilidad, discapacidad o falta de acceso regular a alimentación.
+      </p>
+    </div>
+
+    <div class="hero-visual">
+      <Image
+        src={comedorImagenPrincipal}
+        alt="Preparación y servicio del Comedor Solidario de Renacer en Quillota."
+        widths={[720, 1080]}
+        sizes="(max-width: 960px) 100vw, 46vw"
+      />
+    </div>
+  </section>
+
+  <section class="comedor-content">
+    <div class="content-copy">
+      <p>
+        Actualmente, el programa se desarrolla en más de 10 sectores de la comuna, acercando
+        alimento preparado a quienes lo necesitan en su propio entorno. También llegamos a personas
+        mayores y a quienes se encuentran en situación de calle.
+      </p>
+      <p>
+        Durante el verano de 2026, el comedor entregó almuerzos calientes a niños y niñas durante el
+        período de vacaciones, considerando que en muchos casos no cuentan con la presencia
+        permanente de sus padres en el hogar. Esta iniciativa fue un apoyo concreto tanto en la
+        alimentación diaria como en la economía de las familias.
+      </p>
+      <p>
+        En la actualidad se preparan y distribuyen alrededor de 60 almuerzos, tres veces por
+        semana. Este trabajo comenzó el año 2017, inicialmente enfocado en acompañar a personas
+        migrantes, especialmente de la comunidad haitiana, y con el tiempo se adaptó a las nuevas
+        necesidades del territorio.
+      </p>
+      <p>
+        Más allá de la comida, este espacio busca transmitir dignidad, cercanía y acompañamiento.
+        Nuestro trabajo se inspira en valores cristianos, pero el apoyo se entrega con respeto a
+        cada persona, sin distinción de creencias.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      {comedorStats.map((stat) => (
+        <article class="stat-card">
+          <strong>{stat.valor}</strong>
+          <span>{stat.etiqueta}</span>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="gallery-copy">
+      <p class="section-kicker">Acompañamiento real</p>
+      <h2>Una ayuda sostenida que combina alimentación, cuidado y presencia comunitaria.</h2>
+      <p>
+        Sabemos que muchas veces las dificultades económicas, sociales o de salud afectan lo más
+        básico: la posibilidad de acceder a una comida diaria. Por eso buscamos sostener este apoyo
+        de manera constante y en condiciones adecuadas de higiene y cuidado.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <Image
+          src={comedorImagenAccion}
+          alt="Actividad del Comedor Solidario junto a la comunidad."
+          widths={[520, 800]}
+          sizes="(max-width: 960px) 100vw, 30vw"
+        />
+      </div>
+      <div class="gallery-note">
+        <h3>Cómo apoyar</h3>
+        <p>
+          Si deseas conocer más o ser parte de este programa, puedes hacerlo a través de nuestros
+          canales. Toda colaboración permite que este apoyo continúe llegando a quienes lo necesitan.
+        </p>
+        <div class="note-actions">
+          <a class="primary-link" href="/colaboradormensual/">Colaborar mensualmente</a>
+          <a class="secondary-link" href="mailto:contacto@familiarenacer.cl">Contactar a Renacer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+  .comedor-page {
+    width: min(100%, 1240px);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .comedor-hero,
+  .comedor-content,
+  .gallery-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .comedor-hero {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+  }
+
+  .back-link {
+    display: inline-flex;
+    margin-bottom: 1rem;
+    color: #52637a;
+    font-weight: 700;
+  }
+
+  .section-kicker {
+    margin: 0 0 0.9rem;
+    color: var(--brand);
+    font-size: 0.86rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    letter-spacing: -0.05em;
+    color: #1b2740;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    line-height: 0.98;
+  }
+
+  .hero-lead,
+  .content-copy p,
+  .gallery-copy p,
+  .gallery-note p {
+    color: #5b6a82;
+    line-height: 1.8;
+  }
+
+  .hero-lead {
+    margin-top: 1.2rem;
+    font-size: 1.08rem;
+  }
+
+  .hero-visual,
+  .gallery-card,
+  .gallery-note,
+  .stat-card {
+    overflow: hidden;
+    border-radius: 1.6rem;
+    border: 1px solid rgba(29, 39, 56, 0.08);
+    background: white;
+    box-shadow: 0 18px 48px rgba(34, 54, 73, 0.08);
+  }
+
+  .hero-visual :global(img),
+  .gallery-card :global(img) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .hero-visual {
+    min-height: 32rem;
+  }
+
+  .comedor-content {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: start;
+    margin-top: 2rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1.25rem;
+  }
+
+  .stat-card strong {
+    display: block;
+    color: var(--brand-dark);
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+  }
+
+  .stat-card span {
+    display: block;
+    margin-top: 0.35rem;
+    color: #5b6a82;
+    line-height: 1.5;
+  }
+
+  .gallery-section {
+    margin-top: 4rem;
+  }
+
+  .gallery-copy {
+    max-width: 48rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .gallery-copy h2 {
+    font-size: clamp(2rem, 4vw, 3.4rem);
+  }
+
+  .gallery-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: stretch;
+  }
+
+  .gallery-card {
+    min-height: 26rem;
+  }
+
+  .gallery-note {
+    padding: 1.8rem;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+  }
+
+  .gallery-note h3 {
+    font-size: 1.6rem;
+  }
+
+  .note-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+  }
+
+  .primary-link,
+  .secondary-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    font-weight: 800;
+  }
+
+  .primary-link {
+    background: linear-gradient(180deg, #1b49d6 0%, #0834b7 100%);
+    color: white;
+  }
+
+  .secondary-link {
+    background: rgba(8, 52, 183, 0.06);
+    color: var(--brand-dark);
+    border: 1px solid rgba(8, 52, 183, 0.14);
+  }
+
+  @media (max-width: 960px) {
+    .comedor-hero,
+    .comedor-content,
+    .gallery-grid,
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-visual,
+    .gallery-card {
+      min-height: 0;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .comedor-page {
+      padding: 1.25rem 1rem 3rem;
+    }
+  }
+</style>

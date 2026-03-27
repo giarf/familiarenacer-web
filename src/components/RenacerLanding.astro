@@ -22,6 +22,14 @@ const pilares = [
 
 const proyectos = [
   {
+    estado: 'Activo',
+    nombre: 'Comedor Solidario',
+    bajada: 'Almuerzos calientes y acompañamiento',
+    detalle:
+      'Entregamos apoyo alimentario constante a personas y familias de más de 10 sectores de Quillota.',
+    href: '/comedor-solidario/',
+  },
+  {
     estado: 'En curso',
     nombre: 'Germinando Sueños',
     bajada: 'Reactivación de Invernadero',
@@ -109,14 +117,24 @@ const proyectos = [
     </div>
 
     <div class="project-grid">
-      {proyectos.map((proyecto) => (
-        <article class="project-card">
-          <span class="status-pill">{proyecto.estado}</span>
-          <h3>{proyecto.nombre}</h3>
-          <p class="project-subtitle">{proyecto.bajada}</p>
-          <p>{proyecto.detalle}</p>
-        </article>
-      ))}
+      {proyectos.map((proyecto) =>
+        proyecto.href ? (
+          <a class="project-card project-card-link" href={proyecto.href}>
+            <span class="status-pill">{proyecto.estado}</span>
+            <h3>{proyecto.nombre}</h3>
+            <p class="project-subtitle">{proyecto.bajada}</p>
+            <p>{proyecto.detalle}</p>
+            <span class="project-link-copy">Ver proyecto</span>
+          </a>
+        ) : (
+          <article class="project-card">
+            <span class="status-pill">{proyecto.estado}</span>
+            <h3>{proyecto.nombre}</h3>
+            <p class="project-subtitle">{proyecto.bajada}</p>
+            <p>{proyecto.detalle}</p>
+          </article>
+        )
+      )}
     </div>
   </section>
 
@@ -433,6 +451,17 @@ const proyectos = [
     box-shadow: 0 20px 45px rgba(17, 27, 51, 0.18);
   }
 
+  .project-card-link {
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .project-card-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 54px rgba(17, 27, 51, 0.24);
+  }
+
   .status-pill {
     display: inline-flex;
     align-items: center;
@@ -454,7 +483,7 @@ const proyectos = [
   }
 
   .project-subtitle {
-    color: #9db4ff;
+    color: #d8e3ff;
     font-weight: 700;
   }
 
@@ -462,6 +491,18 @@ const proyectos = [
     color: #c7d1df;
     border-top: 1px solid rgba(199, 209, 223, 0.16);
     padding-top: 1rem;
+  }
+
+  .project-card-link p:last-of-type {
+    color: #e3e9f5;
+    border-top-color: rgba(227, 233, 245, 0.2);
+  }
+
+  .project-link-copy {
+    display: inline-flex;
+    margin-top: 1.15rem;
+    color: #ffffff;
+    font-weight: 800;
   }
 
   .footer {
@@ -588,6 +629,10 @@ const proyectos = [
 
     .section {
       padding-top: 4.5rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
     }
 
     .subfooter-links {
