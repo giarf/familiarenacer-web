@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProgramInfoPage from '../components/ProgramInfoPage.astro';
+---
+
+<Layout
+  title="Sala del Juguete | Renacer"
+  description="Conoce la Sala del Juguete de Renacer, un espacio para rescatar el valor del juego, la infancia y la reutilización comunitaria."
+>
+  <ProgramInfoPage
+    kicker="Sala del Juguete"
+    title="Un espacio para rescatar el juego, la imaginación y la infancia."
+    lead="La Sala del Juguete de Renacer está pensada para devolver al juego el lugar que merece en la infancia, ofreciendo a niños y niñas la oportunidad de explorar, imaginar y compartir más allá de las pantallas."
+    paragraphs={[
+      'Hoy sabemos que el juego no es solo una forma de entretención, sino una parte fundamental del desarrollo. A través del juego, los niños fortalecen su creatividad, habilidades sociales, expresión emocional y aprendizaje.',
+      'Este espacio busca recuperar ese tiempo de juego que muchas veces se ve limitado, especialmente en contextos donde predominan las pantallas o donde no siempre existen las condiciones para acceder a juguetes.',
+      'La Sala del Juguete funciona también como un espacio de economía circular, donde se reciben donaciones de juguetes nuevos y usados en buen estado, los cuales son seleccionados y puestos a disposición de los niños para su uso dentro del espacio o para ser entregados en fechas especiales.',
+      'Más allá de los objetos, este programa promueve el juego, la reutilización, el cuidado del entorno y la colaboración entre familias como parte del bienestar comunitario.',
+    ]}
+    stats={[
+      { valor: 'Juego', etiqueta: 'como herramienta de desarrollo, encuentro y bienestar' },
+      { valor: 'Circular', etiqueta: 'reutilización de juguetes nuevos y usados en buen estado' },
+      { valor: 'Infancia', etiqueta: 'espacio pensado para explorar, imaginar y compartir' },
+      { valor: 'Comunidad', etiqueta: 'apoyo a celebraciones y actividades durante el año' },
+    ]}
+    supportText="Si deseas colaborar con la donación de juguetes o conocer más sobre este espacio, puedes hacerlo a través de nuestros canales y campañas comunitarias."
+  />
+</Layout>

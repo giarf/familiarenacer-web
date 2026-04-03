@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProgramInfoPage from '../components/ProgramInfoPage.astro';
+---
+
+<Layout
+  title="Navidad Solidaria | Renacer"
+  description="Conoce Navidad Solidaria de Renacer, una campaña comunitaria de apadrinamiento y celebración para niños y niñas."
+>
+  <ProgramInfoPage
+    kicker="Navidad Solidaria"
+    title="Una celebración comunitaria que acompaña a niños y niñas con esperanza y afecto."
+    lead="Navidad Solidaria de Renacer se desarrolla durante diciembre para acompañar a niños y niñas en una celebración significativa, entregando alegría y contención a través de una experiencia comunitaria."
+    paragraphs={[
+      'Está dirigida a niños y niñas desde 1 mes hasta los 15 años, pertenecientes a familias vinculadas a los programas de Renacer.',
+      'A través de una campaña de apadrinamiento, personas de la comunidad pueden colaborar entregando un regalo a un niño o niña, de forma presencial o a distancia. Cada padrino o madrina recibe información básica de su ahijado o ahijada para que el regalo tenga un sentido más personal.',
+      'Además del regalo, cada niño o niña recibe una bolsa de dulces y un presente preparado por Renacer, buscando transmitir el sentido de la Navidad desde una mirada de esperanza, amor y comunidad.',
+      'La entrega se realiza en una celebración organizada por Renacer, con actividades recreativas, juegos y momentos compartidos. Más allá de lo material, este programa busca generar una experiencia significativa y aliviar una carga económica adicional para muchas familias.',
+    ]}
+    stats={[
+      { valor: '167', etiqueta: 'niños y niñas acompañados en la celebración' },
+      { valor: '83', etiqueta: 'madrinas participantes' },
+      { valor: '39', etiqueta: 'padrinos participantes' },
+      { valor: 'Diciembre', etiqueta: 'mes en que se activa esta campaña comunitaria' },
+    ]}
+    supportText="Si deseas conocer más o ser parte de esta iniciativa, puedes hacerlo a través de nuestros canales y sumarte como padrino, madrina, colaborador o voluntario."
+  />
+</Layout>
