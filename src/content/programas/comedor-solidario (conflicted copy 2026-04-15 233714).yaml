@@ -34,12 +34,10 @@ parrafos:
     acompañamiento. Nuestro trabajo se inspira en valores cristianos, pero el apoyo se
     entrega con respeto a cada persona, sin distinción de creencias.
 stats:
-	- valor: '+3000'
-    etiqueta: Raciones servidas 
   - valor: '+10'
     etiqueta: sectores de la comuna alcanzados
   - valor: '60'
-    etiqueta: Almuerzos preparados y distribuidos actualmente
+    etiqueta: almuerzos preparados y distribuidos actualmente
   - valor: '3'
     etiqueta: jornadas de entrega cada semana
   - valor: '2017'
