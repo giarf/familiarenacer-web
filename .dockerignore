@@ -1,0 +1,10 @@
+.git
+.github
+.astro
+.codex
+.vscode
+dist
+node_modules
+npm-debug.log
+Dockerfile*
+README.md
