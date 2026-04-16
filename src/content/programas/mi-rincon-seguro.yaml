@@ -1,0 +1,39 @@
+nombre: Mi Rincón Seguro
+estado: En planificación
+bajada: Salas de Contención TEA
+detalle: >-
+  Proyecto en alianza con SECPLAN para habilitar espacios adaptados sensorialmente para
+  niños y niñas del espectro autista.
+icono: HandHelping
+orden: 11
+tienePagina: false
+externalHref: ''
+kicker: Mi Rincón Seguro
+titulo: Espacios sensorialmente adaptados para niños y niñas del espectro autista.
+lead: >-
+  Mi Rincón Seguro es un proyecto en desarrollo que busca habilitar salas de contención
+  especialmente adaptadas para niños y niñas con Trastorno del Espectro Autista (TEA),
+  en alianza con SECPLAN y el municipio de Quillota.
+parrafos:
+  - >-
+    Este proyecto surge de la necesidad concreta de contar con espacios diseñados
+    específicamente para acompañar a niños y niñas neurodivergentes en momentos de
+    desregulación sensorial o emocional.
+  - >-
+    Las salas de contención TEA están diseñadas con materiales, colores, texturas y
+    niveles de estimulación pensados para facilitar la autorregulación y el bienestar de
+    los niños y niñas.
+stats:
+  - valor: TEA
+    etiqueta: diseño específico para el espectro autista
+  - valor: Sensorial
+    etiqueta: materiales y ambientes adaptados para autorregulación
+  - valor: SECPLAN
+    etiqueta: proyecto en alianza con planificación municipal
+  - valor: '2026'
+    etiqueta: año proyectado de implementación
+textoApoyo: >-
+  Si deseas conocer más sobre este proyecto o tienes interés en colaborar, contáctanos a
+  través de nuestros canales.
+imagen: ''
+galeria: []

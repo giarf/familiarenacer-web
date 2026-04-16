@@ -1,0 +1,51 @@
+nombre: Canasta Familiar
+estado: Activo
+bajada: Apoyo alimentario y productos esenciales
+detalle: >-
+  Apoyo directo con alimentos, frutas, verduras e insumos esenciales para sostener la
+  mesa y el hogar.
+icono: Package
+orden: 2
+tienePagina: true
+externalHref: ''
+kicker: Canasta Familiar
+titulo: Apoyo directo para sostener la mesa y el hogar de muchas familias.
+lead: >-
+  El Programa Canasta Familiar de Renacer entrega apoyo directo a familias que enfrentan
+  dificultades económicas, a través de alimentos y productos esenciales para el hogar.
+parrafos:
+  - >-
+    Las canastas incluyen mercadería, frutas, verduras, artículos de higiene personal y
+    productos de aseo. En algunos casos también se incorporan elementos específicos,
+    como pañales, según las necesidades de cada familia.
+  - >-
+    Las entregas se realizan tanto a domicilio como con opción de retiro, adaptándose a
+    cada situación. Este programa se desarrolla desde el año 2005, acompañando
+    principalmente a familias vinculadas a niños, niñas y jóvenes que participan en los
+    espacios y talleres de Renacer.
+  - >-
+    En el contexto actual, donde el costo de la vida ha aumentado de forma sostenida,
+    muchas familias enfrentan dificultades para cubrir necesidades básicas. A través de
+    este programa, buscamos ser un apoyo concreto que alivie, en parte, esa carga
+    diaria.
+  - >-
+    Este trabajo es posible gracias a la colaboración de personas, aportes solidarios y
+    el apoyo del Ministerio Cristiano Renacer en Cristo. Más allá de la entrega de
+    alimentos, buscamos acompañar con respeto y cercanía la realidad que muchas familias
+    viven hoy.
+stats:
+  - valor: '2005'
+    etiqueta: año desde el que se desarrolla este programa
+  - valor: Semanal
+    etiqueta: frecuencia actual de entregas a familias
+  - valor: Hogar
+    etiqueta: mercadería, frutas, verduras, higiene y aseo
+  - valor: Flexible
+    etiqueta: entrega a domicilio o con opción de retiro
+textoApoyo: >-
+  Puedes colaborar de distintas maneras: aportando económicamente, difundiendo la
+  iniciativa o coordinando apoyo directo para familias que hoy necesitan un alivio real
+  en sus gastos básicos.
+imagen: /uploads/programas/canasta-familiar/imagen-principal.jpg
+galeria:
+  - /uploads/programas/canasta-familiar/entrega-canasta.jpeg

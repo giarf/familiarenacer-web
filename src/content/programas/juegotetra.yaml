@@ -1,0 +1,53 @@
+nombre: Sala JuegoTetra
+estado: Activo
+bajada: Reciclaje y educación ambiental
+detalle: >-
+  Un espacio construido en un 90% con materiales reutilizados, incluyendo más de 5.000
+  cajas tetra pak, que enseña las 3R de forma práctica.
+icono: Puzzle
+orden: 9
+tienePagina: true
+externalHref: ''
+kicker: Sala JuegoTetra
+titulo: Un espacio construido con reciclaje que transforma la forma de entender los residuos.
+lead: >-
+  La Sala JuegoTetra es un espacio educativo y experiencial que enseña, de manera
+  práctica, el valor del reciclaje, la reutilización y el cuidado del medio ambiente a
+  través de una experiencia guiada donde niños, niñas y adultos participan activamente.
+parrafos:
+  - >-
+    La experiencia comienza abordando la problemática de la contaminación y el impacto
+    de los residuos en el entorno, para luego introducir los conceptos de las 3R:
+    reducir, reutilizar y reciclar. A partir de ello, los participantes conocen procesos
+    reales de transformación de materiales y elaboran sus propios objetos utilizando
+    desechos.
+  - >-
+    La sala está construida en un 90% con materiales reutilizados: más de 5.000 cajas
+    tetra pak rellenas con residuos plásticos, cerámica reciclada en el suelo, botellas
+    reutilizadas, techos de envases y mobiliario fabricado a partir de desechos. La sala
+    no solo habla del reciclaje: lo materializa en cada uno de sus elementos.
+  - >-
+    Los participantes interactúan con el espacio, manipulan materiales, juegan y se
+    llevan un objeto creado durante la experiencia, reforzando el aprendizaje desde lo
+    vivencial.
+  - >-
+    La Sala JuegoTetra recibe visitas de establecimientos educacionales y estudiantes
+    universitarios, especialmente de carreras de pedagogía, quienes encuentran aquí una
+    instancia de aprendizaje práctico y observación de metodologías educativas
+    aplicadas.
+stats:
+  - valor: '+5.000'
+    etiqueta: cajas tetra pak utilizadas en la construcción
+  - valor: 90%
+    etiqueta: de la sala construida con materiales reutilizados
+  - valor: 3R
+    etiqueta: reducir, reutilizar y reciclar como eje educativo
+  - valor: Escuelas
+    etiqueta: establecimientos y universidades que visitan el espacio
+textoApoyo: >-
+  Si deseas visitar la Sala JuegoTetra o coordinar una experiencia para tu
+  establecimiento educacional, puedes contactarnos a través de nuestros canales.
+imagen: /uploads/programas/juegotetra/imagen1.jpg
+galeria:
+  - /uploads/programas/juegotetra/imagen2.jpg
+  - /uploads/programas/juegotetra/imagen3.jpg

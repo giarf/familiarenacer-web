@@ -1,0 +1,131 @@
+---
+// Protegido por middleware
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Admin | Renacer</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Manrope', sans-serif;
+        background: linear-gradient(135deg, #eef4ff 0%, #f5f8ff 100%);
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+      }
+      h1, h2, h3 { font-family: 'Sora', sans-serif; letter-spacing: -.04em; }
+
+      .shell { width: min(100%, 680px); }
+
+      .header {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-bottom: 2rem;
+      }
+
+      .logo {
+        font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800;
+        color: #062b96; letter-spacing: -.05em; text-decoration: none;
+      }
+      .logo span { color: #7f95ad; }
+
+      .logout {
+        font-size: .84rem; font-weight: 700; color: #53627b;
+        text-decoration: none; padding: .5rem .9rem;
+        border: 1.5px solid rgba(29,39,56,.14); border-radius: .7rem;
+        transition: color 140ms, border-color 140ms;
+      }
+      .logout:hover { color: #0834b7; border-color: rgba(8,52,183,.3); }
+
+      h2 { font-size: 1.5rem; color: #1d2738; margin-bottom: .4rem; }
+      .sub { color: #53627b; font-size: .92rem; margin-bottom: 1.75rem; }
+
+      .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+      @media (max-width: 520px) { .cards { grid-template-columns: 1fr; } }
+
+      .card {
+        display: flex; flex-direction: column;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 1.25rem;
+        box-shadow: 0 12px 36px rgba(8,52,183,.08);
+        text-decoration: none;
+        transition: transform 160ms, box-shadow 160ms;
+        border: 1.5px solid transparent;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 44px rgba(8,52,183,.13);
+        border-color: rgba(8,52,183,.12);
+      }
+
+      .card-icon {
+        font-size: 2rem; margin-bottom: .85rem;
+        width: 3rem; height: 3rem;
+        display: grid; place-items: center;
+        background: #eef2ff; border-radius: .75rem;
+      }
+
+      .card h3 { font-size: 1rem; color: #1b2740; margin-bottom: .35rem; }
+      .card p { font-size: .83rem; color: #53627b; line-height: 1.55; flex: 1; }
+
+      .card-arrow {
+        margin-top: 1rem; font-size: .82rem; font-weight: 800; color: #0834b7;
+      }
+
+      .card-primary { background: linear-gradient(135deg, #0834b7, #062b96); }
+      .card-primary h3 { color: white; }
+      .card-primary p { color: #c7d4f8; }
+      .card-primary .card-arrow { color: #a5b4fc; }
+      .card-primary .card-icon { background: rgba(255,255,255,.15); }
+
+      .site-link {
+        display: block; text-align: center; margin-top: 1.5rem;
+        color: #53627b; font-size: .84rem; text-decoration: none;
+        transition: color 140ms;
+      }
+      .site-link:hover { color: #0834b7; }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="header">
+        <a href="/" class="logo">Renacer<span>.</span></a>
+        <a href="/admin-logout" class="logout">Cerrar sesión</a>
+      </div>
+
+      <h2>Panel de administración</h2>
+      <p class="sub">¿Qué quieres hacer hoy?</p>
+
+      <div class="cards">
+        <a href="/admin/programa-builder" class="card card-primary">
+          <div class="card-icon">✏️</div>
+          <h3>Constructor de programa</h3>
+          <p>Crea una nueva página de programa con preview en vivo y genera el YAML automáticamente.</p>
+          <span class="card-arrow">Abrir →</span>
+        </a>
+
+        <a href="/keystatic/" class="card">
+          <div class="card-icon">🗂️</div>
+          <h3>Editar programas (CMS)</h3>
+          <p>Gestiona todos los programas existentes, edita contenido y sube imágenes.</p>
+          <span class="card-arrow">Abrir →</span>
+        </a>
+      </div>
+
+      <a href="/" class="site-link">← Ver el sitio público</a>
+    </div>
+  </body>
+</html>

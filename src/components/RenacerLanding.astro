@@ -1,149 +1,200 @@
 ---
+import { Image } from 'astro:assets';
+import LucideIcon from './LucideIcon.astro';
+import { listPrograms } from '../lib/programs';
+import logoRenacer from '../assets/logo-renacer-sin-fondo.png';
+
+const programas = await listPrograms();
+const proyectos = programas.filter((programa) => programa.tienePagina);
+const programasActivos = programas.filter((programa) => programa.estado === 'Activo').length;
+const programasAnuales = programas.filter(
+  (programa) => programa.estado === 'Anual' || programa.estado === 'Temporada'
+).length;
+
+const heroMetrics = [
+  {
+    icono: 'HeartHandshake',
+    valor: `${programas.length}`,
+    etiqueta: 'programas articulados desde Renacer',
+  },
+  {
+    icono: 'Sprout',
+    valor: `${programasActivos}`,
+    etiqueta: 'iniciativas activas durante el año',
+  },
+  {
+    icono: 'CalendarDays',
+    valor: `${programasAnuales}`,
+    etiqueta: 'campañas estacionales y comunitarias',
+  },
+] as const;
+
 const pilares = [
   {
-    icono: '🌱',
-    titulo: 'Sustentabilidad y Tierra',
+    icono: 'Sprout',
+    titulo: 'Sustentabilidad y territorio',
     descripcion:
-      "Desde nuestro invernadero 'Germinando Sueños' hasta el Jardín Ecológico. Cultivamos mizuna, mantenemos aves y enseñamos a la comunidad a reconectar con la naturaleza.",
+      "Cultivo, educación ambiental y reciclaje práctico desde programas como Germinando Sueños y Sala JuegoTetra.",
   },
   {
-    icono: '🤝',
-    titulo: 'Solidaridad Activa',
+    icono: 'UtensilsCrossed',
+    titulo: 'Alimentación y apoyo diario',
     descripcion:
-      "Apoyo directo a familias con nuestro Comedor Solidario, entrega de canastas y el Ropero Infantil 'Kid Boutique'. Vestir y alimentar es también dar dignidad.",
+      'Comedor Solidario, Canasta Familiar y campañas especiales que alivian necesidades urgentes con continuidad.',
   },
   {
-    icono: '🧩',
-    titulo: 'Inclusión y TEA',
+    icono: 'HeartHandshake',
+    titulo: 'Cuidado con dignidad',
     descripcion:
-      "Construyendo 'Mi Lugar Seguro'. Trabajamos en salas de autismo, perfiles sensoriales y políticas de discapacidad para un Quillota más inclusivo.",
+      'Ropero, tardes recreativas, infancia y acompañamiento comunitario pensados para sostener a las familias con respeto.',
   },
-];
+  {
+    icono: 'Puzzle',
+    titulo: 'Infancia e inclusión',
+    descripcion:
+      'Espacios de juego, contención y proyectos de inclusión que abren oportunidades reales para niños, niñas y cuidadores.',
+  },
+] as const;
 
-const proyectos = [
-  {
-    estado: 'Activo',
-    nombre: 'Comedor Solidario',
-    bajada: 'Almuerzos calientes y acompañamiento',
-    detalle:
-      'Entregamos apoyo alimentario constante a personas y familias de más de 10 sectores de Quillota.',
-    href: '/comedor-solidario/',
-  },
-  {
-    estado: 'Activo',
-    nombre: 'Canasta Familiar',
-    bajada: 'Apoyo alimentario y productos esenciales',
-    detalle:
-      'Entregamos mercadería, frutas, verduras, higiene y aseo para aliviar la carga diaria de las familias.',
-    href: '/canasta-familiar/',
-  },
-  {
-    estado: 'Activo',
-    nombre: 'Ropero Solidario',
-    bajada: 'Vestimenta digna y economía circular',
-    detalle:
-      'Recibimos, seleccionamos y entregamos ropa en buen estado para responder con respeto a necesidades reales.',
-    href: '/ropero-solidario/',
-  },
-  {
-    estado: 'Temporada',
-    nombre: 'Navidad Solidaria',
-    bajada: 'Apadrinamiento y celebración comunitaria',
-    detalle:
-      'Una campaña de diciembre que acompaña a niños y niñas con regalos, dulces y una experiencia significativa.',
-    href: '/navidad-solidaria/',
-  },
-  {
-    estado: 'Anual',
-    nombre: 'Cena Navideña',
-    bajada: 'Encuentro y compañía en Noche Buena',
-    detalle:
-      'Cada 24 de diciembre compartimos una cena especial con personas y familias que viven esta fecha con dificultad o soledad.',
-    href: '/cena-navidena/',
-  },
-  {
-    estado: 'Activo',
-    nombre: 'Sala del Juguete',
-    bajada: 'Juego, infancia y reutilización',
-    detalle:
-      'Un espacio para rescatar el valor del juego y dar nueva vida a juguetes donados por la comunidad.',
-    href: '/sala-del-juguete/',
-  },
-  {
-    estado: 'Vacaciones',
-    nombre: 'Tardes Recreativas',
-    bajada: 'Cuidado y actividades en verano e invierno',
-    detalle:
-      'Jornadas seguras con recreación, alimentación y acompañamiento para niños y niñas durante vacaciones.',
-    href: '/tardes-recreativas/',
-  },
-  {
-    estado: 'En curso',
-    nombre: 'Germinando Sueños',
-    bajada: 'Reactivación de Invernadero',
-    detalle:
-      'Un espacio educativo y productivo donde la comunidad aprende sobre cultivos, control orgánico de plagas y alimentación saludable.',
-  },
-  {
-    estado: 'En planificación',
-    nombre: 'Mi Rincón Seguro',
-    bajada: 'Salas de Contención TEA',
-    detalle:
-      'Proyecto en alianza con SECPLAN para habilitar espacios adaptados sensorialmente para niños y niñas del espectro autista.',
-  },
-];
+const focosHero = [
+  { icono: 'UtensilsCrossed', titulo: 'Alimentación', texto: 'Apoyo territorial y campañas solidarias.' },
+  { icono: 'Shirt', titulo: 'Dignidad', texto: 'Vestimenta, juego y cuidado con enfoque humano.' },
+  { icono: 'Users', titulo: 'Comunidad', texto: 'Redes activas con voluntariado y colaboración local.' },
+] as const;
 ---
 
 <main class="landing-shell">
   <nav class="topbar">
-    <a href="/" class="brand">Renacer<span>.</span></a>
+    <a href="/" class="brand">
+      <Image
+        class="brand-mark"
+        src={logoRenacer}
+        alt="Logo Renacer"
+        widths={[64, 96]}
+        sizes="48px"
+        loading="eager"
+      />
+      <span class="brand-copy">Renacer</span>
+    </a>
 
     <div class="nav-links">
       <a href="#nosotros">Nosotros</a>
-      <a href="#pilares">Qué Hacemos</a>
-      <a href="#proyectos">Proyectos</a>
+      <a href="#pilares">Qué hacemos</a>
+      <a href="#proyectos">Programas</a>
       <a href="#contacto">Contacto</a>
     </div>
 
     <div class="nav-actions">
-      <a class="nav-secondary" href="/colaboradormensual/">Colaborar mensualmente</a>
-      <a class="nav-cta" href="#contacto">Ser Voluntario</a>
+      <a class="nav-secondary" href="/colaboradormensual/">
+        <LucideIcon name="CircleDollarSign" size={18} />
+        Colaborar mensualmente
+      </a>
+      <a class="nav-cta" href="#contacto">
+        <LucideIcon name="ArrowRight" size={18} />
+        Ser voluntario
+      </a>
     </div>
   </nav>
 
   <section class="hero" id="nosotros">
     <div class="hero-backdrop"></div>
-    <div class="hero-content">
-      <p class="hero-badge">📍 QUILLOTA, CHILE</p>
-      <h1>
-        Sembrando esperanza,
-        <span>cosechando comunidad.</span>
-      </h1>
-      <p class="hero-copy">
-        En Renacer trabajamos la tierra y el corazón. Desde la huerta comunitaria hasta el apoyo a
-        la neurodivergencia, creamos redes de apoyo real.
-      </p>
+    <div class="hero-pointer-glow" aria-hidden="true"></div>
+    <div class="hero-flight hero-flight-a" aria-hidden="true"></div>
+    <div class="hero-flight hero-flight-b" aria-hidden="true"></div>
+    <div class="hero-flight hero-flight-c" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div class="hero-copy reveal-item">
+        <div class="hero-badge">
+          <LucideIcon name="MapPin" size={16} />
+          Quillota, Chile
+        </div>
 
-      <div class="hero-actions">
-        <a class="primary-action" href="#contacto">Contáctanos</a>
-        <a class="secondary-action" href="#proyectos">Ver Proyectos</a>
+        <h1>Sembrando esperanza con trabajo comunitario concreto.</h1>
+
+        <p class="hero-lead">
+          En Renacer conectamos alimentación, infancia, sustentabilidad y acompañamiento familiar
+          para transformar ayuda puntual en redes de apoyo duraderas.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-action" href="#proyectos">
+            <LucideIcon name="ArrowRight" size={18} />
+            Ver programas
+          </a>
+          <a class="secondary-action" href="#contacto">
+            <LucideIcon name="HeartHandshake" size={18} />
+            Contactar a Renacer
+          </a>
+        </div>
+
+        <div class="hero-metrics">
+          {heroMetrics.map((metric) => (
+            <article class="metric-card">
+              <div class="metric-icon">
+                <LucideIcon name={metric.icono} size={18} />
+              </div>
+              <strong>{metric.valor}</strong>
+              <span>{metric.etiqueta}</span>
+            </article>
+          ))}
+        </div>
       </div>
+
+      <aside class="hero-panel reveal-item">
+        <div class="hero-panel-top">
+          <div class="logo-orb" aria-hidden="true"></div>
+          <Image
+            class="hero-logo"
+            src={logoRenacer}
+            alt="Centro de Acogida para la Familia Renacer"
+            widths={[320, 480, 640]}
+            sizes="(max-width: 960px) 70vw, 20.5rem"
+            loading="eager"
+          />
+        </div>
+
+        <div class="hero-panel-copy">
+          <p class="panel-kicker">Centro de acogida para la familia</p>
+          <h2>Una organización comunitaria que mezcla cuidado, estructura y presencia territorial.</h2>
+          <p>
+            Desde programas permanentes hasta campañas anuales, Renacer sostiene ayuda real con una
+            mirada social, ecológica e inclusiva.
+          </p>
+        </div>
+
+        <div class="hero-focus-grid">
+          {focosHero.map((foco) => (
+            <article class="hero-focus-card">
+              <div class="focus-icon">
+                <LucideIcon name={foco.icono} size={18} />
+              </div>
+              <div>
+                <h3>{foco.titulo}</h3>
+                <p>{foco.texto}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </aside>
     </div>
   </section>
 
   <section class="section reveal" id="pilares">
-    <div class="section-heading">
-      <h2>Nuestras áreas de acción</h2>
+    <div class="section-heading reveal-item">
+      <p class="eyebrow">Áreas de acción</p>
+      <h2>Programas distintos, una misma lógica: acompañar con estructura y dignidad.</h2>
       <p>
-        No somos solo una oficina. Somos un espacio activo donde se cocina, se cultiva, se repara y
-        se acoge.
+        Renacer no opera como una sola iniciativa. Funciona como una red de programas complementarios
+        que responden a necesidades cotidianas del territorio.
       </p>
     </div>
 
     <div class="cards-grid">
       {pilares.map((pilar) => (
         <article class="info-card reveal-item">
-          <div class="icon-chip" aria-hidden="true">{pilar.icono}</div>
+          <div class="icon-chip">
+            <LucideIcon name={pilar.icono} size={22} />
+          </div>
           <h3>{pilar.titulo}</h3>
           <p>{pilar.descripcion}</p>
         </article>
@@ -153,25 +204,40 @@ const proyectos = [
 
   <section class="section projects-section reveal" id="proyectos">
     <div class="section-heading section-heading-dark reveal-item">
-      <h2>Proyectos en Movimiento</h2>
-      <p>Iniciativas vivas que transforman nuestro entorno.</p>
+      <p class="eyebrow eyebrow-light">Programas</p>
+      <h2>Iniciativas activas, campañas anuales y proyectos en movimiento.</h2>
+      <p>
+        Cada ficha resume un frente de trabajo concreto. El sitio ahora toma este contenido
+        directamente desde YAML para mantener una sola fuente editorial.
+      </p>
     </div>
 
     <div class="project-grid">
       {proyectos.map((proyecto) =>
         proyecto.href ? (
           <a class="project-card project-card-link reveal-item" href={proyecto.href}>
-            <span class="status-pill">{proyecto.estado}</span>
-            <h3>{proyecto.nombre}</h3>
-            <p class="project-subtitle">{proyecto.bajada}</p>
+            <div class="project-card-head">
+              <div class="project-icon">
+                <LucideIcon name={proyecto.icono ?? 'HeartHandshake'} size={20} />
+              </div>
+              <span class="status-pill">{proyecto.estado}</span>
+            </div>
+            <h3>{proyecto.nombreNormalizado}</h3>
             <p>{proyecto.detalle}</p>
-            <span class="project-link-copy">Ver proyecto</span>
+            <span class="project-link-copy">
+              Ver programa
+              <LucideIcon name="ArrowRight" size={16} />
+            </span>
           </a>
         ) : (
           <article class="project-card reveal-item">
-            <span class="status-pill">{proyecto.estado}</span>
-            <h3>{proyecto.nombre}</h3>
-            <p class="project-subtitle">{proyecto.bajada}</p>
+            <div class="project-card-head">
+              <div class="project-icon">
+                <LucideIcon name={proyecto.icono ?? 'HeartHandshake'} size={20} />
+              </div>
+              <span class="status-pill">{proyecto.estado}</span>
+            </div>
+            <h3>{proyecto.nombreNormalizado}</h3>
             <p>{proyecto.detalle}</p>
           </article>
         )
@@ -181,32 +247,59 @@ const proyectos = [
 
   <footer class="footer reveal" id="contacto">
     <div class="footer-brand-block reveal-item">
-      <a href="/" class="brand footer-brand">Renacer<span>.</span></a>
+      <p class="eyebrow">Contacto</p>
+      <h2>Renacer trabaja desde Quillota con foco social, ecológico e inclusivo.</h2>
       <p>
-        Organización comunitaria dedicada al desarrollo social, ecológico e inclusivo en la comuna de
-        Quillota. Trabajamos codo a codo con BanAmor y el Municipio.
+        Si quieres coordinar apoyo, voluntariado, donaciones o una visita institucional, este es el
+        punto de entrada para conversar con el equipo.
       </p>
     </div>
 
-    <div class="footer-column reveal-item">
-      <h4>Contacto</h4>
-      <p>📍 Alfaro 1000, Quillota</p>
-      <a href="mailto:contacto@familiarenacer.cl">✉️ contacto@familiarenacer.cl</a>
-      <a href="tel:+56976233481">📞 +56 9 7623 3481</a>
-    </div>
+    <div class="footer-grid">
+      <div class="footer-card reveal-item">
+        <h3>Canales directos</h3>
+        <div class="footer-list">
+          <a href="mailto:contacto@familiarenacer.cl">
+            <LucideIcon name="Mail" size={18} />
+            contacto@familiarenacer.cl
+          </a>
+          <a href="tel:+56976233481">
+            <LucideIcon name="Phone" size={18} />
+            +56 9 7623 3481
+          </a>
+          <p>
+            <LucideIcon name="MapPin" size={18} />
+            Alfaro 1000, Quillota
+          </p>
+        </div>
+      </div>
 
-    <div class="footer-column reveal-item">
-      <h4>Horarios</h4>
-      <p>Lunes a Viernes</p>
-      <p class="footer-strong">09:00 - 18:00 hrs</p>
-      <p class="footer-highlight">📅 Jornadas de Voluntariado: Lunes</p>
+      <div class="footer-card reveal-item">
+        <h3>Horarios y colaboración</h3>
+        <div class="footer-list">
+          <p>
+            <LucideIcon name="Clock3" size={18} />
+            Lunes a viernes, 09:00 a 18:00 hrs
+          </p>
+          <p>
+            <LucideIcon name="CalendarDays" size={18} />
+            Jornadas de voluntariado comunitario: lunes
+          </p>
+          <a href="/colaboradormensual/">
+            <LucideIcon name="HandCoins" size={18} />
+            Abrir colaboración mensual
+          </a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <div class="subfooter">
     <p>© 2026 Centro Renacer. Todos los derechos reservados.</p>
     <div class="subfooter-links">
-      <a href="https://www.instagram.com/familia.renacer/" rel="noopener noreferrer" target="_blank">Instagram</a>
+      <a href="https://www.instagram.com/familia.renacer/" rel="noopener noreferrer" target="_blank">
+        Instagram
+      </a>
       <a
         href="https://www.facebook.com/p/Centro-de-Acogida-para-la-Familia-Renacer-100070071410421/"
         rel="noopener noreferrer"
@@ -222,7 +315,7 @@ const proyectos = [
 <style>
   .reveal-item {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(26px);
     transition:
       opacity 820ms ease,
       transform 820ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -234,22 +327,6 @@ const proyectos = [
     transform: translateY(0);
   }
 
-  .cards-grid .reveal-item:nth-child(2),
-  .project-grid .reveal-item:nth-child(2),
-  .footer .reveal-item:nth-child(2) {
-    transition-delay: 90ms;
-  }
-
-  .cards-grid .reveal-item:nth-child(3),
-  .project-grid .reveal-item:nth-child(3),
-  .footer .reveal-item:nth-child(3) {
-    transition-delay: 160ms;
-  }
-
-  .project-grid .reveal-item:nth-child(4) {
-    transition-delay: 230ms;
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .reveal-item {
       opacity: 1;
@@ -259,51 +336,76 @@ const proyectos = [
   }
 
   .landing-shell {
-    width: min(100%, 1440px);
+    width: min(100%, 1480px);
     margin: 0 auto;
     padding-bottom: 2.5rem;
+    background:
+      radial-gradient(circle at top left, rgba(18, 74, 214, 0.14), transparent 18%),
+      linear-gradient(180deg, #edf4ff 0%, #f5f9ff 26%, #eef4ff 100%);
   }
 
   .topbar {
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 30;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    padding: 1.25rem 2rem;
-    background: rgba(255, 255, 255, 0.92);
-    border-bottom: 1px solid rgba(29, 39, 56, 0.08);
-    backdrop-filter: blur(18px);
+    padding: 1rem 2rem;
+    background: rgba(245, 249, 255, 0.78);
+    border-bottom: 1px solid rgba(18, 63, 184, 0.12);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 26px rgba(18, 63, 184, 0.05);
+  }
+
+  .brand,
+  .nav-links a,
+  .subfooter-links a {
+    text-decoration: none;
   }
 
   .brand {
-    font-family: 'Sora', sans-serif;
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--brand-dark);
-    letter-spacing: -0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: #0f1b31;
   }
 
-  .brand span {
-    color: #7f95ad;
+  .brand-mark {
+    width: 2.8rem;
+    height: 2.8rem;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 18px rgba(17, 50, 164, 0.24));
+  }
+
+  .brand-copy {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 3rem;
-    color: #52637a;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: #51627d;
+    font-size: 0.94rem;
     font-weight: 700;
   }
 
   .nav-links a:hover,
   .subfooter-links a:hover {
-    color: var(--brand-dark);
+    color: #0a36b3;
   }
 
-  .nav-actions {
+  .nav-actions,
+  .hero-actions,
+  .subfooter-links {
     display: flex;
     align-items: center;
     gap: 0.85rem;
@@ -316,8 +418,10 @@ const proyectos = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 1.35rem;
+    gap: 0.55rem;
+    border-radius: 999px;
     font-weight: 800;
+    text-decoration: none;
     transition:
       transform 180ms ease,
       box-shadow 180ms ease,
@@ -325,123 +429,352 @@ const proyectos = [
       color 180ms ease;
   }
 
-  .nav-cta {
-    padding: 1rem 1.8rem;
-    background: linear-gradient(180deg, #1b49d6 0%, #0834b7 100%);
+  .nav-cta,
+  .primary-action {
+    background: linear-gradient(180deg, #1c4fe0 0%, #0834b7 100%);
     color: white;
-    box-shadow: 0 16px 28px rgba(8, 52, 183, 0.22);
+    box-shadow: 0 16px 30px rgba(8, 52, 183, 0.24);
   }
 
+  .nav-secondary,
+  .secondary-action {
+    border: 1px solid rgba(8, 52, 183, 0.12);
+    background: rgba(255, 255, 255, 0.84);
+    color: #16305a;
+  }
+
+  .nav-cta,
   .nav-secondary {
-    padding: 1rem 1.35rem;
-    border: 1px solid rgba(8, 52, 183, 0.14);
-    background: rgba(8, 52, 183, 0.06);
-    color: var(--brand-dark);
+    padding: 0.9rem 1.2rem;
+    font-size: 0.88rem;
   }
 
   .nav-cta:hover,
   .nav-secondary:hover,
   .primary-action:hover,
-  .secondary-action:hover {
+  .secondary-action:hover,
+  .project-card-link:hover {
     transform: translateY(-2px);
   }
 
   .hero {
     position: relative;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    min-height: min(42rem, calc(100svh - 5.6rem));
-    padding: clamp(2.5rem, 4.5svh, 4rem) 1.5rem;
+    min-height: min(40rem, calc(100svh - 5rem));
+    padding: clamp(1.8rem, 3.5svh, 2.75rem) 1.5rem 2.6rem;
   }
 
   .hero-backdrop {
     position: absolute;
     inset: 0;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
     background:
-      radial-gradient(circle at 14% 24%, rgba(8, 52, 183, 0.12), transparent 26%),
-      radial-gradient(circle at 86% 20%, rgba(73, 121, 255, 0.14), transparent 22%),
-      linear-gradient(180deg, #f5f8ff 0%, #eef4ff 100%);
-    border-bottom-left-radius: 1.75rem;
-    border-bottom-right-radius: 1.75rem;
+      radial-gradient(circle at 12% 14%, rgba(27, 83, 224, 0.28), transparent 26%),
+      radial-gradient(circle at 84% 18%, rgba(62, 120, 255, 0.2), transparent 24%),
+      linear-gradient(140deg, #dce9ff 0%, #eef5ff 30%, #e0ebff 64%, #d4e2ff 100%);
   }
 
-  .hero-content {
-    position: relative;
+  .hero-pointer-glow {
+    position: absolute;
+    inset: auto;
+    top: var(--pointer-y, 32%);
+    left: var(--pointer-x, 64%);
     z-index: 1;
-    width: min(100%, 1120px);
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(17, 83, 255, 0.18) 0%, transparent 68%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0.85;
+    transition:
+      top 180ms ease-out,
+      left 180ms ease-out,
+      opacity 180ms ease-out;
+    filter: blur(8px);
+  }
+
+  .hero-flight {
+    position: absolute;
+    z-index: 2;
+    width: 10rem;
+    height: 6rem;
+    --flight-scale: 0.9;
+    opacity: 0.18;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    pointer-events: auto;
+    touch-action: manipulation;
+    will-change: transform, opacity;
+    filter: blur(0.2px);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 90' fill='none'%3E%3Cpath d='M8 62c18-25 35-35 52-33 14 2 25 10 34 23 10-17 22-27 37-29 17-2 32 6 41 20-17-7-31-6-42 2-9 6-17 16-25 30-7-17-18-28-31-33-17-6-38-1-66 20Z' fill='%230834b7'/%3E%3C/svg%3E");
+  }
+
+  .hero-flight-a {
+    top: 5.6rem;
+    left: 35%;
+    animation-duration: 28s;
+  }
+
+  .hero-flight-b {
+    top: 9rem;
+    left: 44%;
+    --flight-scale: 0.8;
+    animation-duration: 34s;
+    animation-delay: -9s;
+  }
+
+  .hero-flight-c {
+    top: 2.6rem;
+    left: 40%;
+    --flight-scale: 0.58;
+    animation-duration: 24s;
+    animation-delay: -5s;
+  }
+
+  .hero-grid {
+    position: relative;
+    z-index: 3;
+    width: min(100%, 1160px);
     margin: 0 auto;
-    text-align: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.84fr);
+    gap: 1.35rem;
+    align-items: center;
+  }
+
+  .hero-copy,
+  .hero-panel {
+    border-radius: 2rem;
+  }
+
+  .hero-copy {
+    padding: clamp(0.5rem, 1.8vw, 1rem) 0;
+  }
+
+  .hero-badge,
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
 
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.78rem 1.45rem;
+    padding: 0.72rem 1rem;
     border-radius: 999px;
     border: 1px solid rgba(8, 52, 183, 0.18);
-    background: rgba(255, 255, 255, 0.78);
-    color: var(--brand-dark);
-    font-size: 0.84rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
+    background: rgba(255, 255, 255, 0.84);
+    color: #0a36b3;
+    box-shadow: 0 12px 24px rgba(11, 62, 190, 0.08);
   }
 
   h1,
   h2,
-  h3,
-  h4 {
+  h3 {
     margin: 0;
     font-family: 'Sora', sans-serif;
     letter-spacing: -0.05em;
+    color: #13203a;
   }
 
   .hero h1 {
-    margin: 1.25rem auto 0;
-    max-width: 11ch;
-    font-size: clamp(2.7rem, 7.6vw, 5.4rem);
-    line-height: 0.96;
-    color: #18233b;
+    margin-top: 1rem;
+    max-width: 10.5ch;
+    font-size: clamp(2.45rem, 5.3vw, 4.1rem);
+    line-height: 0.99;
+    color: #10214b;
+    text-shadow: 0 8px 30px rgba(37, 83, 196, 0.08);
   }
 
-  .hero h1 span {
-    display: block;
-    color: var(--brand);
+  .hero-lead,
+  .section-heading p,
+  .info-card p,
+  .project-card p,
+  .hero-panel-copy p,
+  .footer-brand-block p,
+  .footer-list a,
+  .footer-list p {
+    color: #576983;
+    line-height: 1.7;
   }
 
-  .hero-copy {
-    max-width: 24ch;
-    margin: 1rem auto 0;
-    color: #53637d;
-    font-size: clamp(0.98rem, 1.45vw, 1.28rem);
-    line-height: 1.45;
+  .hero-lead {
+    max-width: 33rem;
+    margin: 0.95rem 0 0;
+    font-size: clamp(0.96rem, 1.2vw, 1.04rem);
   }
 
   .hero-actions {
-    display: flex;
-    justify-content: center;
-    gap: 1.4rem;
-    margin-top: 1.45rem;
+    margin-top: 1.35rem;
+    flex-wrap: wrap;
   }
 
   .primary-action,
   .secondary-action {
-    min-width: 12.4rem;
-    padding: 1rem 1.3rem;
-    font-size: 0.98rem;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.92rem;
   }
 
-  .primary-action {
-    background: #121c35;
-    color: white;
-    box-shadow: 0 18px 30px rgba(18, 28, 53, 0.16);
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.35rem;
   }
 
-  .secondary-action {
-    background: white;
-    border: 1px solid rgba(29, 39, 56, 0.1);
-    color: #34435d;
+  .metric-card,
+  .info-card,
+  .project-card,
+  .footer-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(244, 248, 255, 0.95));
+    border: 1px solid rgba(18, 63, 184, 0.1);
+    box-shadow: 0 14px 34px rgba(17, 49, 125, 0.08);
+  }
+
+  .metric-card {
+    padding: 0.85rem 0.95rem;
+    border-radius: 1.1rem;
+  }
+
+  .metric-icon,
+  .icon-chip,
+  .focus-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a36b3;
+    background: rgba(8, 52, 183, 0.08);
+  }
+
+  .metric-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 999px;
+  }
+
+  .metric-card strong {
+    display: block;
+    margin-top: 0.7rem;
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.35rem, 1.6vw, 1.7rem);
+    letter-spacing: -0.05em;
+    color: #0f1b31;
+  }
+
+  .metric-card span {
+    display: block;
+    margin-top: 0.2rem;
+    color: #5a6d87;
+    font-size: 0.77rem;
+    line-height: 1.45;
+  }
+
+  .hero-panel {
+    position: relative;
+    z-index: 2;
+    padding: 1rem;
+    background: linear-gradient(180deg, rgba(244, 248, 255, 0.98), rgba(230, 240, 255, 0.98));
+    box-shadow: 0 18px 50px rgba(18, 53, 135, 0.12);
+    overflow: hidden;
+    border: 1px solid rgba(18, 63, 184, 0.14);
+  }
+
+  .hero-panel-top {
+    position: relative;
+    min-height: 15.2rem;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background:
+      radial-gradient(circle at 50% 42%, rgba(31, 97, 255, 0.3), transparent 34%),
+      linear-gradient(180deg, #fafdff 0%, #e7f0ff 100%);
+    border: 1px solid rgba(18, 63, 184, 0.1);
+  }
+
+  .logo-orb {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(18, 91, 255, 0.28) 0%, transparent 62%);
+    filter: blur(14px);
+    transform: translate(var(--orb-shift-x, 0px), var(--orb-shift-y, 0px));
+    transition: transform 180ms ease-out;
+  }
+
+  .hero-logo {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 20.5rem);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 28px rgba(96, 141, 255, 0.12));
+  }
+
+  .hero-panel-copy {
+    margin-top: 1rem;
+  }
+
+  .panel-kicker,
+  .eyebrow {
+    color: #6d84b4;
+  }
+
+  .hero-panel-copy h2 {
+    margin-top: 0.45rem;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: #13203a;
+  }
+
+  .hero-panel-copy p {
+    margin: 0.55rem 0 0;
+    color: #5b6c86;
+    font-size: 0.95rem;
+  }
+
+  .hero-focus-grid {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 0.95rem;
+  }
+
+  .hero-focus-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    align-items: start;
+    padding: 0.75rem 0.85rem;
+    border-radius: 1rem;
+    background: rgba(245, 248, 255, 0.92);
+    border: 1px solid rgba(17, 29, 52, 0.06);
+  }
+
+  .focus-icon {
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 0.8rem;
+    background: rgba(91, 135, 255, 0.12);
+    color: #0a36b3;
+  }
+
+  .hero-focus-card h3 {
+    font-size: 0.92rem;
+    color: #13203a;
+  }
+
+  .hero-focus-card p {
+    margin: 0.2rem 0 0;
+    color: #61728c;
+    font-size: 0.79rem;
+    line-height: 1.5;
   }
 
   .section,
@@ -454,170 +787,207 @@ const proyectos = [
   }
 
   .section {
-    padding-top: 6rem;
+    padding-top: 5.5rem;
   }
 
   .section-heading {
-    max-width: 48rem;
-    margin: 0 auto 2.6rem;
-    text-align: center;
+    max-width: 46rem;
+    margin-bottom: 1.6rem;
   }
 
-  .section-heading h2 {
-    font-size: clamp(2.5rem, 5vw, 4.2rem);
-    color: #1b2740;
+  .section-heading h2,
+  .footer-brand-block h2 {
+    margin-top: 0.55rem;
+    font-size: clamp(2rem, 4.3vw, 3.45rem);
+    line-height: 1.02;
   }
 
-  .section-heading p {
-    margin: 1rem 0 0;
-    color: #5a6a83;
-    font-size: 1.1rem;
-    line-height: 1.75;
+  .section-heading p,
+  .footer-brand-block p {
+    margin-top: 0.8rem;
+    font-size: 1rem;
   }
 
-  .cards-grid,
-  .project-grid {
+  .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.4rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
   }
 
   .info-card {
-    padding: 1.9rem;
-    border-radius: 1.7rem;
-    border: 1px solid rgba(29, 39, 56, 0.08);
-    background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
-    box-shadow: 0 18px 48px rgba(34, 54, 73, 0.08);
+    padding: 1.35rem;
+    border-radius: 1.5rem;
   }
 
   .icon-chip {
-    display: inline-grid;
-    place-items: center;
-    width: 3.4rem;
-    height: 3.4rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 1rem;
-    background: #edf2ff;
-    font-size: 1.65rem;
-    margin-bottom: 1.3rem;
   }
 
   .info-card h3,
-  .project-card h3 {
-    font-size: 1.5rem;
-    color: #19253f;
+  .project-card h3,
+  .footer-card h3 {
+    margin-top: 1rem;
+    font-size: 1.08rem;
   }
 
   .info-card p,
-  .project-card p,
-  .footer p,
-  .footer a,
-  .subfooter p,
-  .subfooter a {
-    margin: 0.95rem 0 0;
-    color: #5b6a82;
-    line-height: 1.75;
+  .project-card p {
+    margin-top: 0.65rem;
+    font-size: 0.94rem;
   }
 
   .projects-section {
-    padding-top: 6.5rem;
+    margin-top: 5.5rem;
+    padding: 4.25rem 0;
+    border-radius: 2rem;
+    background:
+      radial-gradient(circle at top left, rgba(40, 94, 255, 0.18), transparent 22%),
+      linear-gradient(180deg, #eff5ff 0%, #e3edff 100%);
   }
 
-  .section-heading-dark h2 {
-    color: #1b2740;
+  .section-heading-dark,
+  .project-grid {
+    width: min(100%, 1180px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .eyebrow-light {
+    color: #4f69a1;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-top: 1.2rem;
   }
 
   .project-card {
-    padding: 1.8rem;
-    border-radius: 1.7rem;
-    background: linear-gradient(180deg, #101b33 0%, #15223c 100%);
-    box-shadow: 0 20px 45px rgba(17, 27, 51, 0.18);
+    display: block;
+    min-height: 100%;
+    padding: 1rem 1rem 0.95rem;
+    border-radius: 1.15rem;
+    text-decoration: none;
+    transition:
+      transform 220ms ease,
+      box-shadow 220ms ease,
+      border-color 220ms ease,
+      background 220ms ease;
   }
 
   .project-card-link {
-    transition:
-      transform 180ms ease,
-      box-shadow 180ms ease;
+    color: inherit;
   }
 
-  .project-card-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 24px 54px rgba(17, 27, 51, 0.24);
+  .project-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+  }
+
+  .project-icon {
+    width: 2.85rem;
+    height: 2.85rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a36b3;
+    background: rgba(8, 52, 183, 0.08);
+    border: 1px solid rgba(8, 52, 183, 0.1);
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      border-color 220ms ease,
+      transform 220ms ease;
   }
 
   .status-pill {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: fit-content;
-    padding: 0.5rem 0.9rem;
+    padding: 0.3rem 0.62rem;
     border-radius: 999px;
-    background: linear-gradient(90deg, #1f50de 0%, #0834b7 100%);
-    color: white;
-    font-size: 0.8rem;
+    background: rgba(8, 52, 183, 0.08);
+    color: #0a36b3;
+    font-size: 0.7rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .project-card h3 {
-    margin-top: 1.2rem;
-    color: white;
-  }
-
-  .project-subtitle {
-    color: #d8e3ff;
-    font-weight: 700;
-  }
-
-  .project-card p:last-child {
-    color: #c7d1df;
-    border-top: 1px solid rgba(199, 209, 223, 0.16);
-    padding-top: 1rem;
-  }
-
-  .project-card-link p:last-of-type {
-    color: #e3e9f5;
-    border-top-color: rgba(227, 233, 245, 0.2);
   }
 
   .project-link-copy {
     display: inline-flex;
-    margin-top: 1.15rem;
-    color: #ffffff;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.8rem;
+    color: #0a36b3;
+    font-size: 0.82rem;
     font-weight: 800;
+  }
+
+  .project-card h3 {
+    margin-top: 0.8rem;
+    font-size: 1rem;
+    color: #122756;
+  }
+
+  .project-card p {
+    margin-top: 0.45rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .project-card:hover {
+    border-color: rgba(8, 52, 183, 0.22);
+    box-shadow: 0 22px 42px rgba(14, 58, 173, 0.14);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(231, 240, 255, 0.98));
+  }
+
+  .project-card:hover .project-icon {
+    background: #0834b7;
+    border-color: #0834b7;
+    color: white;
+    transform: translateY(-2px) scale(1.02);
   }
 
   .footer {
+    padding-top: 5.5rem;
+  }
+
+  .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 2rem;
-    padding-top: 5rem;
-    padding-bottom: 2rem;
-    border-top: 1px solid rgba(29, 39, 56, 0.08);
-    margin-top: 5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
   }
 
-  .footer-brand {
-    display: inline-block;
-    margin-bottom: 0.75rem;
+  .footer-card {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
   }
 
-  .footer-column h4 {
-    font-size: 1rem;
-    color: #1c2842;
+  .footer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+    margin-top: 1rem;
   }
 
-  .footer-column a {
-    display: block;
+  .footer-list a,
+  .footer-list p {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0;
+    text-decoration: none;
   }
 
-  .footer-strong {
-    font-weight: 800;
-    color: #33445d;
-  }
-
-  .footer-highlight {
-    color: var(--brand);
+  .footer-list a {
+    color: #30435f;
     font-weight: 700;
   }
 
@@ -626,101 +996,126 @@ const proyectos = [
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(29, 39, 56, 0.08);
+    padding-top: 2rem;
+    color: #6a7b93;
+    font-size: 0.9rem;
   }
 
-  .subfooter-links {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+  .subfooter-links a {
+    color: #4e617c;
+    font-weight: 700;
   }
 
-  @media (max-width: 980px) {
-    .nav-links,
-    .cards-grid,
-    .project-grid,
-    .footer,
-    .subfooter {
-      grid-template-columns: 1fr;
+  @media (max-width: 1180px) {
+    .hero-grid,
+    .cards-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-grid {
+      align-items: start;
+    }
+
+    .project-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 960px) {
+    .topbar {
+      flex-wrap: wrap;
+      padding: 1rem 1.25rem;
     }
 
     .nav-links {
       display: none;
     }
 
-    .subfooter {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-
-  @media (max-width: 720px) {
-    .topbar {
-      padding: 1rem;
-      gap: 1rem;
-    }
-
-    .brand {
-      font-size: 1.7rem;
-    }
-
     .nav-actions {
       width: 100%;
-      flex-direction: column;
-    }
-
-    .nav-cta,
-    .nav-secondary {
-      width: 100%;
-      padding: 0.95rem 1.2rem;
-      font-size: 0.95rem;
+      flex-wrap: wrap;
     }
 
     .hero {
       min-height: auto;
-      padding: 2.75rem 1rem 3.25rem;
+      padding: 2rem 1rem 3rem;
     }
 
-    .hero h1 {
-      font-size: clamp(2.4rem, 12vw, 3.7rem);
+    .hero-grid,
+    .cards-grid,
+    .footer-grid,
+    .hero-metrics {
+      grid-template-columns: 1fr;
     }
 
-    .hero-copy {
-      max-width: 100%;
-      font-size: 0.96rem;
-    }
-
-    .hero-actions {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 1rem;
-    }
-
-    .primary-action,
-    .secondary-action {
-      min-width: 0;
-      width: 100%;
+    .project-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .section,
     .footer,
-    .subfooter {
+    .subfooter,
+    .section-heading-dark,
+    .project-grid {
       padding-left: 1rem;
       padding-right: 1rem;
     }
 
-    .section {
-      padding-top: 4.5rem;
+    .projects-section {
+      padding: 4rem 0;
     }
 
-    .stats-grid {
-      grid-template-columns: 1fr;
+    .hero h1 {
+      max-width: 11.5ch;
+    }
+
+    .hero-panel-top {
+      min-height: 13rem;
+    }
+
+    .hero-pointer-glow,
+    .hero-flight {
+      display: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .brand-copy {
+      font-size: 1.55rem;
+    }
+
+    .nav-actions,
+    .hero-actions,
+    .subfooter {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .nav-cta,
+    .nav-secondary,
+    .primary-action,
+    .secondary-action {
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.15rem, 10vw, 3.2rem);
+    }
+
+    .hero-panel,
+    .project-card,
+    .info-card,
+    .footer-card {
+      border-radius: 1.35rem;
     }
 
     .subfooter-links {
       flex-wrap: wrap;
-      gap: 1rem;
+      justify-content: flex-start;
+    }
+
+    .project-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -759,9 +1154,135 @@ const proyectos = [
     });
   };
 
+  const initHeroPointer = () => {
+    const hero = document.querySelector('.hero');
+    if (!hero || window.matchMedia('(pointer: coarse)').matches) return;
+    const flights = Array.from(hero.querySelectorAll('.hero-flight'));
+    if (!flights.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let pointerX = null;
+    let pointerY = null;
+
+    const states = flights.map((flight, index) => {
+      const style = getComputedStyle(flight);
+      const left = Number.parseFloat(style.left || '0');
+      const top = Number.parseFloat(style.top || '0');
+      const width = flight.offsetWidth || 160;
+      const height = flight.offsetHeight || 96;
+      const scale = Number.parseFloat(style.getPropertyValue('--flight-scale') || '0.9');
+
+      return {
+        el: flight,
+        homeX: left,
+        homeY: top,
+        x: left,
+        y: top,
+        vx: 0,
+        vy: 0,
+        width,
+        height,
+        scale,
+        ampX: 10 + index * 3,
+        ampY: 8 + index * 2,
+        phase: index * 1.7,
+        speed: 0.001 + index * 0.00018,
+      };
+    });
+
+    const renderFlights = (time) => {
+      const heroRect = hero.getBoundingClientRect();
+
+      states.forEach((state) => {
+        let ax = (state.homeX - state.x) * 0.0045;
+        let ay = (state.homeY - state.y) * 0.0045;
+
+        if (pointerX !== null && pointerY !== null) {
+          const centerX = heroRect.left + state.x + state.width / 2;
+          const centerY = heroRect.top + state.y + state.height / 2;
+          const dx = centerX - pointerX;
+          const dy = centerY - pointerY;
+          const distance = Math.max(Math.hypot(dx, dy), 1);
+          const directionX = dx / distance;
+          const directionY = dy / distance;
+          const influence = 0.12 + Math.max(0, 1 - Math.min(distance, 560) / 560) * 0.22;
+
+          ax += directionX * influence;
+          ay += directionY * influence * 0.78;
+        }
+
+        state.vx = state.vx * 0.92 + ax;
+        state.vy = state.vy * 0.92 + ay;
+        state.x += state.vx;
+        state.y += state.vy;
+
+        const maxXOffset = 96;
+        const maxYOffset = 58;
+        state.x = Math.min(state.homeX + maxXOffset, Math.max(state.homeX - maxXOffset, state.x));
+        state.y = Math.min(state.homeY + maxYOffset, Math.max(state.homeY - maxYOffset, state.y));
+
+        const floatX = Math.sin(time * state.speed + state.phase) * state.ampX;
+        const floatY = Math.cos(time * state.speed * 0.9 + state.phase) * state.ampY;
+        const opacity = 0.11 + (Math.sin(time * state.speed + state.phase) + 1) * 0.055;
+
+        state.el.style.transform =
+          `translate3d(${(state.x - state.homeX + floatX).toFixed(2)}px, ${(state.y - state.homeY + floatY).toFixed(2)}px, 0) scale(${state.scale})`;
+        state.el.style.opacity = opacity.toFixed(3);
+      });
+
+      requestAnimationFrame(renderFlights);
+    };
+
+    const setPointer = (event) => {
+      const rect = hero.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      hero.style.setProperty('--pointer-x', `${x}%`);
+      hero.style.setProperty('--pointer-y', `${y}%`);
+      hero.style.setProperty('--orb-shift-x', `${(x - 50) * 0.18}px`);
+      hero.style.setProperty('--orb-shift-y', `${(y - 50) * 0.12}px`);
+    };
+
+    hero.addEventListener('pointermove', setPointer);
+
+    flights.forEach((flight, index) => {
+      flight.addEventListener('pointerdown', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const state = states[index];
+        const birdRect = flight.getBoundingClientRect();
+        const birdX = birdRect.left + birdRect.width / 2;
+        const birdY = birdRect.top + birdRect.height / 2;
+        const dx = birdX - event.clientX;
+        const dy = birdY - event.clientY;
+        const distance = Math.max(Math.hypot(dx, dy), 1);
+
+        state.vx += (dx / distance) * 7.5;
+        state.vy += (dy / distance) * 5.5;
+      });
+    });
+
+    hero.addEventListener('pointerleave', () => {
+      pointerX = null;
+      pointerY = null;
+      hero.style.setProperty('--pointer-x', '64%');
+      hero.style.setProperty('--pointer-y', '32%');
+      hero.style.setProperty('--orb-shift-x', '0px');
+      hero.style.setProperty('--orb-shift-y', '0px');
+    });
+
+    requestAnimationFrame(renderFlights);
+  };
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startReveal, { once: true });
+    document.addEventListener('DOMContentLoaded', () => {
+      startReveal();
+      initHeroPointer();
+    }, { once: true });
   } else {
     startReveal();
+    initHeroPointer();
   }
 </script>

@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProgramInfoPage from '../../components/ProgramInfoPage.astro';
+import { getProgramBySlug } from '../../lib/programs';
+
+const { slug } = Astro.params;
+if (!slug) return Astro.redirect('/');
+
+const program = await getProgramBySlug(slug);
+
+if (!program) return Astro.redirect('/');
+if (!program.tienePagina) return Astro.redirect('/');
+
+if (program.externalHrefNormalizado && program.externalHrefNormalizado !== program.dynamicHref) {
+  return Astro.redirect(program.externalHrefNormalizado, 301);
+}
+---
+
+<Layout
+  title={`${program.nombreNormalizado} | Renacer`}
+  description={program.detalle}
+>
+  <ProgramInfoPage
+    kicker={program.kicker ?? program.nombreNormalizado}
+    title={program.titulo ?? program.nombreNormalizado}
+    lead={program.lead ?? ''}
+    paragraphs={(program.parrafos ?? []) as string[]}
+    stats={
+      ((program.stats ?? []) as { valor: string; etiqueta: string }[]).map(
+        (s) => ({ valor: s.valor, etiqueta: s.etiqueta })
+      )
+    }
+    supportText={program.textoApoyo ?? ''}
+    images={program.imagenes}
+  />
+</Layout>

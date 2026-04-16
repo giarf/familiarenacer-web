@@ -11,8 +11,13 @@
   },
   "dependencies": {
     "@astrojs/node": "^9.5.1",
-    "astro": "^5.16.7"
-  },
-  "devDependencies": {
+    "@astrojs/react": "^5.0.3",
+    "@keystatic/astro": "^5.0.6",
+    "@keystatic/core": "^0.5.50",
+    "astro": "^5.16.7",
+    "image-size": "^2.0.2",
+    "lucide": "^1.8.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
   }
 }

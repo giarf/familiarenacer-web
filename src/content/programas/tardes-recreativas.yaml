@@ -1,0 +1,48 @@
+nombre: Tardes Recreativas
+estado: Vacaciones
+bajada: Cuidado y actividades en verano e invierno
+detalle: >-
+  Jornadas seguras con recreación, alimentación y acompañamiento para niños y niñas
+  durante vacaciones.
+icono: Users
+orden: 7
+tienePagina: true
+externalHref: ''
+kicker: Tardes Recreativas
+titulo: Vacaciones con cuidado, juego y actividades seguras para niños y niñas.
+lead: >-
+  El programa Tardes Recreativas de Renacer ofrece un espacio seguro, acompañado y
+  entretenido para niños y niñas durante las vacaciones de verano e invierno.
+parrafos:
+  - >-
+    Está pensado especialmente para familias donde los adultos deben trabajar en estos
+    períodos y no siempre cuentan con redes de apoyo para el cuidado de sus hijos.
+  - >-
+    Durante estas jornadas, los niños participan en actividades recreativas, artísticas
+    y de convivencia en un entorno supervisado por monitores, donde pueden compartir,
+    aprender y disfrutar su tiempo de manera segura.
+  - >-
+    Además, el programa incluye almuerzo y colación, asegurando que los niños cuenten
+    con una alimentación adecuada durante su permanencia. En verano se realizan juegos
+    con agua, actividades al aire libre y talleres de cocina; en invierno, cine, juegos
+    grupales, manualidades y momentos de relajación.
+  - >-
+    Más allá de las actividades, este espacio busca entregar cuidado, contención y un
+    entorno donde los niños se sientan acompañados, especialmente en períodos donde
+    pueden pasar más tiempo solos.
+stats:
+  - valor: '60'
+    etiqueta: niños recibidos en el programa
+  - valor: Verano
+    etiqueta: juegos con agua, aire libre y talleres de cocina
+  - valor: Invierno
+    etiqueta: cine, manualidades y juegos en espacios cerrados
+  - valor: Cuidado
+    etiqueta: incluye almuerzo y colación durante la jornada
+textoApoyo: >-
+  Si deseas conocer más o ser parte de esta iniciativa, puedes colaborar con recursos,
+  voluntariado o difusión para fortalecer estos espacios de cuidado.
+imagen: /uploads/programas/tardes-recreativas/imagen1.jpeg
+galeria:
+  - /uploads/programas/tardes-recreativas/imagen2.jpeg
+  - /uploads/programas/tardes-recreativas/imagen3.jpeg

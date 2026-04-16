@@ -1,0 +1,55 @@
+nombre: Fiestas Patrias
+estado: Anual
+bajada: Tradición, juego y comunidad
+detalle: >-
+  Desde 2004, una celebración familiar con más de 20 juegos tradicionales, libre de
+  alcohol y orientada al encuentro comunitario.
+icono: Users
+orden: 10
+tienePagina: true
+externalHref: ''
+kicker: Fiestas Patrias
+titulo: 'Tradición, juego y comunidad: una celebración familiar y libre de alcohol.'
+lead: >-
+  Desde el año 2004, Renacer celebra Fiestas Patrias como una instancia orientada a
+  fortalecer la identidad, las tradiciones y el sentido de pertenencia en la comunidad,
+  ofreciendo un espacio familiar, seguro y libre de alcohol para niños, niñas y sus
+  familias.
+parrafos:
+  - >-
+    En los últimos años, muchas expresiones culturales propias del país — juegos
+    tradicionales, comida típica y símbolos patrios — han ido perdiendo presencia en la
+    vida cotidiana de niños y niñas. Frente a esto, Renacer promueve un espacio
+    participativo donde las familias puedan reencontrarse con estas prácticas.
+  - >-
+    La actividad ofrece más de 20 juegos, juguetes y competencias tradicionales: palo
+    encebado, tiro al blanco, la rana, trompos, emboque, carreras de saco, carrera de
+    tres pies y la carrera del huevo con cuchara, además de concursos, payas y bailes
+    típicos donde niños y familias participan activamente.
+  - >-
+    Durante la jornada se comparte en torno a la comida con preparaciones como helados,
+    choripanes y bebidas, generando un espacio de convivencia y comunidad. Renacer se
+    propone como alternativa a las celebraciones donde predomina el consumo de alcohol,
+    poniendo en el centro el encuentro, el juego y el vínculo familiar.
+  - >-
+    Esta actividad se sostiene gracias al apoyo de voluntarios que participan en la
+    implementación de los stands, acompañan a los niños, enseñan los juegos y promueven
+    la participación. Las colaboraciones también permiten costear premios, materiales y
+    alimentos.
+stats:
+  - valor: '2004'
+    etiqueta: año desde el que se realiza esta celebración comunitaria
+  - valor: '+20'
+    etiqueta: juegos y competencias tradicionales disponibles
+  - valor: Alcohol free
+    etiqueta: espacio familiar y seguro sin consumo de alcohol
+  - valor: Voluntarios
+    etiqueta: participan activamente en los stands y actividades
+textoApoyo: >-
+  Si deseas ser parte de esta experiencia como voluntario en la organización,
+  acompañamiento en los juegos, o colaborar con premios y materiales, puedes
+  contactarnos a través de nuestros canales.
+imagen: /uploads/programas/fiestas-patrias/imagen1.jpeg
+galeria:
+  - /uploads/programas/fiestas-patrias/imagen2.jpeg
+  - /uploads/programas/fiestas-patrias/imagen3.jpeg

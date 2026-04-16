@@ -1,0 +1,931 @@
+---
+// Protegido por middleware — requiere login
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Constructor de Programa | Admin Renacer</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Reset & base ─────────────────────────────── */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --brand: #0834b7;
+        --brand-dark: #062b96;
+        --ink: #1d2738;
+        --muted: #53627b;
+        --line: rgba(29,39,56,.12);
+        --bg: #f5f8ff;
+        --surface: #ffffff;
+        --radius: 1rem;
+      }
+
+      body {
+        font-family: 'Manrope', sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        min-height: 100svh;
+        overflow: hidden;
+      }
+
+      h1,h2,h3,h4 { font-family: 'Sora', sans-serif; letter-spacing: -.04em; }
+
+      /* ── Topbar ───────────────────────────────────── */
+      .topbar {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 1rem;
+        padding: .9rem 1.5rem;
+        background: rgba(255,255,255,.95);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(12px);
+        height: 56px;
+      }
+
+      .topbar-left { display: flex; align-items: center; gap: 1.2rem; }
+
+      .brand {
+        font-family: 'Sora', sans-serif; font-size: 1.4rem; font-weight: 800;
+        color: var(--brand-dark); letter-spacing: -.05em; text-decoration: none;
+      }
+      .brand span { color: #7f95ad; }
+
+      .page-title { font-size: .88rem; font-weight: 700; color: var(--muted); }
+
+      .topbar-actions { display: flex; gap: .7rem; }
+
+      .btn {
+        display: inline-flex; align-items: center; gap: .4rem;
+        padding: .6rem 1.1rem; border-radius: .75rem;
+        font-family: inherit; font-size: .88rem; font-weight: 800;
+        cursor: pointer; border: none; transition: transform 140ms, box-shadow 140ms;
+        text-decoration: none;
+      }
+      .btn:hover { transform: translateY(-1px); }
+
+      .btn-ghost {
+        background: transparent; border: 1.5px solid var(--line);
+        color: var(--muted);
+      }
+      .btn-primary {
+        background: linear-gradient(180deg,#1b49d6,var(--brand));
+        color: #fff;
+        box-shadow: 0 8px 20px rgba(8,52,183,.22);
+      }
+      .btn-success {
+        background: linear-gradient(180deg,#16a34a,#15803d);
+        color: #fff;
+        box-shadow: 0 8px 20px rgba(22,163,74,.22);
+      }
+
+      /* ── Main layout ──────────────────────────────── */
+      .builder {
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        height: calc(100svh - 56px);
+        margin-top: 56px;
+        overflow: hidden;
+      }
+
+      /* ── Preview pane ─────────────────────────────── */
+      .preview-pane {
+        overflow-y: auto;
+        background: #eef3ff;
+        border-right: 1px solid var(--line);
+        padding: 2rem 1.5rem;
+      }
+
+      .preview-label {
+        font-size: .75rem; font-weight: 800; letter-spacing: .12em;
+        text-transform: uppercase; color: var(--brand);
+        margin-bottom: 1rem;
+        display: flex; align-items: center; gap: .5rem;
+      }
+      .preview-label::before {
+        content: ''; display: block; width: 8px; height: 8px;
+        border-radius: 50%; background: #22c55e;
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,100% { opacity: 1; } 50% { opacity: .4; }
+      }
+
+      /* ── Preview: replica visual de ProgramInfoPage ── */
+      .prev-card {
+        background: var(--surface);
+        border-radius: 1.5rem;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(8,52,183,.1);
+        font-size: .88rem;
+      }
+
+      .prev-hero {
+        padding: 2rem 1.75rem 1.75rem;
+        background: linear-gradient(135deg,#f0f4ff 0%,#e8eeff 100%);
+        border-bottom: 1px solid rgba(8,52,183,.1);
+      }
+
+      .prev-back {
+        font-size: .8rem; font-weight: 700; color: var(--brand);
+        margin-bottom: .75rem; display: flex; align-items: center; gap: .3rem;
+      }
+
+      .prev-kicker {
+        display: inline-block;
+        padding: .35rem .8rem;
+        background: rgba(8,52,183,.1);
+        color: var(--brand);
+        border-radius: 999px;
+        font-size: .75rem; font-weight: 800;
+        letter-spacing: .08em; text-transform: uppercase;
+        margin-bottom: .75rem;
+        min-height: 1.5rem;
+      }
+
+      .prev-titulo {
+        font-family: 'Sora', sans-serif;
+        font-size: 1.35rem; font-weight: 800;
+        line-height: 1.15; letter-spacing: -.04em;
+        color: #1b2740;
+        margin-bottom: .75rem;
+        min-height: 2rem;
+      }
+
+      .prev-lead {
+        color: var(--muted); line-height: 1.65;
+        font-size: .85rem;
+        min-height: 2.5rem;
+      }
+
+      .prev-info-pill {
+        display: inline-flex; align-items: center;
+        padding: .4rem .85rem;
+        background: rgba(8,52,183,.08);
+        border-radius: 999px;
+        font-size: .75rem; font-weight: 700;
+        color: var(--brand);
+        margin-top: 1rem;
+      }
+
+      .prev-body { padding: 1.5rem 1.75rem; }
+
+      .prev-parrafos { display: flex; flex-direction: column; gap: .9rem; }
+
+      .prev-parrafo {
+        color: #4a5568; line-height: 1.7; font-size: .84rem;
+        min-height: 1.2rem;
+      }
+      .prev-parrafo.empty {
+        height: 2.5rem;
+        background: #f3f4f6; border-radius: .5rem;
+        display: flex; align-items: center; justify-content: center;
+        color: #9ca3af; font-style: italic; font-size: .78rem;
+      }
+
+      .prev-stats {
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: .75rem; margin-top: 1.25rem;
+      }
+
+      .prev-stat {
+        padding: .9rem;
+        background: linear-gradient(135deg,#f8faff,#f0f4ff);
+        border-radius: .85rem;
+        border: 1px solid rgba(8,52,183,.08);
+      }
+
+      .prev-stat-valor {
+        font-family: 'Sora', sans-serif;
+        font-size: 1.15rem; font-weight: 800;
+        color: var(--brand); letter-spacing: -.04em;
+        min-height: 1.4rem;
+      }
+
+      .prev-stat-etiqueta {
+        font-size: .75rem; color: var(--muted);
+        line-height: 1.4; margin-top: .25rem;
+        min-height: 1rem;
+      }
+
+      .prev-support {
+        margin-top: 1.25rem; padding: 1.1rem 1.25rem;
+        background: linear-gradient(135deg,#101b33,#15223c);
+        border-radius: 1rem;
+      }
+
+      .prev-support-text {
+        color: #c7d1df; font-size: .82rem; line-height: 1.6;
+        min-height: 2rem;
+      }
+
+      .prev-support-btns {
+        display: flex; gap: .6rem; margin-top: .85rem; flex-wrap: wrap;
+      }
+
+      .prev-btn-fake {
+        padding: .5rem .9rem; border-radius: .6rem;
+        font-size: .78rem; font-weight: 800;
+      }
+      .prev-btn-primary { background: var(--brand); color: white; }
+      .prev-btn-secondary {
+        border: 1px solid rgba(255,255,255,.2); color: #d0d8e8;
+      }
+
+      /* Placeholder text */
+      .placeholder { color: #cbd5e1; font-style: italic; }
+
+      /* ── Form pane ────────────────────────────────── */
+      .form-pane {
+        overflow-y: auto;
+        background: var(--surface);
+        padding: 1.5rem;
+      }
+
+      .form-section {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--line);
+      }
+      .form-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+      .section-label {
+        font-size: .72rem; font-weight: 800;
+        letter-spacing: .12em; text-transform: uppercase;
+        color: var(--brand); margin-bottom: .9rem;
+      }
+
+      .field { margin-bottom: .85rem; }
+      .field:last-child { margin-bottom: 0; }
+
+      label {
+        display: block; font-size: .8rem; font-weight: 700;
+        color: var(--ink); margin-bottom: .35rem;
+      }
+      label .hint {
+        font-weight: 400; color: var(--muted); font-size: .75rem;
+      }
+
+      input[type="text"], input[type="number"], select, textarea {
+        width: 100%;
+        padding: .65rem .85rem;
+        border: 1.5px solid var(--line);
+        border-radius: .7rem;
+        font-family: inherit; font-size: .88rem;
+        color: var(--ink); background: #fafbff;
+        outline: none;
+        transition: border-color 140ms, background 140ms;
+      }
+      input:focus, select:focus, textarea:focus {
+        border-color: var(--brand); background: white;
+      }
+      textarea { resize: vertical; min-height: 70px; line-height: 1.55; }
+
+      .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+      .row-3 { display: grid; grid-template-columns: 1fr 1fr 80px; gap: .6rem; }
+
+      /* Stats grid */
+      .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+
+      .stat-item {
+        padding: .75rem;
+        background: #f8faff;
+        border: 1px solid rgba(8,52,183,.08);
+        border-radius: .75rem;
+      }
+      .stat-item label { color: var(--brand); font-size: .72rem; }
+      .stat-item input { font-size: .82rem; padding: .5rem .7rem; }
+      .stat-item input:first-of-type { margin-bottom: .4rem; }
+
+      /* Párrafos dinámicos */
+      .parrafos-list { display: flex; flex-direction: column; gap: .6rem; }
+
+      .parrafo-item { position: relative; }
+      .parrafo-item textarea { padding-right: 2.2rem; }
+      .parrafo-remove {
+        position: absolute; top: .5rem; right: .5rem;
+        width: 1.5rem; height: 1.5rem;
+        background: #fee2e2; color: #dc2626;
+        border: none; border-radius: .4rem;
+        font-size: .9rem; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: background 140ms;
+      }
+      .parrafo-remove:hover { background: #fca5a5; }
+
+      .btn-add-parrafo {
+        width: 100%; padding: .6rem;
+        border: 1.5px dashed rgba(8,52,183,.25);
+        border-radius: .7rem;
+        background: transparent;
+        color: var(--brand); font-family: inherit;
+        font-size: .82rem; font-weight: 700;
+        cursor: pointer; transition: background 140ms;
+        margin-top: .5rem;
+      }
+      .btn-add-parrafo:hover { background: rgba(8,52,183,.05); }
+
+      /* ── Toast ────────────────────────────────────── */
+      #toast {
+        position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+        padding: .75rem 1.4rem;
+        border-radius: .85rem;
+        font-weight: 700; font-size: .88rem;
+        opacity: 0; transition: opacity 300ms;
+        pointer-events: none; z-index: 100;
+        white-space: nowrap;
+      }
+      #toast.show { opacity: 1; }
+      #toast.success { background: #16a34a; color: white; }
+      #toast.error   { background: #dc2626; color: white; }
+      #toast.info    { background: var(--brand); color: white; }
+
+      /* ── YAML Modal ───────────────────────────────── */
+      #yaml-modal {
+        border: none; border-radius: 1.25rem;
+        box-shadow: 0 30px 80px rgba(0,0,0,.25);
+        padding: 0; width: min(96vw, 680px);
+        max-height: 80svh;
+        overflow: hidden;
+      }
+      #yaml-modal::backdrop { background: rgba(0,0,0,.45); }
+
+      .modal-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 1.1rem 1.4rem;
+        border-bottom: 1px solid var(--line);
+        background: #fafbff;
+      }
+      .modal-header h3 { font-size: 1rem; color: var(--ink); }
+
+      .modal-actions { display: flex; gap: .6rem; }
+
+      .modal-body { padding: 1.25rem; overflow-y: auto; max-height: 55svh; }
+
+      #yaml-output {
+        background: #0f172a; color: #e2e8f0;
+        padding: 1.25rem; border-radius: .85rem;
+        font-family: 'Menlo', 'Consolas', monospace;
+        font-size: .8rem; line-height: 1.65;
+        white-space: pre; overflow-x: auto;
+        tab-size: 2;
+      }
+
+      .btn-close {
+        background: none; border: none; cursor: pointer;
+        font-size: 1.3rem; color: var(--muted);
+        line-height: 1; padding: .2rem;
+        transition: color 140ms;
+      }
+      .btn-close:hover { color: var(--ink); }
+    </style>
+  </head>
+
+  <body>
+    <!-- Topbar -->
+    <nav class="topbar">
+      <div class="topbar-left">
+        <a href="/" class="brand">Renacer<span>.</span></a>
+        <span class="page-title">Constructor de Programa</span>
+      </div>
+      <div class="topbar-actions">
+        <a href="/keystatic/" class="btn btn-ghost">Panel CMS</a>
+        <button class="btn btn-primary" id="btn-yaml" type="button">Ver YAML</button>
+        <button class="btn btn-success" id="btn-save" type="button">Guardar</button>
+      </div>
+    </nav>
+
+    <!-- Builder: Preview + Form -->
+    <div class="builder">
+
+      <!-- ── PREVIEW ──────────────────────────────── -->
+      <div class="preview-pane">
+        <div class="preview-label">Preview en vivo</div>
+
+        <div class="prev-card">
+          <!-- Hero -->
+          <div class="prev-hero">
+            <div class="prev-back">← Inicio</div>
+            <div class="prev-kicker" id="prev-kicker">
+              <span class="placeholder">Kicker</span>
+            </div>
+            <h1 class="prev-titulo" id="prev-titulo">
+              <span class="placeholder">Título del programa aparece aquí…</span>
+            </h1>
+            <p class="prev-lead" id="prev-lead">
+              <span class="placeholder">El párrafo introductorio aparecerá aquí mientras escribes.</span>
+            </p>
+            <div class="prev-info-pill" id="prev-estado">Activo</div>
+          </div>
+
+          <!-- Cuerpo -->
+          <div class="prev-body">
+            <!-- Párrafos -->
+            <div class="prev-parrafos" id="prev-parrafos">
+              <p class="prev-parrafo empty">Los párrafos aparecerán aquí…</p>
+            </div>
+
+            <!-- Stats -->
+            <div class="prev-stats" id="prev-stats">
+              <div class="prev-stat">
+                <div class="prev-stat-valor"><span class="placeholder">—</span></div>
+                <div class="prev-stat-etiqueta"><span class="placeholder">Descripción</span></div>
+              </div>
+              <div class="prev-stat">
+                <div class="prev-stat-valor"><span class="placeholder">—</span></div>
+                <div class="prev-stat-etiqueta"><span class="placeholder">Descripción</span></div>
+              </div>
+              <div class="prev-stat">
+                <div class="prev-stat-valor"><span class="placeholder">—</span></div>
+                <div class="prev-stat-etiqueta"><span class="placeholder">Descripción</span></div>
+              </div>
+              <div class="prev-stat">
+                <div class="prev-stat-valor"><span class="placeholder">—</span></div>
+                <div class="prev-stat-etiqueta"><span class="placeholder">Descripción</span></div>
+              </div>
+            </div>
+
+            <!-- Apoyo -->
+            <div class="prev-support">
+              <p class="prev-support-text" id="prev-apoyo">
+                <span class="placeholder">El texto de apoyo aparecerá aquí.</span>
+              </p>
+              <div class="prev-support-btns">
+                <span class="prev-btn-fake prev-btn-primary">Colaborar mensualmente</span>
+                <span class="prev-btn-fake prev-btn-secondary">contacto@familiarenacer.cl</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FORMULARIO ─────────────────────────────── -->
+      <div class="form-pane">
+
+        <!-- Sección 1: Tarjeta landing -->
+        <div class="form-section">
+          <div class="section-label">Tarjeta en el landing</div>
+
+          <div class="field">
+            <label for="f-nombre">Nombre del programa</label>
+            <input type="text" id="f-nombre" placeholder="Ej: Ropero Solidario" />
+          </div>
+
+          <div class="field row-2">
+            <div>
+              <label for="f-estado">Estado</label>
+              <select id="f-estado">
+                <option value="Activo">Activo</option>
+                <option value="Vacaciones">Vacaciones</option>
+                <option value="Anual">Anual</option>
+                <option value="Temporada">Temporada</option>
+                <option value="En planificación">En planificación</option>
+              </select>
+            </div>
+            <div>
+              <label for="f-orden">Orden <span class="hint">(posición)</span></label>
+              <input type="number" id="f-orden" value="99" min="1" max="999" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-detalle">Descripción breve <span class="hint">para la tarjeta</span></label>
+            <textarea id="f-detalle" rows="2" placeholder="Texto corto que aparece en la tarjeta del landing."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="f-icono">Icono de la tarjeta</label>
+            <select id="f-icono">
+              <option value="HeartHandshake">Manos y apoyo</option>
+              <option value="UtensilsCrossed">Alimentación</option>
+              <option value="Package">Canasta / apoyo</option>
+              <option value="Shirt">Vestimenta</option>
+              <option value="Sprout">Naturaleza</option>
+              <option value="Gift">Regalo / campaña</option>
+              <option value="Puzzle">Juego e infancia</option>
+              <option value="Users">Comunidad</option>
+              <option value="HandHelping">Inclusión</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-bajada">Resumen corto <span class="hint">opcional, ya no visible en la tarjeta</span></label>
+            <input type="text" id="f-bajada" placeholder="Campo editorial secundario" />
+          </div>
+        </div>
+
+        <!-- Sección 2: Página -->
+        <div class="form-section">
+          <div class="section-label">Configuración de página</div>
+
+          <div class="field">
+            <label for="f-kicker">Kicker <span class="hint">nombre corto sobre el título</span></label>
+            <input type="text" id="f-kicker" placeholder="Ej: Ropero Solidario" />
+          </div>
+
+          <div class="field">
+            <label for="f-titulo">Título</label>
+            <input type="text" id="f-titulo" placeholder="Título largo y descriptivo de la página" />
+          </div>
+
+          <div class="field">
+            <label for="f-lead">Párrafo introductorio</label>
+            <textarea id="f-lead" rows="3" placeholder="Párrafo destacado que aparece bajo el título…"></textarea>
+          </div>
+        </div>
+
+        <!-- Sección 3: Párrafos -->
+        <div class="form-section">
+          <div class="section-label">Párrafos del cuerpo</div>
+
+          <div class="parrafos-list" id="parrafos-list">
+            <div class="parrafo-item">
+              <textarea class="parrafo-input" rows="3" placeholder="Primer párrafo…"></textarea>
+              <button class="parrafo-remove" type="button" title="Eliminar">×</button>
+            </div>
+          </div>
+          <button class="btn-add-parrafo" id="btn-add-parrafo" type="button">+ Agregar párrafo</button>
+        </div>
+
+        <!-- Sección 4: Estadísticas -->
+        <div class="form-section">
+          <div class="section-label">Estadísticas (4 datos clave)</div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <label>Stat 1 — Valor</label>
+              <input type="text" class="stat-valor" data-idx="0" placeholder="167" />
+              <label>Descripción</label>
+              <input type="text" class="stat-etiqueta" data-idx="0" placeholder="niños acompañados" />
+            </div>
+            <div class="stat-item">
+              <label>Stat 2 — Valor</label>
+              <input type="text" class="stat-valor" data-idx="1" placeholder="Todo el año" />
+              <label>Descripción</label>
+              <input type="text" class="stat-etiqueta" data-idx="1" placeholder="funcionamiento continuo" />
+            </div>
+            <div class="stat-item">
+              <label>Stat 3 — Valor</label>
+              <input type="text" class="stat-valor" data-idx="2" placeholder="+20" />
+              <label>Descripción</label>
+              <input type="text" class="stat-etiqueta" data-idx="2" placeholder="actividades disponibles" />
+            </div>
+            <div class="stat-item">
+              <label>Stat 4 — Valor</label>
+              <input type="text" class="stat-valor" data-idx="3" placeholder="Comunidad" />
+              <label>Descripción</label>
+              <input type="text" class="stat-etiqueta" data-idx="3" placeholder="impacto comunitario" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 5: Apoyo -->
+        <div class="form-section">
+          <div class="section-label">Texto de apoyo</div>
+
+          <div class="field">
+            <label for="f-apoyo">¿Cómo colaborar?</label>
+            <textarea id="f-apoyo" rows="3" placeholder="Si deseas conocer más o ser parte de esta iniciativa…"></textarea>
+          </div>
+        </div>
+
+        <!-- Sección 6: Avanzado -->
+        <div class="form-section">
+          <div class="section-label">Opciones avanzadas</div>
+
+          <div class="field">
+            <label for="f-external">URL externa <span class="hint">dejar vacío para generar desde el slug</span></label>
+            <input type="text" id="f-external" placeholder="Ej: /ropero-solidario/" />
+          </div>
+
+          <div class="field">
+            <label>
+              <input type="checkbox" id="f-tiene-pagina" checked style="margin-right:.4rem" />
+              ¿Tiene página propia?
+            </label>
+          </div>
+        </div>
+
+      </div><!-- /form-pane -->
+    </div><!-- /builder -->
+
+    <!-- Toast -->
+    <div id="toast"></div>
+
+    <!-- YAML Modal -->
+    <dialog id="yaml-modal">
+      <div class="modal-header">
+        <h3>YAML generado</h3>
+        <div class="modal-actions">
+          <button class="btn btn-primary" id="btn-copy">Copiar</button>
+          <button class="btn-close" id="btn-close-modal" title="Cerrar">×</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <pre id="yaml-output"></pre>
+      </div>
+    </dialog>
+
+    <script>
+      // ── Utilidades ────────────────────────────────────────────────
+      function $(id) { return document.getElementById(id); }
+      function setEl(id, text) {
+        const el = $(id);
+        if (!el) return;
+        if (text && text.trim()) {
+          el.textContent = text;
+          el.querySelectorAll('.placeholder').forEach(p => p.remove());
+        } else {
+          el.innerHTML = '<span class="placeholder">' + (el.dataset.ph || '') + '</span>';
+        }
+      }
+      function toast(msg, type = 'info') {
+        const t = $('toast');
+        t.textContent = msg;
+        t.className = 'show ' + type;
+        clearTimeout(t._t);
+        t._t = setTimeout(() => t.className = '', 2800);
+      }
+
+      // ── Preview live ──────────────────────────────────────────────
+      function updatePreview() {
+        const nombre  = $('f-nombre').value;
+        const kicker  = $('f-kicker').value || nombre;
+        const titulo  = $('f-titulo').value;
+        const lead    = $('f-lead').value;
+        const estado  = $('f-estado').value;
+        const apoyo   = $('f-apoyo').value;
+
+        // Kicker
+        const kickEl = $('prev-kicker');
+        kickEl.textContent = kicker || '';
+        if (!kicker) kickEl.innerHTML = '<span class="placeholder">Kicker</span>';
+
+        // Título
+        const titEl = $('prev-titulo');
+        titEl.textContent = titulo || '';
+        if (!titulo) titEl.innerHTML = '<span class="placeholder">Título del programa aparece aquí…</span>';
+
+        // Lead
+        const leadEl = $('prev-lead');
+        leadEl.textContent = lead || '';
+        if (!lead) leadEl.innerHTML = '<span class="placeholder">El párrafo introductorio aparecerá aquí mientras escribes.</span>';
+
+        // Estado pill
+        $('prev-estado').textContent = estado;
+
+        // Párrafos
+        const parrafoInputs = document.querySelectorAll('.parrafo-input');
+        const parrafoContainer = $('prev-parrafos');
+        parrafoContainer.innerHTML = '';
+        let anyParagraph = false;
+        parrafoInputs.forEach(inp => {
+          const val = inp.value.trim();
+          if (val) {
+            anyParagraph = true;
+            const p = document.createElement('p');
+            p.className = 'prev-parrafo';
+            p.textContent = val;
+            parrafoContainer.appendChild(p);
+          }
+        });
+        if (!anyParagraph) {
+          parrafoContainer.innerHTML = '<p class="prev-parrafo empty">Los párrafos aparecerán aquí…</p>';
+        }
+
+        // Stats
+        const statValues  = document.querySelectorAll('.stat-valor');
+        const statEtiqs   = document.querySelectorAll('.stat-etiqueta');
+        const statsContainer = $('prev-stats');
+        statsContainer.innerHTML = '';
+        for (let i = 0; i < 4; i++) {
+          const v = statValues[i]?.value || '';
+          const e = statEtiqs[i]?.value  || '';
+          const div = document.createElement('div');
+          div.className = 'prev-stat';
+          div.innerHTML = `
+            <div class="prev-stat-valor">${v || '<span class="placeholder">—</span>'}</div>
+            <div class="prev-stat-etiqueta">${e || '<span class="placeholder">Descripción</span>'}</div>`;
+          statsContainer.appendChild(div);
+        }
+
+        // Apoyo
+        const apoyoEl = $('prev-apoyo');
+        apoyoEl.textContent = apoyo || '';
+        if (!apoyo) apoyoEl.innerHTML = '<span class="placeholder">El texto de apoyo aparecerá aquí.</span>';
+      }
+
+      // ── Eventos de formulario ─────────────────────────────────────
+      document.addEventListener('input', updatePreview);
+      document.addEventListener('change', updatePreview);
+
+      // ── Párrafos dinámicos ────────────────────────────────────────
+      function removeParagraph(btn) {
+        const list = $('parrafos-list');
+        if (list.querySelectorAll('.parrafo-item').length > 1) {
+          btn.closest('.parrafo-item').remove();
+          updatePreview();
+        } else {
+          btn.closest('.parrafo-item').querySelector('textarea').value = '';
+          updatePreview();
+        }
+      }
+
+      function addParagraph() {
+        const list = $('parrafos-list');
+        const item = document.createElement('div');
+        item.className = 'parrafo-item';
+        const n = list.querySelectorAll('.parrafo-item').length + 1;
+        item.innerHTML = `
+          <textarea class="parrafo-input" rows="3" placeholder="Párrafo ${n}…"></textarea>
+          <button class="parrafo-remove" type="button" title="Eliminar" onclick="removeParagraph(this)">×</button>`;
+        list.appendChild(item);
+        item.querySelector('textarea').focus();
+      }
+
+      $('btn-add-parrafo').addEventListener('click', addParagraph);
+
+      // Wire up initial remove button
+      document.querySelector('.parrafo-remove')
+        .addEventListener('click', function() { removeParagraph(this); });
+
+      // ── Recolectar datos del formulario ───────────────────────────
+      function collectData() {
+        const parrafos = [...document.querySelectorAll('.parrafo-input')]
+          .map(t => t.value.trim()).filter(Boolean);
+
+        const stats = [];
+        for (let i = 0; i < 4; i++) {
+          stats.push({
+            valor:    document.querySelector(`.stat-valor[data-idx="${i}"]`)?.value.trim() || '',
+            etiqueta: document.querySelector(`.stat-etiqueta[data-idx="${i}"]`)?.value.trim() || '',
+          });
+        }
+
+        return {
+          nombre:      $('f-nombre').value.trim(),
+          estado:      $('f-estado').value,
+          bajada:      $('f-bajada').value.trim(),
+          detalle:     $('f-detalle').value.trim(),
+          icono:       $('f-icono').value,
+          orden:       parseInt($('f-orden').value) || 99,
+          tienePagina: $('f-tiene-pagina').checked,
+          externalHref: $('f-external').value.trim(),
+          kicker:      $('f-kicker').value.trim(),
+          titulo:      $('f-titulo').value.trim(),
+          lead:        $('f-lead').value.trim(),
+          parrafos,
+          stats,
+          textoApoyo:  $('f-apoyo').value.trim(),
+          imagen:      '',
+        };
+      }
+
+      // ── Generador YAML ────────────────────────────────────────────
+      function toSlug(nombre) {
+        return nombre.toLowerCase()
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      }
+
+      function yamlStr(v) {
+        if (v == null || v === '') return "''";
+        v = String(v);
+        // Necesita comillas si tiene caracteres especiales
+        if (/[:#\[\]{}&*!|>'"?%@`]/.test(v) || /^[-+~\s]/.test(v) || /\s$/.test(v)) {
+          return '"' + v.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"';
+        }
+        return v;
+      }
+
+      function yamlMultiline(v, indent = '') {
+        if (!v) return "''";
+        const lines = v.split('\n');
+        if (lines.length === 1 && v.length <= 72 && !/[:#\[\]{}&*!|>'"?%@`]/.test(v)) {
+          return v;
+        }
+        return '>-\n' + lines.map(l => indent + '  ' + l).join('\n');
+      }
+
+      function generateYAMLString(d) {
+        const slug = toSlug(d.nombre || 'nuevo-programa');
+        const lines = [];
+
+        lines.push(`nombre: ${yamlStr(d.nombre)}`);
+        lines.push(`estado: ${yamlStr(d.estado)}`);
+        lines.push(`bajada: ${yamlStr(d.bajada)}`);
+        lines.push(`detalle: ${yamlStr(d.detalle)}`);
+        lines.push(`icono: ${yamlStr(d.icono || 'HeartHandshake')}`);
+        lines.push(`orden: ${d.orden}`);
+        lines.push(`tienePagina: ${d.tienePagina}`);
+        lines.push(`externalHref: ${yamlStr(d.externalHref || '')}`);
+        lines.push(`kicker: ${yamlStr(d.kicker || d.nombre)}`);
+        lines.push(`titulo: ${yamlStr(d.titulo)}`);
+
+        const leadYaml = yamlMultiline(d.lead);
+        if (leadYaml.includes('\n')) {
+          lines.push(`lead: ${leadYaml}`);
+        } else {
+          lines.push(`lead: ${yamlStr(d.lead)}`);
+        }
+
+        lines.push(`parrafos:`);
+        for (const p of d.parrafos) {
+          const ml = yamlMultiline(p, '  ');
+          if (ml.includes('\n')) {
+            lines.push(`  - ${ml}`);
+          } else {
+            lines.push(`  - ${yamlStr(p)}`);
+          }
+        }
+        if (!d.parrafos.length) lines.push(`  []`);
+
+        lines.push(`stats:`);
+        for (const s of d.stats) {
+          lines.push(`  - valor: ${yamlStr(s.valor)}`);
+          lines.push(`    etiqueta: ${yamlStr(s.etiqueta)}`);
+        }
+
+        const apoyoYaml = yamlMultiline(d.textoApoyo);
+        if (apoyoYaml.includes('\n')) {
+          lines.push(`textoApoyo: ${apoyoYaml}`);
+        } else {
+          lines.push(`textoApoyo: ${yamlStr(d.textoApoyo)}`);
+        }
+
+        lines.push(`imagen: ''`);
+
+        return { yaml: lines.join('\n'), slug };
+      }
+
+      // ── Modal YAML ────────────────────────────────────────────────
+      $('btn-yaml').addEventListener('click', () => {
+        const d = collectData();
+        const { yaml } = generateYAMLString(d);
+        $('yaml-output').textContent = yaml;
+        $('yaml-modal').showModal();
+      });
+
+      $('btn-close-modal').addEventListener('click', () => {
+        $('yaml-modal').close();
+      });
+
+      $('yaml-modal').addEventListener('click', (e) => {
+        if (e.target === $('yaml-modal')) $('yaml-modal').close();
+      });
+
+      $('btn-copy').addEventListener('click', () => {
+        const text = $('yaml-output').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          toast('YAML copiado al portapapeles', 'success');
+          $('yaml-modal').close();
+        });
+      });
+
+      // ── Guardar programa ──────────────────────────────────────────
+      $('btn-save').addEventListener('click', async () => {
+        const d = collectData();
+        if (!d.nombre) {
+          toast('El nombre del programa es requerido', 'error');
+          $('f-nombre').focus();
+          return;
+        }
+
+        const btn = $('btn-save');
+        btn.textContent = 'Guardando…';
+        btn.disabled = true;
+
+        try {
+          const res = await fetch('/api/save-programa', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(d),
+          });
+          const json = await res.json();
+          if (res.ok) {
+            toast(`✓ Guardado: src/content/programas/${json.slug}.yaml`, 'success');
+          } else {
+            toast('Error: ' + (json.error || 'desconocido'), 'error');
+          }
+        } catch (err) {
+          toast('Error de conexión', 'error');
+        } finally {
+          btn.textContent = 'Guardar';
+          btn.disabled = false;
+        }
+      });
+
+      // Init preview
+      updatePreview();
+    </script>
+  </body>
+</html>

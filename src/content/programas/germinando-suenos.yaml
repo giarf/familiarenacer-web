@@ -1,0 +1,54 @@
+nombre: Germinando Sueños
+estado: Activo
+bajada: Invernaderos y agricultura sustentable
+detalle: >-
+  Dos invernaderos que cultivan hortalizas y aromáticas para el Comedor Solidario, con
+  educación ambiental y siembra comunitaria.
+icono: Sprout
+orden: 8
+tienePagina: true
+externalHref: ''
+kicker: Germinando Sueños
+titulo: Agricultura sustentable que alimenta la comunidad y cuida el entorno.
+lead: >-
+  "Germinando Sueños" es una iniciativa de Renacer que promueve la agricultura
+  sustentable como una forma concreta de aportar a la alimentación y bienestar de la
+  comunidad. Los alimentos cultivados se destinan principalmente al Comedor Solidario,
+  mejorando la calidad, frescura y valor nutricional de las comidas entregadas.
+parrafos:
+  - >-
+    El programa cuenta con dos espacios complementarios: el Invernadero 1 (Almaciguera),
+    donde se siembran las semillas y se desarrollan las plántulas, y el Invernadero 2
+    (Huerta), donde las plantas son trasplantadas para su crecimiento y cosecha. Ambos
+    espacios están conectados por un sistema de sanitización que resguarda la salud de
+    los cultivos.
+  - >-
+    Trabajamos bajo principios de agricultura sustentable: reducción del uso de
+    químicos, promoción de la biodiversidad, uso eficiente del agua y recolección de
+    aguas lluvias para riego.
+  - >-
+    Entre los cultivos se encuentran hojas verdes como espinaca, rúcula, mizuna y
+    acelga; variedades de lechuga; hierbas aromáticas como cilantro, perejil y albahaca;
+    hortalizas como zanahoria, zapallo italiano, coliflor y pimentón; y otros cultivos
+    como arvejas, ají, choclo y tomate cherry.
+  - >-
+    El programa también tiene un fuerte componente educativo. Niños, niñas y comunidad
+    pueden visitar los invernaderos y aprender sobre siembra, repique, riego y cosecha,
+    promoviendo la conciencia ecológica y el valor del autosustento.
+stats:
+  - valor: '2'
+    etiqueta: 'invernaderos complementarios: almaciguera y huerta'
+  - valor: '+10'
+    etiqueta: variedades de hortalizas y aromáticas cultivadas
+  - valor: Comedor
+    etiqueta: principal destino de los alimentos cosechados
+  - valor: Educativo
+    etiqueta: visitas y aprendizaje para niños y comunidad
+textoApoyo: >-
+  Si deseas conocer más o ser parte de esta iniciativa, puedes hacerlo a través de
+  nuestros canales. Toda colaboración permite que este programa continúe creciendo y
+  aportando a la comunidad.
+imagen: /uploads/programas/germinando-suenos/imagen1.jpeg
+galeria:
+  - /uploads/programas/germinando-suenos/imagen2.jpeg
+  - /uploads/programas/germinando-suenos/imagen3.jpeg
