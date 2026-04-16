@@ -5,14 +5,32 @@ import logoRenacer from '../assets/logoRenacer.ico';
 interface Props {
   title: string;
   description?: string;
+  keywords?: string[];
+  image?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
 }
 
 const {
   title,
   description = 'Centro Renacer en Quillota. Comunidad, proyectos y voluntariado para transformar realidades.',
+  keywords = [
+    'Renacer Quillota',
+    'Centro Renacer',
+    'Centro de Acogida Renacer',
+    'Centro de Acogida para la Familia Renacer',
+    'fundacion Renacer Quillota',
+    'voluntariado Quillota',
+    'ayuda social Quillota',
+  ],
+  image = '/uploads/branding/logo-renacer-sin-fondo.png',
+  structuredData,
   noindex = false,
 } = Astro.props;
+
+const canonical = Astro.url.href;
+const imageUrl = new URL(image, Astro.url).href;
+const serializedStructuredData = structuredData ? JSON.stringify(structuredData) : null;
 ---
 
 <!doctype html>
@@ -23,7 +41,22 @@ const {
     <link rel="icon" type="image/x-icon" href={logoRenacer} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Centro Renacer" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {serializedStructuredData && (
+      <script type="application/ld+json" set:html={serializedStructuredData} />
+    )}
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

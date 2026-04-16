@@ -1,8 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RenacerLanding from '../components/RenacerLanding.astro';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'NGO',
+  name: 'Centro de Acogida para la Familia Renacer',
+  alternateName: ['Centro Renacer', 'Renacer Quillota', 'Centro de Acogida Renacer'],
+  url: 'https://familiarenacer.cl/',
+  logo: 'https://familiarenacer.cl/uploads/branding/logo-renacer-sin-fondo.png',
+  image: 'https://familiarenacer.cl/uploads/branding/logo-renacer-sin-fondo.png',
+  email: 'contacto@familiarenacer.cl',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Alfaro 1000',
+    addressLocality: 'Quillota',
+    addressRegion: 'Valparaiso',
+    addressCountry: 'CL',
+  },
+  areaServed: ['Quillota', 'Valparaiso', 'Chile'],
+  sameAs: ['https://www.facebook.com/p/Centro-de-Acogida-para-la-Familia-Renacer-100070071410421/'],
+};
 ---
 
-<Layout title="Centro Renacer | Quillota">
+<Layout
+  title="Centro Renacer en Quillota | Centro de Acogida para la Familia Renacer"
+  description="Centro Renacer en Quillota: apoyo social, infancia, alimentación, voluntariado y programas comunitarios del Centro de Acogida para la Familia Renacer."
+  keywords={[
+    'Renacer Quillota',
+    'Centro Renacer',
+    'Centro de Acogida Renacer',
+    'Centro de Acogida para la Familia Renacer',
+    'fundacion Renacer Quillota',
+    'programas sociales Quillota',
+    'voluntariado Renacer',
+  ]}
+  structuredData={structuredData}
+>
 	<RenacerLanding />
 </Layout>
