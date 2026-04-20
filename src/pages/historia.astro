@@ -1,0 +1,596 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LucideIcon from '../components/LucideIcon.astro';
+
+const hitos = [
+  {
+    año: '2002',
+    titulo: 'Fundación',
+    texto: 'El 2 de diciembre nace el Centro de Acogida para la Familia Renacer en Quillota, con el propósito de acompañar y desarrollar integralmente a las familias del sector.',
+  },
+  {
+    año: '2003',
+    titulo: 'Primer espacio propio',
+    texto: 'Gracias al apoyo de la Ilustre Municipalidad de Quillota, se obtiene un primer espacio en comodato, habilitado con el trabajo de voluntarios y familias de la comunidad.',
+  },
+  {
+    año: '2004',
+    titulo: 'Infraestructura sólida',
+    texto: 'La organización internacional World Mission contribuye a la construcción de una infraestructura permanente, permitiendo consolidar los programas y ampliar el alcance comunitario.',
+  },
+  {
+    año: '2011',
+    titulo: 'Hijo Ilustre de Quillota',
+    texto: 'Renacer es reconocido como Hijo Ilustre de la ciudad, en reconocimiento a su compromiso sostenido con la comunidad. Ese mismo año se inicia el albergue de invierno para personas en situación de calle.',
+  },
+  {
+    año: 'Hoy',
+    titulo: 'Proyección continua',
+    texto: 'Renacer continúa ampliando su impacto con nuevos programas, respondiendo a necesidades sociales emergentes y promoviendo el bienestar familiar con dignidad.',
+  },
+];
+
+const galeria = [
+  '/uploads/historia/era1-01.jpg',
+  '/uploads/historia/era1-02.jpg',
+  '/uploads/historia/era1-03.jpg',
+  '/uploads/historia/era1-04.jpg',
+  '/uploads/historia/era1-05.jpg',
+  '/uploads/historia/era1-06.jpg',
+  '/uploads/historia/era1-07.jpg',
+  '/uploads/historia/era1-08.jpg',
+  '/uploads/historia/era2-01.jpg',
+  '/uploads/historia/era2-02.jpg',
+  '/uploads/historia/era2-03.jpg',
+  '/uploads/historia/era2-04.jpg',
+  '/uploads/historia/era2-05.jpg',
+  '/uploads/historia/era2-06.jpg',
+  '/uploads/historia/era2-07.jpg',
+  '/uploads/historia/era2-08.jpg',
+  '/uploads/historia/era2-09.jpg',
+  '/uploads/historia/era2-10.jpg',
+  '/uploads/historia/era3-01.jpg',
+  '/uploads/historia/era3-02.jpg',
+  '/uploads/historia/era3-03.jpg',
+];
+---
+
+<Layout
+  title="Nuestra Historia | Renacer"
+  description="Más de veinte años acompañando familias en Quillota. Conoce la historia del Centro de Acogida para la Familia Renacer."
+>
+  <main class="historia-page">
+
+    <!-- Hero -->
+    <section class="historia-hero">
+      <div class="hero-backdrop"></div>
+      <div class="hero-inner">
+        <a href="/" class="back-link">
+          <LucideIcon name="ArrowLeft" size={16} />
+          Volver a Renacer
+        </a>
+        <p class="eyebrow">
+          <LucideIcon name="BookOpen" size={14} />
+          Desde 2002
+        </p>
+        <h1>Nuestra Historia</h1>
+        <p class="hero-lead">
+          El Centro de Acogida para la Familia Renacer es una organización sin fines de lucro
+          fundada el 2 de diciembre de 2002 en Quillota, con el propósito de brindar acogida,
+          acompañamiento y desarrollo integral para las familias, inspirado en principios
+          cristianos y valores universales.
+        </p>
+        <p class="hero-lead">
+          Sus inicios estuvieron marcados por el trabajo directo con niños y niñas del sector,
+          a través de actividades recreativas y formación humana, comenzando incluso en espacios
+          abiertos antes de contar con infraestructura propia.
+        </p>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+      <div class="section-inner">
+        <p class="section-eyebrow">Hitos</p>
+        <h2>Más de veinte años de presencia en la comunidad</h2>
+        <div class="timeline">
+          {hitos.map((hito, i) => (
+            <article class="hito" data-reveal>
+              <div class="hito-año">{hito.año}</div>
+              <div class="hito-connector">
+                <div class="hito-dot"></div>
+                {i < hitos.length - 1 && <div class="hito-line"></div>}
+              </div>
+              <div class="hito-content">
+                <h3>{hito.titulo}</h3>
+                <p>{hito.texto}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Galería stack -->
+    <section class="galeria-section">
+      <div class="section-inner">
+        <div class="galeria-header" data-reveal>
+          <p class="section-eyebrow">Fotografías</p>
+          <h2>Momentos que definen nuestra historia</h2>
+        </div>
+        <div class="stack-wrapper" data-reveal>
+          <div class="stack" id="foto-stack">
+            {galeria.map((src, i) => (
+              <div class="stack-card" data-index={i}>
+                <img src={src} alt={`Fotografía histórica de Renacer`} loading={i < 4 ? 'eager' : 'lazy'} draggable="false" />
+              </div>
+            ))}
+          </div>
+          <div class="stack-controls">
+            <button class="stack-btn" id="stack-prev" aria-label="Anterior">
+              <LucideIcon name="ChevronLeft" size={20} />
+            </button>
+            <span class="stack-counter" id="stack-counter">1 / {galeria.length}</span>
+            <button class="stack-btn" id="stack-next" aria-label="Siguiente">
+              <LucideIcon name="ChevronRight" size={20} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cierre -->
+    <section class="cierre-section" data-reveal>
+      <div class="cierre-card">
+        <p class="cierre-kicker">Hoy</p>
+        <p class="cierre-texto">
+          Renacer continúa respondiendo a nuevas necesidades sociales, incorporando iniciativas
+          como el apoyo a familias migrantes, la entrega de alimentación comunitaria y proyectos
+          de inclusión. Un espacio de apoyo integral que promueve el bienestar familiar y
+          entornos seguros para niños, niñas y sus familias.
+        </p>
+        <a class="cierre-btn" href="/#proyectos">Ver todos los programas</a>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  .historia-page {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* ── Hero ─────────────────────────────── */
+  .historia-hero {
+    position: relative;
+    padding: clamp(2.5rem, 5svh, 4rem) 1.5rem clamp(3rem, 6svh, 5rem);
+  }
+
+  .hero-backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 65% 55% at 10% 15%, rgba(8, 52, 183, 0.14), transparent),
+      linear-gradient(160deg, #edf2ff 0%, #f0f5ff 50%, #e8f0fe 100%);
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 760px);
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    color: #52637a;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 150ms;
+  }
+  .back-link:hover { color: #0834b7; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(8, 52, 183, 0.09);
+    color: #0a36b3;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: #10214b;
+    margin: 0 0 1.2rem;
+    line-height: 1.02;
+  }
+
+  .hero-lead {
+    color: #4a5c73;
+    font-size: clamp(0.97rem, 1.3vw, 1.07rem);
+    line-height: 1.75;
+    margin: 0 0 0.9rem;
+    max-width: 60ch;
+  }
+
+  /* ── Secciones comunes ────────────────── */
+  .section-inner {
+    width: min(100%, 1100px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #0a36b3;
+    margin: 0 0 0.5rem;
+  }
+
+  h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #13203a;
+    margin: 0 0 2.5rem;
+    line-height: 1.08;
+  }
+
+  /* ── Timeline ─────────────────────────── */
+  .timeline-section {
+    padding: 5rem 0 4rem;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hito {
+    display: grid;
+    grid-template-columns: 5rem 2.5rem 1fr;
+    gap: 0 1.25rem;
+    align-items: start;
+  }
+
+  .hito-año {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #0834b7;
+    padding-top: 0.15rem;
+    text-align: right;
+    letter-spacing: -0.03em;
+  }
+
+  .hito-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .hito-dot {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    background: #0834b7;
+    border: 3px solid #edf2ff;
+    box-shadow: 0 0 0 2px #0834b7;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  .hito-line {
+    width: 2px;
+    flex: 1;
+    min-height: 3rem;
+    background: linear-gradient(180deg, #0834b7 0%, rgba(8, 52, 183, 0.15) 100%);
+    margin-top: 4px;
+  }
+
+  .hito-content {
+    padding-bottom: 2.5rem;
+  }
+
+  .hito-content h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #13203a;
+    margin: 0 0 0.45rem;
+    letter-spacing: -0.03em;
+  }
+
+  .hito-content p {
+    color: #4a5c73;
+    font-size: 0.96rem;
+    line-height: 1.72;
+    margin: 0;
+    max-width: 56ch;
+  }
+
+  /* ── Galería ──────────────────────────── */
+  .galeria-section {
+    padding: 3.5rem 0 5rem;
+    border-top: 1px solid rgba(18, 63, 184, 0.08);
+  }
+
+  .galeria-header {
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Stack ────────────────────────────── */
+  .stack-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .stack {
+    position: relative;
+    width: min(100%, 520px);
+    aspect-ratio: 4 / 3;
+  }
+
+  .stack-card {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(8, 52, 183, 0.14);
+    cursor: grab;
+    user-select: none;
+    will-change: transform, opacity;
+    transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms ease, box-shadow 300ms ease;
+  }
+
+  .stack-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* posiciones en el stack (se asignan via JS) */
+  .stack-card[data-pos="0"] {
+    transform: rotate(0deg) translateY(0px) scale(1);
+    z-index: 10;
+    box-shadow: 0 22px 55px rgba(8, 52, 183, 0.18);
+  }
+  .stack-card[data-pos="1"] {
+    transform: rotate(2.5deg) translateY(6px) scale(0.97);
+    z-index: 9;
+    opacity: 0.85;
+  }
+  .stack-card[data-pos="2"] {
+    transform: rotate(-2deg) translateY(12px) scale(0.94);
+    z-index: 8;
+    opacity: 0.6;
+  }
+  .stack-card[data-pos="3"] {
+    transform: rotate(1.5deg) translateY(18px) scale(0.91);
+    z-index: 7;
+    opacity: 0.35;
+  }
+  .stack-card[data-pos-hidden] {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* animación salida izquierda */
+  .stack-card.exit-left {
+    transform: translateX(-110%) rotate(-12deg) !important;
+    opacity: 0 !important;
+    transition: transform 350ms cubic-bezier(0.55, 0, 1, 0.45), opacity 300ms ease !important;
+  }
+  .stack-card.exit-right {
+    transform: translateX(110%) rotate(12deg) !important;
+    opacity: 0 !important;
+    transition: transform 350ms cubic-bezier(0.55, 0, 1, 0.45), opacity 300ms ease !important;
+  }
+
+  .stack-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .stack-btn {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(8, 52, 183, 0.18);
+    background: rgba(255, 255, 255, 0.9);
+    color: #0a36b3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(8, 52, 183, 0.1);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+  .stack-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(8, 52, 183, 0.18);
+  }
+
+  .stack-counter {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #52637a;
+    min-width: 4rem;
+    text-align: center;
+  }
+
+  /* ── Cierre ───────────────────────────── */
+  .cierre-section {
+    padding: 4rem 1.5rem 5rem;
+    width: min(100%, 1100px);
+    margin: 0 auto;
+  }
+
+  .cierre-card {
+    padding: 2.5rem 2.25rem;
+    border-radius: 1.75rem;
+    background: linear-gradient(135deg, #101b33 0%, #15223c 100%);
+    box-shadow: 0 20px 50px rgba(17, 27, 51, 0.2);
+    max-width: 680px;
+  }
+
+  .cierre-kicker {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #7b96c8;
+    margin: 0 0 0.75rem;
+  }
+
+  .cierre-texto {
+    color: #c7d4e8;
+    line-height: 1.75;
+    font-size: 0.98rem;
+    margin: 0 0 1.5rem;
+  }
+
+  .cierre-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.4rem;
+    border-radius: 0.9rem;
+    background: linear-gradient(180deg, #2a5ae3 0%, #0834b7 100%);
+    color: white;
+    font-weight: 800;
+    font-size: 0.88rem;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(8, 52, 183, 0.35);
+    transition: transform 160ms ease;
+  }
+
+  .cierre-btn:hover { transform: translateY(-2px); }
+
+  /* ── Reveal ───────────────────────────── */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal].visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ── Responsive ───────────────────────── */
+  @media (max-width: 640px) {
+    .hito {
+      grid-template-columns: 3.5rem 2rem 1fr;
+      gap: 0 0.75rem;
+    }
+    .hito-año { font-size: 0.88rem; }
+    .foto-grid { grid-template-columns: repeat(2, 1fr); }
+    .cierre-card { padding: 1.75rem 1.25rem; }
+  }
+</style>
+
+<script>
+  // ── Reveal ────────────────────────────────────────────────────
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => {
+      if (e.isIntersecting) {
+        const el = e.target as HTMLElement;
+        const delay = parseInt(el.style.getPropertyValue('--delay') || '0');
+        setTimeout(() => el.classList.add('visible'), delay);
+        io.unobserve(el);
+      }
+    }),
+    { threshold: 0.08, rootMargin: '0px 0px -4% 0px' }
+  );
+  document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+
+  // ── Stack carousel ────────────────────────────────────────────
+  const stack = document.getElementById('foto-stack');
+  const counter = document.getElementById('stack-counter');
+  const btnPrev = document.getElementById('stack-prev');
+  const btnNext = document.getElementById('stack-next');
+
+  if (stack) {
+    const cards = Array.from(stack.querySelectorAll<HTMLElement>('.stack-card'));
+    const total = cards.length;
+    let current = 0;
+
+    const updatePositions = () => {
+      cards.forEach((card, i) => {
+        const rel = (i - current + total) % total;
+        card.removeAttribute('data-pos');
+        card.removeAttribute('data-pos-hidden');
+        if (rel < 4) {
+          card.setAttribute('data-pos', String(rel));
+        } else {
+          card.setAttribute('data-pos-hidden', '');
+        }
+      });
+      if (counter) counter.textContent = `${current + 1} / ${total}`;
+    };
+
+    const advance = (dir: 'left' | 'right') => {
+      const topCard = cards.find(c => c.getAttribute('data-pos') === '0');
+      if (!topCard) return;
+
+      topCard.classList.add(dir === 'left' ? 'exit-left' : 'exit-right');
+      current = dir === 'left'
+        ? (current + 1) % total
+        : (current - 1 + total) % total;
+
+      setTimeout(() => {
+        topCard.classList.remove('exit-left', 'exit-right');
+        updatePositions();
+      }, 360);
+    };
+
+    updatePositions();
+
+    btnNext?.addEventListener('click', () => advance('left'));
+    btnPrev?.addEventListener('click', () => advance('right'));
+
+    // Teclado
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') advance('left');
+      if (e.key === 'ArrowLeft') advance('right');
+    });
+
+    // Swipe táctil
+    let touchStartX = 0;
+    stack.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    stack.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) advance(dx < 0 ? 'left' : 'right');
+    });
+  }
+</script>
