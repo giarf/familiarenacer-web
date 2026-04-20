@@ -43,7 +43,7 @@ const hasVideo = !hasPanorama && videoHero.length > 0;
 const hasImages = !hasPanorama && !hasVideo && images.length > 0;
 const hasMedia = hasPanorama || hasVideo || hasImages;
 const heroImage = images[0];
-const galleryImages = hasVideo ? images.slice(0, 3) : images.slice(1, 4);
+const galleryImages = hasVideo ? images : images.slice(1);
 ---
 
 <main class="program-page">
