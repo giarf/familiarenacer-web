@@ -34,14 +34,18 @@ parrafos:
     alimentos, buscamos acompañar con respeto y cercanía la realidad que muchas familias
     viven hoy.
 stats:
+  - valor: '467'
+    etiqueta: Familias inscritas 
   - valor: '2005'
-    etiqueta: año desde el que se desarrolla este programa
+    etiqueta: Año desde el que se desarrolla este programa           
+  - valor: '791'
+    etiqueta: Cajas de alimento, aseo e higiene personal entregadas
   - valor: Semanal
-    etiqueta: frecuencia actual de entregas a familias
+    etiqueta: Frecuencia actual de entregas a familias
   - valor: Hogar
-    etiqueta: mercadería, frutas, verduras, higiene y aseo
+    etiqueta: Mercadería, frutas, verduras, higiene y aseo
   - valor: Flexible
-    etiqueta: entrega a domicilio o con opción de retiro
+    etiqueta: Entrega a domicilio o con opción de retiro
 textoApoyo: >-
   Puedes colaborar de distintas maneras: aportando económicamente, difundiendo la
   iniciativa o coordinando apoyo directo para familias que hoy necesitan un alivio real

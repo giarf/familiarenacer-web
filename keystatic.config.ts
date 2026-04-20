@@ -120,7 +120,13 @@ export default config({
         }),
         imagen: fields.image({
           label: 'Imagen principal (opcional)',
-          description: 'Portada del hero para la página del programa',
+          description: 'Portada del hero. Si subes un video, este campo se ignora.',
+          directory: 'public/uploads/programas',
+          publicPath: '/uploads/programas/',
+        }),
+        videoHero: fields.file({
+          label: 'Video principal (opcional)',
+          description: 'Si subes un video (MP4, WebM), reemplaza la imagen en el hero.',
           directory: 'public/uploads/programas',
           publicPath: '/uploads/programas/',
         }),

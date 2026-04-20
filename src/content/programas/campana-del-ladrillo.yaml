@@ -1,0 +1,48 @@
+nombre: Campaña del Ladrillo
+estado: En planificación
+bajada: ¡Dona un Ladrillo!
+detalle: >-
+  Campaña solidaria para construir un muro de cierre perimetral que proteja nuestros
+  espacios y programas comunitarios de los robos recurrentes.
+icono: HeartHandshake
+orden: 12
+tienePagina: true
+externalHref: ''
+
+kicker: Campaña del Ladrillo
+titulo: ¡Ayúdanos a levantar un muro de cierre perimetral para proteger Renacer!
+lead: >-
+  El Centro Renacer se ve afectado constantemente por robos que impactan el desarrollo
+  de nuestros programas sociales. Con tu donación de un ladrillo a solo $460, contribuyes
+  a construir una barrera de protección para toda nuestra comunidad.
+parrafos:
+  - >-
+    Renacer ha sido víctima reiterada de robos que afectan directamente el impacto social
+    de sus programas, poniendo en riesgo los materiales, insumos y espacios que sostienen
+    cada actividad comunitaria.
+  - >-
+    Por eso lanzamos la Campaña del Ladrillo: una iniciativa colectiva donde cada persona
+    puede contribuir donando uno o más ladrillos a un precio de $460 cada uno, para construir
+    juntos un muro de cierre perimetral que resguarde nuestro espacio.
+  - >-
+    El cierre perimetral no es solo una estructura física: es una barrera de protección para
+    todos los programas que Renacer entrega a la comunidad de Quillota, desde el Comedor
+    Solidario hasta la Sala JuegoTetra.
+  - >-
+    Con la participación de toda la comunidad, creemos que es posible levantar este muro y
+    garantizar que nuestros programas continúen funcionando con seguridad y estabilidad para
+    las familias que los necesitan.
+stats:
+  - valor: '$460'
+    etiqueta: precio por ladrillo donado
+  - valor: '10+'
+    etiqueta: programas sociales que se protegen
+  - valor: '100%'
+    etiqueta: destinado a la construcción del cierre
+  - valor: '2026'
+    etiqueta: año de la campaña
+textoApoyo: >-
+  ¿Quieres donar ladrillos o saber cómo participar? Contáctanos por nuestros canales
+  habituales y únete a esta campaña solidaria. ¡Cada ladrillo cuenta!
+imagen: ''
+galeria: []

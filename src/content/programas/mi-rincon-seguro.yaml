@@ -1,39 +1,50 @@
 nombre: Mi Rincón Seguro
 estado: En planificación
-bajada: Salas de Contención TEA
+bajada: Salas TEA de Regulación y Estimulación Sensorial
 detalle: >-
-  Proyecto en alianza con SECPLAN para habilitar espacios adaptados sensorialmente para
-  niños y niñas del espectro autista.
+  Proyecto en planificación para habilitar dos salas adaptadas sensorialmente —de regulación
+  emocional y estimulación sensorial— para personas del espectro autista sin límite de edad.
 icono: HandHelping
 orden: 11
-tienePagina: false
+tienePagina: true
 externalHref: ''
+
 kicker: Mi Rincón Seguro
-titulo: Espacios sensorialmente adaptados para niños y niñas del espectro autista.
+titulo: Espacios seguros de regulación emocional y estimulación sensorial para personas TEA.
 lead: >-
-  Mi Rincón Seguro es un proyecto en desarrollo que busca habilitar salas de contención
-  especialmente adaptadas para niños y niñas con Trastorno del Espectro Autista (TEA),
-  en alianza con SECPLAN y el municipio de Quillota.
+  Mi Rincón Seguro es un proyecto en desarrollo que busca habilitar dos salas especialmente
+  diseñadas para acompañar a personas del espectro autista en sus procesos de autorregulación,
+  bienestar emocional y desarrollo sensorial, sin límite de edad.
 parrafos:
   - >-
-    Este proyecto surge de la necesidad concreta de contar con espacios diseñados
-    específicamente para acompañar a niños y niñas neurodivergentes en momentos de
-    desregulación sensorial o emocional.
+    Este proyecto nace a partir de las necesidades reales detectadas en familias que acuden a
+    Renacer, quienes requieren espacios adecuados para acompañar procesos de regulación y
+    estimulación sensorial en distintas etapas de la vida.
   - >-
-    Las salas de contención TEA están diseñadas con materiales, colores, texturas y
-    niveles de estimulación pensados para facilitar la autorregulación y el bienestar de
-    los niños y niñas.
+    El proyecto contempla dos salas complementarias: una Sala de Regulación Emocional,
+    orientada a la contención, calma y manejo de crisis; y una Sala de Estimulación Sensorial,
+    enfocada en la exploración, activación y desarrollo sensorial.
+  - >-
+    Ambos espacios estarán diseñados con materiales, colores, texturas y niveles de
+    estimulación pensados específicamente para facilitar la autorregulación y el bienestar
+    de las personas neurodivergentes que los utilicen.
+  - >-
+    Actualmente, Renacer se encuentra en etapa de planificación con el objetivo de habilitar
+    estos espacios seguros, adaptados y respetuosos de las diversas necesidades sensoriales
+    de la comunidad.
 stats:
   - valor: TEA
     etiqueta: diseño específico para el espectro autista
-  - valor: Sensorial
-    etiqueta: materiales y ambientes adaptados para autorregulación
-  - valor: SECPLAN
-    etiqueta: proyecto en alianza con planificación municipal
+  - valor: '2'
+    etiqueta: salas complementarias proyectadas
+  - valor: Todas
+    etiqueta: las edades, sin límite etario
   - valor: '2026'
     etiqueta: año proyectado de implementación
 textoApoyo: >-
-  Si deseas conocer más sobre este proyecto o tienes interés en colaborar, contáctanos a
-  través de nuestros canales.
+  Si deseas conocer más sobre este proyecto o tienes interés en colaborar en su
+  implementación, contáctanos a través de nuestros canales habituales.
 imagen: ''
-galeria: []
+videoHero: /uploads/programas/mi-rincon-seguro/hero.mp4
+galeria:
+  - /uploads/programas/mi-rincon-seguro/galeria-1.jpg

@@ -215,14 +215,17 @@ const focosHero = [
     </div>
 
     <div class="project-grid">
-      {proyectos.map((proyecto) =>
-        proyecto.href ? (
-          <a class="project-card project-card-link reveal-item" href={proyecto.href}>
+      {proyectos.map((proyecto) => {
+        const isPlanning = proyecto.estado === 'En planificación';
+        const cardClass = `project-card reveal-item${isPlanning ? ' project-card--planning' : ''}`;
+        const pillClass = `status-pill${isPlanning ? ' status-pill--planning' : ''}`;
+        return proyecto.href ? (
+          <a class={`${cardClass} project-card-link`} href={proyecto.href}>
             <div class="project-card-head">
               <div class="project-icon">
                 <LucideIcon name={proyecto.icono ?? 'HeartHandshake'} size={20} />
               </div>
-              <span class="status-pill">{proyecto.estado}</span>
+              <span class={pillClass}>{proyecto.estado}</span>
             </div>
             <h3>{proyecto.nombreNormalizado}</h3>
             <p>{proyecto.detalle}</p>
@@ -232,18 +235,18 @@ const focosHero = [
             </span>
           </a>
         ) : (
-          <article class="project-card reveal-item">
+          <article class={cardClass}>
             <div class="project-card-head">
               <div class="project-icon">
                 <LucideIcon name={proyecto.icono ?? 'HeartHandshake'} size={20} />
               </div>
-              <span class="status-pill">{proyecto.estado}</span>
+              <span class={pillClass}>{proyecto.estado}</span>
             </div>
             <h3>{proyecto.nombreNormalizado}</h3>
             <p>{proyecto.detalle}</p>
           </article>
-        )
-      )}
+        );
+      })}
     </div>
   </section>
 
@@ -954,6 +957,56 @@ const focosHero = [
     border-color: #0834b7;
     color: white;
     transform: translateY(-2px) scale(1.02);
+  }
+
+  @keyframes planning-pulse {
+    0%, 100% {
+      box-shadow:
+        0 14px 34px rgba(17, 49, 125, 0.08),
+        0 0 0 0 rgba(220, 88, 0, 0.22);
+    }
+    55% {
+      box-shadow:
+        0 14px 34px rgba(17, 49, 125, 0.08),
+        0 0 0 10px rgba(220, 88, 0, 0);
+    }
+  }
+
+  .project-card--planning {
+    border-color: rgba(220, 88, 0, 0.3);
+    background: linear-gradient(180deg, rgba(255, 252, 245, 0.98), rgba(255, 243, 220, 0.96));
+    animation: planning-pulse 2.6s ease-in-out infinite;
+  }
+
+  .project-card--planning .project-icon {
+    color: #c2410c;
+    background: rgba(220, 88, 0, 0.1);
+    border-color: rgba(220, 88, 0, 0.18);
+  }
+
+  .project-card--planning h3 {
+    color: #7c2d12;
+  }
+
+  .project-card--planning .project-link-copy {
+    color: #c2410c;
+  }
+
+  .status-pill--planning {
+    background: rgba(220, 88, 0, 0.12);
+    color: #c2410c;
+  }
+
+  .project-card--planning:hover {
+    border-color: rgba(220, 88, 0, 0.44);
+    box-shadow: 0 22px 42px rgba(220, 88, 0, 0.16);
+    background: linear-gradient(180deg, rgba(255, 252, 245, 1), rgba(255, 237, 207, 0.98));
+  }
+
+  .project-card--planning:hover .project-icon {
+    background: #c2410c;
+    border-color: #c2410c;
+    color: white;
   }
 
   .footer {

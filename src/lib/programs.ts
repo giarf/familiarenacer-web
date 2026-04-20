@@ -33,6 +33,15 @@ function getImageMetadata(src: string): ProgramImage | null {
   };
 }
 
+function getVideoHero(program: RawProgram): string {
+  const v = program.videoHero;
+  if (!v) return '';
+  const src = typeof v === 'string' ? v.trim() : (v as { src?: string })?.src ?? '';
+  if (!src) return '';
+  const filePath = join(process.cwd(), 'public', src.replace(/^\/+/, ''));
+  return existsSync(filePath) ? src : '';
+}
+
 function getImages(program: RawProgram): ProgramImage[] {
   const primary =
     typeof program.imagen === 'string' && program.imagen.trim().length > 0
@@ -74,6 +83,7 @@ export async function listPrograms() {
         dynamicHref,
         href,
         imagenes: getImages(program),
+        videoHero: getVideoHero(program),
       };
     })
   );
@@ -95,5 +105,6 @@ export async function getProgramBySlug(slug: string) {
     dynamicHref: `/programas/${slug}/`,
     externalHrefNormalizado: getExternalHref(program),
     imagenes: getImages(program),
+    videoHero: getVideoHero(program),
   };
 }
