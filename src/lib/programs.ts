@@ -100,7 +100,12 @@ export async function listPrograms() {
 
   return programs
     .filter((program): program is NonNullable<typeof program> => Boolean(program))
-    .sort((a, b) => (a.orden ?? 99) - (b.orden ?? 99));
+    .sort((a, b) => {
+      const aPlanning = a.estado === 'En planificación' ? 0 : 1;
+      const bPlanning = b.estado === 'En planificación' ? 0 : 1;
+      if (aPlanning !== bPlanning) return aPlanning - bPlanning;
+      return (a.orden ?? 99) - (b.orden ?? 99);
+    });
 }
 
 export async function getProgramBySlug(slug: string) {

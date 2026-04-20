@@ -93,9 +93,9 @@ const galeria = [
       <div class="section-inner">
         <p class="section-eyebrow">Hitos</p>
         <h2>Más de veinte años de presencia en la comunidad</h2>
-        <div class="timeline">
+        <div class="timeline" data-reveal>
           {hitos.map((hito, i) => (
-            <article class="hito" data-reveal>
+            <article class="hito">
               <div class="hito-año">{hito.año}</div>
               <div class="hito-connector">
                 <div class="hito-dot"></div>
@@ -159,7 +159,6 @@ const galeria = [
 <style>
   .historia-page {
     width: 100%;
-    overflow-x: hidden;
   }
 
   /* ── Hero ─────────────────────────────── */
@@ -266,6 +265,7 @@ const galeria = [
     display: flex;
     flex-direction: column;
     gap: 0;
+    touch-action: pan-y;
   }
 
   .hito {
