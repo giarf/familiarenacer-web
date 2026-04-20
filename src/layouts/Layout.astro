@@ -67,5 +67,13 @@ const serializedStructuredData = structuredData ? JSON.stringify(structuredData)
   </head>
   <body>
     <slot />
+    <script>
+      document.addEventListener('contextmenu', (e) => {
+        if ((e.target as HTMLElement).closest('img, video')) e.preventDefault();
+      });
+      document.addEventListener('dragstart', (e) => {
+        if ((e.target as HTMLElement).tagName === 'IMG') e.preventDefault();
+      });
+    </script>
   </body>
 </html>
