@@ -34,8 +34,12 @@ parrafos:
     resguardando la dignidad de cada persona y ofreciendo un entorno de respeto y
     cercanía.
 stats:
+  - valor: '11.543'
+    etiqueta: Prendas rescatadas
   - valor: Todo el año
     etiqueta: funcionamiento continuo según temporada
+  - valor: '10.059'
+    etiqueta: Prendas Donadas
   - valor: Abrigo
     etiqueta: refuerzo especial en invierno para calle, familias e inmigrantes
   - valor: Circular
