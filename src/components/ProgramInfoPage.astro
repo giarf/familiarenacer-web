@@ -22,6 +22,7 @@ interface Props {
   supportText: string;
   images?: ProgramImage[];
   videoHero?: string;
+  panoramaHero?: string;
 }
 
 const {
@@ -34,11 +35,13 @@ const {
   supportText,
   images = [],
   videoHero = '',
+  panoramaHero = '',
 } = Astro.props;
 
-const hasVideo = videoHero.length > 0;
-const hasImages = !hasVideo && images.length > 0;
-const hasMedia = hasVideo || hasImages;
+const hasPanorama = panoramaHero.length > 0;
+const hasVideo = !hasPanorama && videoHero.length > 0;
+const hasImages = !hasPanorama && !hasVideo && images.length > 0;
+const hasMedia = hasPanorama || hasVideo || hasImages;
 const heroImage = images[0];
 const galleryImages = hasVideo ? images.slice(0, 3) : images.slice(1, 4);
 ---
@@ -55,6 +58,15 @@ const galleryImages = hasVideo ? images.slice(0, 3) : images.slice(1, 4);
         <h1 class="hero-title">{title}</h1>
         <p class="hero-lead">{lead}</p>
       </div>
+      {hasPanorama && (
+        <div class="hero-visual hero-visual--pano">
+          <div class="pano-container" id={`pano-${kicker.replace(/\s+/g, '-')}`} data-pano-src={panoramaHero}></div>
+          <div class="pano-hint" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3"/></svg>
+            Arrastra para explorar
+          </div>
+        </div>
+      )}
       {hasVideo && (
         <div class="hero-visual hero-visual--video">
           <video
@@ -262,6 +274,41 @@ const galleryImages = hasVideo ? images.slice(0, 3) : images.slice(1, 4);
     display: block;
     object-fit: cover;
   }
+
+  .hero-visual--pano {
+    position: relative;
+    background: #0a0f1a;
+  }
+
+  .pano-container {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.25rem;
+    overflow: hidden;
+  }
+
+  .pano-hint {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.32rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.7rem;
+    font-weight: 700;
+    pointer-events: none;
+    transition: opacity 700ms ease;
+    white-space: nowrap;
+  }
+
+  .pano-hint.hidden { opacity: 0; }
 
   /* ── Contenido + Stats ────────────────────────────── */
   .content-section {
@@ -618,4 +665,43 @@ const galleryImages = hasVideo ? images.slice(0, 3) : images.slice(1, 4);
     initReveal();
     initCounters();
   }));
+
+  // ── Panorama 360° ─────────────────────────────────────────────
+  const panoEl = document.querySelector<HTMLElement>('.pano-container[data-pano-src]');
+  if (panoEl) {
+    const src = panoEl.dataset.panoSrc!;
+    const hint = panoEl.closest('.hero-visual--pano')?.querySelector('.pano-hint');
+
+    const initPano = () => {
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = 'https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css';
+      document.head.appendChild(css);
+
+      const js = document.createElement('script');
+      js.src = 'https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js';
+      js.onload = () => {
+        // @ts-ignore
+        window.pannellum.viewer(panoEl.id, {
+          type: 'equirectangular',
+          panorama: src,
+          autoLoad: true,
+          autoRotate: -1.5,
+          compass: false,
+          showZoomCtrl: false,
+          showFullscreenCtrl: false,
+          showControls: false,
+          mouseZoom: false,
+          hfov: 90,
+        });
+        if (hint) setTimeout(() => hint.classList.add('hidden'), 3500);
+      };
+      document.head.appendChild(js);
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { initPano(); io.disconnect(); }
+    }, { threshold: 0.1 });
+    io.observe(panoEl);
+  }
 </script>

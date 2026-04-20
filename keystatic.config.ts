@@ -130,6 +130,12 @@ export default config({
           directory: 'public/uploads/programas',
           publicPath: '/uploads/programas/',
         }),
+        panoramaHero: fields.image({
+          label: 'Panorama 360° (opcional)',
+          description: 'Imagen equirectangular JPG. Muestra un visor 360° interactivo en el hero. Tiene prioridad sobre imagen y video.',
+          directory: 'public/uploads/programas',
+          publicPath: '/uploads/programas/',
+        }),
         galeria: fields.array(
           fields.image({
             label: 'Imagen de galería',
