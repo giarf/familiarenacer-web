@@ -48,7 +48,9 @@ textoApoyo: >-
   Si deseas conocer más o ser parte de esta iniciativa, puedes hacerlo a través de
   nuestros canales. Toda colaboración permite que este programa continúe creciendo y
   aportando a la comunidad.
-imagen: /uploads/programas/germinando-suenos/imagen1.jpeg
+imagen: ''
+videoHero: /uploads/programas/germinando-suenos/hero.mp4
 galeria:
+  - /uploads/programas/germinando-suenos/imagen1.jpeg
   - /uploads/programas/germinando-suenos/imagen2.jpeg
   - /uploads/programas/germinando-suenos/imagen3.jpeg

@@ -42,7 +42,9 @@ stats:
 textoApoyo: >-
   Si deseas conocer más o ser parte de esta iniciativa, puedes colaborar con recursos,
   voluntariado o difusión para fortalecer estos espacios de cuidado.
-imagen: /uploads/programas/tardes-recreativas/imagen1.jpeg
+imagen: ''
+videoHero: /uploads/programas/tardes-recreativas/hero.mp4
 galeria:
+  - /uploads/programas/tardes-recreativas/imagen1.jpeg
   - /uploads/programas/tardes-recreativas/imagen2.jpeg
   - /uploads/programas/tardes-recreativas/imagen3.jpeg

@@ -49,7 +49,9 @@ textoApoyo: >-
   Si deseas ser parte de esta experiencia como voluntario en la organización,
   acompañamiento en los juegos, o colaborar con premios y materiales, puedes
   contactarnos a través de nuestros canales.
-imagen: /uploads/programas/fiestas-patrias/imagen1.jpeg
+imagen: ''
+videoHero: /uploads/programas/fiestas-patrias/hero.mp4
 galeria:
+  - /uploads/programas/fiestas-patrias/imagen1.jpeg
   - /uploads/programas/fiestas-patrias/imagen2.jpeg
   - /uploads/programas/fiestas-patrias/imagen3.jpeg

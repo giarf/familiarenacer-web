@@ -50,6 +50,8 @@ textoApoyo: >-
   Puedes colaborar de distintas maneras: aportando económicamente, difundiendo la
   iniciativa o coordinando apoyo directo para familias que hoy necesitan un alivio real
   en sus gastos básicos.
-imagen: /uploads/programas/canasta-familiar/imagen-principal.jpg
+imagen: ''
+videoHero: /uploads/programas/canasta-familiar/hero.mp4
 galeria:
+  - /uploads/programas/canasta-familiar/imagen-principal.jpg
   - /uploads/programas/canasta-familiar/entrega-canasta.jpeg

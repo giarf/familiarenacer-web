@@ -48,6 +48,8 @@ textoApoyo: >-
   Si deseas conocer más o ser parte de este programa, puedes hacerlo a través de
   nuestros canales. Toda colaboración permite que este apoyo continúe llegando a quienes
   lo necesitan.
-imagen: /uploads/programas/comedor-solidario/imagen1.jpg
+imagen: ''
+videoHero: /uploads/programas/comedor-solidario/hero.mp4
 galeria:
+  - /uploads/programas/comedor-solidario/imagen1.jpg
   - /uploads/programas/comedor-solidario/comedor-accion.jpeg
