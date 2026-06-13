@@ -46,4 +46,5 @@ textoApoyo: >-
   nuestros canales y sumarte como padrino, madrina, colaborador o voluntario.
 imagen: ''
 videoHero: /uploads/programas/navidad-solidaria/hero.mp4
-galeria: []
+galeria:
+  - /uploads/programas/navidad-solidaria/p.jpeg
