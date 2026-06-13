@@ -46,4 +46,7 @@ textoApoyo: >-
   voluntariado o difusión para que más personas puedan vivir una Noche Buena acompañada.
 imagen: ''
 videoHero: /uploads/programas/cena-navidena/hero.mp4
-galeria: []
+galeria:
+ - /uploads/programas/cena-navidena/asaa.jpg
+ - /uploads/programas/cena-navidena/edc.jpg
+ - /uploads/programas/cena-navidena/aaa.jpg
