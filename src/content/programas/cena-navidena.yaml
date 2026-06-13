@@ -47,6 +47,6 @@ textoApoyo: >-
 imagen: ''
 videoHero: /uploads/programas/cena-navidena/hero.mp4
 galeria:
- - /uploads/programas/cena-navidena/asaa.jpg
- - /uploads/programas/cena-navidena/edc.jpg
- - /uploads/programas/cena-navidena/aaa.jpg
+  - /uploads/programas/cena-navidena/asaa.jpeg
+  - /uploads/programas/cena-navidena/edc.jpeg
+  - /uploads/programas/cena-navidena/aaa.jpeg
